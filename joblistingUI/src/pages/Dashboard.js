@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <>
     <Box sx={{ display:"flex", flexDirection:"row", justifyContent:"center"}}>
-    <Typography variant='h3'sx={{ margin:"2%"}} align='center'>EMPLOYER DASHBOARD</Typography>
+    <Typography variant='h3'sx={{ margin:"2%"}} align='center'>HAIRCUT DASHBOARD</Typography>
     <Button sx={{ margin:"2% 3%"}} variant="outlined"><Link to="/">Home</Link></Button>
     </Box>
     <Box sx={{ width: '100%', typography: 'body1' }}>

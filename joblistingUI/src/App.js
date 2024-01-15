@@ -1,6 +1,8 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, Feed, Dashboard, Create } from "./pages"
+import FormTest from "./testingcomponents/FormTest";
+import { FormProvider } from "./context/FormContext";
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
           <Route path="/employer/create" element={<Create />}/>
           </Route>
           <Route path="/employee/feed" element={<Feed />}/>
+          <Route path="/multipage1" element={<FormProvider><FormTest /></FormProvider>}/>
       </Routes>
     </BrowserRouter>
   );

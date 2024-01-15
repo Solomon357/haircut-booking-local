@@ -4,14 +4,14 @@ import java.util.Arrays;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "JobPost")
+@Document(collection = "BarberBookings")
 public class Post {
     // all the keys of our mongodb document
     //this is where I change the type of data that my database is receiving 
-    private String profile;
-    private String desc;
-    private int exp;
-    private String[] techs;
+    private Object[] haircut; // originally String profile
+    private String name;
+    private int price;
+    private Object[] barber; // originally String[] techs
 
 
     //constructor
@@ -19,46 +19,46 @@ public class Post {
     }
     
     //getters and setters
-    public String getProfile() {
-        return profile;
+    public Object[] getHaircut() {
+        return haircut;
     }
 
-    public void setProfile(String profile) {
-        this.profile = profile;
+    public void setHaircut(Object[] haircut) {
+        this.haircut = haircut;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getName() {
+        return name;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public int getExp() {
-        return exp;
+    public int getPrice() {
+        return price;
     }
 
-    public void setExp(int exp) {
-        this.exp = exp;
+    public void setPrice(int price) {
+        this.price = price;
     }
 
-    public String[] getTechs() {
-        return techs;
+    public Object[] getBarber() {
+        return barber;
     }
 
-    public void setTechs(String[] techs) {
-        this.techs = techs;
+    public void setBarber(Object[] barber) {
+        this.barber = barber;
     }
 
     //toString for confirming accurate data has been read
     @Override
     public String toString() {
         return "Post{" +
-                "profile='" + profile + '\'' +
-                ", desc='" + desc + '\'' +
-                ", exp=" + exp +
-                ", techs=" + Arrays.toString(techs) +
+                "haircut='" + Arrays.toString(haircut) + '\'' +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                ", barber=" + Arrays.toString(barber) +
                 '}';
     }
 }

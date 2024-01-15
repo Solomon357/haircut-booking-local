@@ -31,7 +31,7 @@ public class PostController
 {   
     //auto wired means that Spring will create an object for me and map it automatically 
     @Autowired
-    PostRepo repo; //repo is an object of class PostRepo that can do CRUD oper.
+    PostRepo repo; //repo is an object of class PostRepo that can do CRUD operations.
 
     // srepo is a object of class SearchRepo that handles the search
     @Autowired

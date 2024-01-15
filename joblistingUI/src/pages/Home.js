@@ -14,16 +14,23 @@ const Home = () => {
           <li>
           <Button sx={{ margin:"2% 3%"}} variant="outlined">
             <Link to="/employer/dashboard">
-              Hire talent
+              Book a haircut
             </Link>
-            </Button>
+          </Button>
           </li>
           <li>
           <Button sx={{ margin:"2% 3%"}} variant="outlined">
             <Link to="/employee/feed">
               Get Job Now
             </Link>
-            </Button>
+          </Button>
+          </li>
+          <li>
+          <Button sx={{ margin:"2% 3%"}} variant="outlined">
+            <Link to="/multipage1">
+              Multipage Test
+            </Link>
+          </Button>
           </li>
         </ul>
       </div>
