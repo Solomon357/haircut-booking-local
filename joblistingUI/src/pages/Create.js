@@ -11,12 +11,7 @@ import {
 
 
 
-import { useNavigate } from "react-router-dom";
-
-
-//problems to solve for today in order:
-// 1. spread the functionality of this post to multiple components.
-// 2. find the correct way to initialise and manipulate date
+//import { useNavigate } from "react-router-dom";
 
 //for date i want my "min" prop to always be this current date 
 
@@ -68,7 +63,7 @@ const Create = () => {
     }
   ];
 
-  const navigate = useNavigate();
+  //const navigate = useNavigate();
   const [form, setForm] = useState(initial);
   const [successToast, setSuccessToast] = useState(false);
   const [errorToast, setErrorToast] = useState(false);

@@ -3,27 +3,6 @@ import useFormContext from "../customhooks/useFormContext";
 import FormTestInputs from "./FromTestInputs";
 
 const FormTest = () => {
-    // const {
-    //     page,
-    //     setPage,
-    //     fullForm,
-    //     title,
-    // } = useFormContext();
-
-    // const content = (
-    //     <form className="form flex-col">
-
-    //         <header className="form-header">
-    //             <h2>{title[page]}</h2>
-    //         </header>
-
-    //         <FormTestInputs />
-
-    //     </form>
-    // )
-
-    // return content
-
 
     const {
         page,
@@ -60,6 +39,7 @@ const FormTest = () => {
 
             <header className="form-header">
                 <h2>{title[page]}</h2>
+                {/* <span>page {page} / {Object.keys(title).length -1}</span> */}
 
                 <FormTestInputs />
 

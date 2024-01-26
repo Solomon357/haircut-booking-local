@@ -1,41 +1,30 @@
 import { createContext, useState } from "react";
+import dayjs from "dayjs";
 
 const FormContext = createContext({})
 
 export const FormProvider = ({ children }) => {
 
     //TO DO FOR TOMORROW:
+    //(1). apply to places + ask tamuka to look over how i should word things on my CV 
+    // 1. create custom radio buttons
+    // 2. look up designs of time and date pickers
+    //(3). using figma design create a professionally looking multi step form
+    //(4). finally deal with the availability feature
 
-    //  1. figure out how to save radio values selections between page changes 
-    //  2. once the form functionality works how i want, apply these changes to the main form
-    // (3). using figma design create a professionally looking multi step form
-
-    //I PROMISE I WILL USE MOMENT.JS FOR DATE
-    let date = new Date(); 
-    let nowDate = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
-
-    //now to format the current date in a way that can be passed through
-    function formatDate(date) {
-        let d = new Date(date),
-            month = '' + (d.getMonth() + 1),
-            day = '' + d.getDate(),
-            year = d.getFullYear();
-
-        if (month.length < 2) 
-            month = '0' + month;
-        if (day.length < 2) 
-            day = '0' + day;
-
-        return [year, month, day].join('-');
-    }
-
-    const currentDate = formatDate(nowDate);
-
+    const currentDate = dayjs().format("YYYY-MM-DD");
+    const currentTime = dayjs().format("HH:mm");
+    
+    //dayjs() is an object and therefore will return true no matter what
+    // i need to modify/add props that handle time validation (.isValid() function)
+    //in english the logic should be like:
+    // if value of date/time picker is valid ? go to the next page : next btn is still disabled
     const title = {
-        0: "Type of Haircut",
-        1: 'Professional',
-        2: 'Time',
-        3: 'Confirmation',
+        0: "Select Haircut Type",
+        1: 'Name of Booking',
+        2: 'Select Professional',
+        3: 'Select Time',
+        4: 'Confirmation',
         //3: Name and Confirm page
     }
 
@@ -46,7 +35,8 @@ export const FormProvider = ({ children }) => {
         haircutType: "",
         haircutPrice: 0,
         haircutBookingName: "",
-        bookingDate: currentDate,
+        bookingDate: "",
+        bookingTime: "", 
         barberInfo: "",
         barberPrice: 0, 
         total: 0
@@ -80,17 +70,17 @@ export const FormProvider = ({ children }) => {
 
 
     const handleChange = e => {
-        const type = e.target.type
-
+        //type might become irrelevant when working with mui
+        //might need to change this to "id"
+        const type = e.target.type 
+        //console.log(type)
         const name = e.target.name
 
         let value = e.target.value
 
-        //case for type "date"
-
+        //DatePicker works differnt than normal values so might need a casefor type "date"
         //im going to write code here that deals with type "radio"
         if(type === "radio"){
-            console.log(e.target.checked) // test
             let radioValues = value.split(","); //in order to create an array of substrings
             radioValues[2] = +radioValues[2]; //radioValues[2] will always be a number so we need to convert string to number here
 
@@ -105,8 +95,10 @@ export const FormProvider = ({ children }) => {
             //console.log("current barberPrice: ", data.barberPrice) // test
         }
         
+        //console.log(data.bookingDate)// test
         //sorting the total for checkout
         data.total = data.haircutPrice + data.barberPrice;
+
 
         setData(prevData => ({
             ...prevData,
@@ -114,25 +106,31 @@ export const FormProvider = ({ children }) => {
         }))
     }
 
-    const {barberPrice, ...requiredInputs } = data
+    const {barberPrice,
+        ...requiredInputs } = data
 
     const canSubmit = [...Object.values(requiredInputs)].every(Boolean) && page === Object.keys(title).length - 1
 
     //can only move from page 1 to page 2 once evey value on current page has a value
     const canNextPage1 = Object.keys(data)
-        .filter(key => key.startsWith('hair'))
+        .filter(key => key.startsWith('haircutT'))
         .map(key => data[key])
         .every(Boolean)
 
     //can only move from page 2 to page 3 once evey value on current page is true (they all have values)
     // i think i want to change this to "once barberInfo is true" because i dont wnat this to take barberPrice into account
     const canNextPage2 = Object.keys(data)
-        .filter(key => key.startsWith('barberInfo'))
+        .filter(key => key.startsWith('haircutB'))
         .map(key => data[key])
         .every(Boolean)
 
-    //can only move from page 2 to page 3 once evey value on current page is true (they all have values)
     const canNextPage3 = Object.keys(data)
+        .filter(key => key.startsWith('barberI'))
+        .map(key => data[key])
+        .every(Boolean)
+
+    //can only move from page 3 to page 4 once evey value on current page is true (they all have values)
+    const canNextPage4 = Object.keys(data)
         .filter(key => key.startsWith('booking'))
         .map(key => data[key])
         .every(Boolean)
@@ -146,6 +144,7 @@ export const FormProvider = ({ children }) => {
         || (page === 0 && !canNextPage1)
         || (page === 1 && !canNextPage2)
         || (page === 2 && !canNextPage3)
+        || (page === 3 && !canNextPage4)
     
 
     //console.log(disableNext); // should only return false once all data on page is filled

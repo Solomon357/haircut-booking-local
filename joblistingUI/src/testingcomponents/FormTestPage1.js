@@ -27,8 +27,6 @@ const FormTestPage1 = () => {
               {haircutOptions.map(({ haircutValue }, index) => {
                 //convert string option to string array so we can use separate words
                 let haircutArr = haircutValue.split(",");
-                //data.haircutType = haircutValue;
-                
                 return (
                   <li key={index}>
                     <div>

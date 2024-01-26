@@ -27,7 +27,7 @@ const Home = () => {
           </li>
           <li>
           <Button sx={{ margin:"2% 3%"}} variant="outlined">
-            <Link to="/multipage1">
+            <Link to="/multiFormTest">
               Multipage Test
             </Link>
           </Button>
