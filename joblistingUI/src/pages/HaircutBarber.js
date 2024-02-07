@@ -19,26 +19,24 @@ const HaircutBarber = () => {
 
 
     const content = (
-        <Box sx={{ margin:"1% auto"}}>
+      <Box sx={{ margin:"1% auto"}}>
+        <FormControl>
+            
+          <FormLabel id="barber-radio-buttons">Barber Options</FormLabel>
+          <RadioGroup
+            name="barberInfo"
+            value ={barberOptions.barberValue} 
+            onChange = {handleChange}
+          >
+            {barberOptions.map(({ barberValue }, index) => {
+              let barberArr = barberValue.split(","); 
 
-
-            <FormControl>
-                
-                <FormLabel id="barber-radio-buttons">Barber Options</FormLabel>
-                <RadioGroup
-                    name="barberInfo"
-                    value ={barberOptions.barberValue} 
-                    onChange = {handleChange}
-                >
-                    {barberOptions.map(({ barberValue }, index) => {
-                       let barberArr = barberValue.split(","); 
-
-                       return(
-                       <FormControlLabel key={barberValue+index} checked={data.barberInfo === barberValue} value={barberValue} control={<Radio />} label ={barberArr[0] + " - " + barberArr[1] + " (£"+ (data.haircutPrice + (+barberArr[2]))+ ")" } />
-                       )
-                    })}
-                </RadioGroup>
-            </FormControl>
+              return(
+              <FormControlLabel key={barberValue+index} checked={data.barberInfo === barberValue} value={barberValue} control={<Radio />} label ={barberArr[0] + " - " + barberArr[1] + " (£"+ (data.haircutPrice + (+barberArr[2]))+ ")" } />
+              )
+            })}
+          </RadioGroup>
+        </FormControl>
 
 
             {/* <ul>

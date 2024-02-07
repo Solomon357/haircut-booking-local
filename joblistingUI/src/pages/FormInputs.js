@@ -20,11 +20,14 @@ const FormInputs = () => {
     
 
     return ( 
-        <Box
+      <Box
         sx={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
+          margin: "1%",
+          // display: "flex",
+          // justifyContent: "center",
+          // alignItems: "center"
+          // flexDirection: "column", 
+         // border: "1px solid black"
         }}
       >
         {display[page]}

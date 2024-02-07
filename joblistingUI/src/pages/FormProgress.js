@@ -1,3 +1,4 @@
+import { Box, Step, StepLabel, Stepper } from "@mui/material";
 import useFormContext from "../customhooks/useFormContext";
 
 
@@ -12,13 +13,15 @@ const FormProgress = () => {
   //     return <div key = {i} className="barmarker">Step {i+1}</div>
   //   })
     const content = (
-      <section className="progress-container">
-          {/* <div className="barmarker-container">
-              {steps}
-          </div> */}
-          <p>Basic Progress Bar</p>
-          <progress className="progress" max={"100"} value={progress}></progress>
-      </section>
+    <Box sx={{ width: '100%', marginTop: "20px" }}>
+      <Stepper activeStep={page} alternativeLabel>
+        {Object.keys(title).map((label) => (
+          <Step key={label+1}>
+            <StepLabel>{title[label]}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+    </Box>
     )
 
     return content

@@ -7,7 +7,8 @@ export const FormProvider = ({ children }) => {
 
     //TO DO FOR TOMORROW:
     //(1). apply to places + ask tamuka to look over how i should word things on my CV 
-    // 1. create custom radio buttons
+    // 1. figure out how i want to implement a scrollable div for radio buttons
+    //(2). finalise checkout box style 
     // 2. look up designs of time and date pickers
     //(3). using figma design create a professionally looking multi step form
     //(4). finally deal with the availability feature
