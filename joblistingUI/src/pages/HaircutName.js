@@ -4,13 +4,12 @@ import useFormContext from "../customhooks/useFormContext";
 
 const HaircutName = () => {
 
-    const { data, handleChange } = useFormContext()
+    const { data, handleChange } = useFormContext();
 
-
-    return ( 
+    const content = (
         <TextField
         type="string"
-        sx={{ width: "50%", margin: "2% auto" }}
+        sx={{ width: "50%", margin: "2%" }}
         required
         id="haircutBookingName"
         name="haircutBookingName"
@@ -19,7 +18,9 @@ const HaircutName = () => {
         onChange={handleChange}
         value={data.haircutBookingName}
         />
-     );
+    );
+
+    return content;
 }
  
 export default HaircutName;

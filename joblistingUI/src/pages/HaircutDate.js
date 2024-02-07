@@ -11,38 +11,10 @@ import { Box, TextField } from "@mui/material";
 const HaircutDate = () => {
     const { data, handleChange, currentDate } = useFormContext();
 
-    //because this is so different from my other inputs
-    // my solution is to handle the change here then pass the state into form context
-    //const [date, setDate] = useState(dayjs())
-    //const [time, setTime] = useState(dayjs(data.bookingTime))
-
-    //console.log(date.format("YYYY-MM-DD"))
-    //console.log(time.format("HH:mm"))
-    //console.log("bookingTime type", typeof data.bookingTime)
-
-    // const handleTimeChange = value => {
-
-    //     let validTime = value.format("HH:mm")
-    //     //console.log(value.isValid())
-    //     if(value.isValid() === true){
-    //         setTime(value)
-    //         data.isTimeValid = value.isValid()
-    //         data.bookingTime = validTime
-    //     } else{
-    //         data.isTimeValid = value.isValid();
-    //     }
-    // }
-
-    // (newTime) => {
-    //     setTime(newTime)
-    //     console.log(newTime.format('HH:mm'))
-    //     data.bookingTime = newTime.format("HH:mm")
-    // }
-    console.log( typeof currentDate)
-
     const content = (
-        // will change this to MUI DatePicker or something along those lines 
-
+        
+        // i will change this so especially select time will be
+        // in checkbox form
         <Box>
             <TextField
             sx={{ width: "50%", margin: "2% auto" }}

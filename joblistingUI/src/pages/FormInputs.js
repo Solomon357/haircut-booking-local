@@ -1,4 +1,3 @@
-import { Box } from "@mui/material";
 import useFormContext from "../customhooks/useFormContext";
 import HaircutType from "./HaircutType";
 import HaircutName from "./HaircutName";
@@ -19,20 +18,7 @@ const FormInputs = () => {
     }
     
 
-    return ( 
-      <Box
-        sx={{
-          margin: "1%",
-          // display: "flex",
-          // justifyContent: "center",
-          // alignItems: "center"
-          // flexDirection: "column", 
-         // border: "1px solid black"
-        }}
-      >
-        {display[page]}
-      </Box>
-     );
+    return display[page];
 }
  
 export default FormInputs;

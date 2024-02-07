@@ -9,6 +9,7 @@ const HaircutConfirm = () => {
             please click the submit button below to confirm your booking! 
         </Box>
     );
+    
     return content;
 }
  

@@ -1,7 +1,10 @@
-import { Box, FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Stack, Typography, useRadioGroup } from "@mui/material";
+import { FormControl, FormControlLabel, FormLabel, Radio, RadioGroup, Stack, Typography, useRadioGroup } from "@mui/material";
 import { styled } from '@mui/material/styles';
 import useFormContext from "../customhooks/useFormContext";
 import { ReactComponent as CheckedIcon } from "../images/filled_checked_icon.svg"
+
+
+
 //custom designs go here, once its working i might shift 
 //code to a seperate component and import it here to keep things organised
 
@@ -47,19 +50,10 @@ const StyledFormControlLabel = styled((props) =>
     {...props}
     />))
     (({ checked }) => ({
-
     //checked label style
     "&.MuiFormControlLabel-root": checked && {
       // Change text color and background here
-
       border: "4px solid #57BFC6",
-      
-      // "&::after": {
-      //   height: '10px',
-      //   width: '10px',
-      //   border: '7px solid white',
-      //   backgroundColor: '#57BFC6'
-      // }
       
     }
   })
@@ -160,72 +154,49 @@ const HaircutType = () => {
   ];
 
   const content = (
-    <Box 
+    <FormControl 
       sx={{
-        display:"flex", 
-        flexDirection:"column", 
-        justifyContent:"center", 
-        alignItems:"center" 
+       // border: "1px solid black", 
+        width:"90%",
+        //alignSelf:"center"
       }}
     >
-
-      <Box
-        marginX={"3px"} //prob will not agree with me for responsiveness later
-        //border={"1px solid grey"} 
-        mb={"20px"}
-        width={{xs:"100%", md: "50%"}}
-        position={"sticky"}
-        top={"63px"} 
-        alignSelf={"flex-start"}
-        sx={{ backgroundColor: "lightcoral" }}
+      
+      <FormLabel id="haircut-radio-buttons">Haircut Options</FormLabel>
+      
+      <RadioGroup
+        aria-labelledby="haircut-radio-buttons"
+        name="haircutType"
+        value ={haircutOptions.haircutValue} 
+        onChange = {handleChange}
+        //sx={{border: "1px solid black"}}
       >
-        Search bar will be here
-      </Box>
+        {haircutOptions.map(({ haircutValue }, index) => {
+          let haircutArr = haircutValue.split(","); 
 
-      <FormControl 
-        sx={{
-          border: "1px solid black", 
-          width:"90%"
-        }}
-      >
-        
-        <FormLabel id="haircut-radio-buttons">Haircut Options</FormLabel>
-        
-        <RadioGroup
-          aria-labelledby="haircut-radio-buttons"
-          name="haircutType"
-          value ={haircutOptions.haircutValue} 
-          onChange = {handleChange}
-          //sx={{border: "1px solid black"}}
-        >
-          {haircutOptions.map(({ haircutValue }, index) => {
-            let haircutArr = haircutValue.split(","); 
+          return(
+            <MyFormControlLabel
+              labelPlacement="start"
+              key={haircutValue+index} 
+              checked={data.haircutType === haircutValue} 
+              value={haircutValue} 
+              control={<Radio checkedIcon={<CheckedIcon fill="#57BFC6" width={"25px"}/>} />} 
+              label= {
+                <Stack direction={"column"}>
+                  <Typography >{haircutArr[0]}</Typography>
+                  <Typography sx={{color: '#898989'}}>{haircutArr[1]}</Typography>
+                  <Typography>from £{haircutArr[2]}</Typography>
+                </Stack>
+              } 
+            />
+          )
+        })}
 
-            return(
-              <MyFormControlLabel
-                labelPlacement="start"
-                key={haircutValue+index} 
-                checked={data.haircutType === haircutValue} 
-                value={haircutValue} 
-                control={<Radio checkedIcon={<CheckedIcon fill="#57BFC6" width={"25px"}/>} />} 
-                label= {
-                  <Stack direction={"column"}>
-                    <Typography >{haircutArr[0]}</Typography>
-                    <Typography sx={{color: '#898989'}}>{haircutArr[1]}</Typography>
-                    <Typography>from £{haircutArr[2]}</Typography>
-                  </Stack>
-                } 
-              />
-            )
+      </RadioGroup>
+    </FormControl>
+  );
 
-          })}
-
-        </RadioGroup>
-      </FormControl>
-    </Box>
-  )
-
-  return content
+  return content;
 }
  
 export default HaircutType;
