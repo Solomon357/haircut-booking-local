@@ -3,8 +3,6 @@ import { styled } from '@mui/material/styles';
 import useFormContext from "../customhooks/useFormContext";
 import { ReactComponent as CheckedIcon } from "../images/filled_checked_icon.svg"
 
-
-
 //custom designs go here, once its working i might shift 
 //code to a seperate component and import it here to keep things organised
 
@@ -13,7 +11,8 @@ import { ReactComponent as CheckedIcon } from "../images/filled_checked_icon.svg
 
 
 
-// Custom label
+
+// Custom label, could be in its own styles componenet
 const StyledFormControlLabel = styled((props) => 
   (<FormControlLabel
 
@@ -30,17 +29,6 @@ const StyledFormControlLabel = styled((props) =>
       display: "flex",
       justifyContent:"space-between",
       typography: "Saira Condensed",
-
-      // '&::after': {
-      //   content: '""',
-      //   height: "20px",
-      //   width: "20px",
-      //   border: "2px solid #57BFC6",
-      //   borderRadius: "50%",
-      //   marginLeft: "auto",
-      //   marginRight: "15px"
-        
-      // },
       
       "&:hover": {
         backgroundColor: "#e5e5e5"
@@ -73,23 +61,11 @@ function MyFormControlLabel(props) {
   return <StyledFormControlLabel checked={checked} {...props} />;
 }
 
-// returning custom radio all together
-// function CustomRadio(props) {
-//     return (
-//         <Radio
-//         disableRipple
-//         color="default"
-//         checkedIcon={<CustomCheckedIcon />}
-//         // icon={<CustomIcon />}
-//         {...props}
-//         />
-//     );
-// }
-
 const HaircutType = () => {
 
   const { data, handleChange } = useFormContext()
 
+  //haircut option will most likely be accessed in mongo to allow searching
   const haircutOptions = [
       {
         haircutValue: "Skin Fade,30mins-45mins,12"
@@ -157,8 +133,7 @@ const HaircutType = () => {
     <FormControl 
       sx={{
        // border: "1px solid black", 
-        width:"90%",
-        //alignSelf:"center"
+        width:"90%"
       }}
     >
       
@@ -169,7 +144,6 @@ const HaircutType = () => {
         name="haircutType"
         value ={haircutOptions.haircutValue} 
         onChange = {handleChange}
-        //sx={{border: "1px solid black"}}
       >
         {haircutOptions.map(({ haircutValue }, index) => {
           let haircutArr = haircutValue.split(","); 

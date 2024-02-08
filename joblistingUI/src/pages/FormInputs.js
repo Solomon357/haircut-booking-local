@@ -16,7 +16,6 @@ const FormInputs = () => {
         3: <HaircutDate />,
         4: <HaircutConfirm />
     }
-    
 
     return display[page];
 }

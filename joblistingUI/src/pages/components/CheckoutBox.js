@@ -5,9 +5,29 @@ import useFormContext from "../../customhooks/useFormContext";
 //checkout box + continue button
 const CheckoutBox = () => {
 
-    //styles goes here
-
     const { page, setPage, title, data, disableNext } = useFormContext();
+
+
+    const styles = {
+        checkout: {
+            padding: "8px", 
+            //border: "1px solid black", 
+            //width:{xs:"100%", md: "50%"},
+            position:"fixed",
+            top:"150px",
+            right:"4%",
+            width:"636px"  
+        },
+
+        continue : {
+            display: page === Object.keys(title).length -1 ? "none" : "block",
+            width: "100%", 
+            margin: "2% auto", 
+            backgroundColor: "#57BFC6"
+        }
+    }
+
+
 
     const handleNext = () => {
         setPage(next => next + 1)
@@ -15,17 +35,7 @@ const CheckoutBox = () => {
 
 
     const content = (
-        <Box 
-        sx={{ 
-          padding: "8px", 
-          //border: "1px solid black", 
-          //width:{xs:"100%", md: "50%"},
-          position:"fixed",
-          top:"150px",
-          right:"4%",
-          width:"636px"
-          }}
-        >
+        <Box sx={styles.checkout}>
             <Stack direction={"column"} gap={"5px"} >
 
                 <Typography variant='h5'>Checkout</Typography>
@@ -55,11 +65,7 @@ const CheckoutBox = () => {
             {/* Make a custom style for the buttons */}
             <Box>
                 <Button
-                    sx={{ 
-                    width: "100%", 
-                    margin: "2% auto", 
-                    backgroundColor: "#57BFC6",
-                    display: page === Object.keys(title).length -1 ? "none" : "block" }}
+                    sx={styles.continue}
                     variant="contained"
                     type="button"
                     onClick={handleNext}

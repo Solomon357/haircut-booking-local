@@ -3,17 +3,17 @@ import useFormContext from "../../customhooks/useFormContext";
 
 
 const FormProgress = () => {
-    const { page, title } = useFormContext();
-  
-    //const percentage = 100 / Object.keys(title).length
-  
-    //const progress = ((page + 1) * percentage).toFixed(2)
-    
-  //   const steps = Object.keys(title).map((step, i) => {
-  //     return <div key = {i} className="barmarker">Step {i+1}</div>
-  //   })
-    const content = (
-    <Box sx={{ width: '100%', marginTop: "20px" }}>
+  const { page, title } = useFormContext();
+
+  const styles = {
+    stepper: {
+      width: '100%', 
+      marginTop: "20px"
+    }
+  }
+
+  const content = (
+    <Box sx={styles.stepper}>
       <Stepper activeStep={page} alternativeLabel>
         {Object.keys(title).map((label) => (
           <Step key={label+1}>
@@ -22,9 +22,9 @@ const FormProgress = () => {
         ))}
       </Stepper>
     </Box>
-    )
+  )
 
-    return content
-  }
+  return content
+}
   
-  export default FormProgress;
+export default FormProgress;

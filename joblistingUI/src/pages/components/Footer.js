@@ -4,22 +4,27 @@ import EmailIcon from '@mui/icons-material/Email';
 
 const Footer = () => {
 
-    //styles will go here...
-
-
-
-    const content = (
-        <Box 
-            sx={{ 
+   
+    const styles = {
+        footer: {
             position: "absolute",
             bottom: "0",
             width: "100%",
-            backgroundColor: "#57bfc6", 
-            }} 
+            backgroundColor: "#57bfc6"
+        },
+        toolbar: {
+            justifyContent: "space-between",
+            color:"white"
+        }
+    }
+
+    const content = (
+        <Box 
+            sx={styles.footer} 
             component={"footer"}
         > 
             <Container>
-                <Toolbar sx={{ justifyContent: "space-between", color:"white"}}>
+                <Toolbar sx={styles.toolbar}>
 
                     <Stack spacing={1} direction={"row"}>
                     <EmailIcon />

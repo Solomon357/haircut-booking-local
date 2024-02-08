@@ -7,20 +7,28 @@ const HeaderBar = () => {
 
     const { title, page } = useFormContext();
 
+    const styles = {
+        appbar: {
+            //border: "1px solid black",
+            position: "sticky",
+            top: "0", 
+            backgroundColor: "#57bfc6"
+        },
+
+        headertitle : {
+            mr: 2,
+            fontWeight: 700,
+            letterSpacing: { xs: '0.1rem', sm: '0.2rem' },
+            fontSize: { xs: '1rem', sm: '1.2rem' },
+        }
+    }
+
     const content = (
         <AppBar 
             elevation={0} // later i will adjust to elevate once position is sticky
             className='header-content'
             component={"header"} 
-            sx={{ 
-            //border: "1px solid black",
-            //paddingY: "30px",
-            position: "sticky",
-            top: "0", 
-            backgroundColor: "#57bfc6", 
-            //background: "linear-gradient(0deg, #ffffff 10%, #57bfc6 40%, #57bfc6 100%)",
-            //backgroundColor: "red"
-            }}
+            sx={styles.appbar}
         >
             <Container sx={{ marginLeft: {xs: "0px", md: "75px"} }} >
                 <Toolbar
@@ -32,12 +40,7 @@ const HeaderBar = () => {
                     <Typography
                     variant='h6' 
                     align='center'
-                    sx={{
-                        mr: 2,
-                        fontWeight: 700,
-                        letterSpacing: { xs: '0.1rem', sm: '0.2rem' },
-                        fontSize: { xs: '1rem', sm: '1.2rem' },
-                    }}
+                    sx={styles.headertitle}
                     >
                     CompanyTitle
                     </Typography>

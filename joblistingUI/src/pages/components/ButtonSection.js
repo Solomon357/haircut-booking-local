@@ -8,6 +8,23 @@ const ButtonSection = () => {
     const { setPage, disablePrev, canSubmit, data } = useFormContext();
     const [successToast, setSuccessToast] = useState(false);
 
+    const styles = {
+        buttonbox: {
+            paddingX:"20px", 
+            marginY:"40px", 
+            width: {xs:"100%", md: "50%"}
+        },
+        goback: {
+            width: "20%", 
+            backgroundColor: "#E39C9C"
+        },
+        submit: {
+            display: !canSubmit ? "none" : "block",
+            width: "20%"
+        }
+
+    }
+
     const handlePrev = () => {
         setPage(prev => prev - 1)
     }
@@ -23,10 +40,10 @@ const ButtonSection = () => {
     }
 
     const content = (
-        <Box paddingX={"20px"} marginY={"40px"} width={{xs:"100%", md: "50%"}} >
+        <Box sx={styles.buttonbox}>
             <Stack direction={"row"} justifyContent={"space-between"}>
                 <Button
-                    sx={{ width: "20%", backgroundColor: "#E39C9C" }}
+                    sx={styles.goback}
                     variant="contained"
                     type="button"
                     onClick={handlePrev}
@@ -37,7 +54,7 @@ const ButtonSection = () => {
             
 
                 <Button
-                    sx={{ width: "20%", display: !canSubmit ? "none" : "block" }}
+                    sx={styles.submit}
                     variant="contained"
                     type="submit"
                     disabled={!canSubmit}
@@ -49,7 +66,7 @@ const ButtonSection = () => {
             
             
             <Snackbar open={successToast} autoHideDuration={6000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="success" variant="filled" sx={{ width: 'auto' }}>
+                <Alert onClose={handleClose} severity="success" variant="filled">
                     Booking successful! See you soon
                 </Alert>
             </Snackbar>
