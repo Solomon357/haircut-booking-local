@@ -8,8 +8,8 @@ const styles = {
         color: "black",
         border: "2px solid #444343", 
         borderRadius: '15px',
-        width:"90%",
-        height: "90px",
+        width:"30%",
+        height: "fit-content",
         padding: '5px 5px',
         margin: "5px",
         display: "flex",
@@ -39,7 +39,7 @@ const StyledFormControlLabel = styled((props) =>
 );
 
 // Custom FormControl
-export function HaircutControlLabel(props) {
+export function BarberControlLabel(props) {
   const radioGroup = useRadioGroup();
 
   let checked = false;

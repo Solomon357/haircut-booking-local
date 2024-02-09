@@ -9,21 +9,22 @@ const HaircutName = () => {
     const styles = {
         namefield : {
             width: "50%", 
-            margin: "2%"
+            margin: "2%",
         }
     };
 
     const content = (
         <TextField
-        type="string"
-        sx={styles.namefield}
-        required
-        id="haircutBookingName"
-        name="haircutBookingName"
-        label="Booking Name"
-        variant="outlined"
-        onChange={handleChange}
-        value={data.haircutBookingName}
+            type="string"
+            sx={styles.namefield}
+            required
+            id="haircutBookingName"
+            name="haircutBookingName"
+            label="Booking Name"
+            variant="outlined"
+            onChange={handleChange}
+            value={data.haircutBookingName}
+            inputProps={{style: {textTransform: 'capitalize'}}}
         />
     );
 

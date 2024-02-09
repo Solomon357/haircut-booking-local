@@ -1,20 +1,40 @@
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
+import { Box } from "@mui/material";
+
 const FormTestPage4 = () => {
 
     // const { data, handleChange } = useFormContext()
- 
-     const content = (
-         <div>
-             {/* <label htmlFor="optInNews">
-                 <input type="checkbox" id="optInNews" name="optInNews" checked={data.optInNews} onChange={handleChange} />
-                 Receive our newsletter
-             </label> */}
-             <p>Thank you for booking your haircut with *Company Name*.
-                please click the submit button below to confirm your booking!
-             </p>
-         </div>
-     )
- 
-     return content
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down("md"));
+
+
+    return (
+        <div>
+          {matches ? (
+            <Box 
+                sx={{ 
+                    backgroundColor: "green",
+                    height: "400px"
+                }}
+            >
+                "XS in my project"
+            </Box>
+          ) : (
+            <Box 
+                sx={{ 
+                    backgroundColor: "red", 
+                    position: "absolute",
+                    bottom: "0",
+                    right:"0",
+                    left:"0"
+                }}
+            >
+                "MD and up"
+            </Box>
+          )}
+        </div>
+    );
  }
   
  export default FormTestPage4;

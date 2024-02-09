@@ -1,67 +1,136 @@
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
 import useFormContext from "../../customhooks/useFormContext";
+import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
+import ScheduleIcon from '@mui/icons-material/Schedule';
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { useTheme } from "@mui/material/styles";
 
-
-//checkout box + continue button
+//cart box + continue button
 const CheckoutBox = () => {
 
     const { page, setPage, title, data, disableNext } = useFormContext();
 
+    
+    let haircutArr = data.haircutType ? data.haircutType.split(",") : ["Select a Service", ""];
+    let barberArr = data.barberInfo ? data.barberInfo.split(",") : ["", ""];
 
+    //capitilised for display purposes
+    let name = data.haircutBookingName;
+    let bookingName = page > 1 && name 
+        ? " for "+ name.charAt(0).toUpperCase() + name.slice(1)  
+        : ""
+    ;
+    //im using this to try render based on mui breakpoints
+    const theme = useTheme();
+    const small = useMediaQuery(theme.breakpoints.down('md')) 
+
+    
     const styles = {
-        checkout: {
-            padding: "8px", 
-            //border: "1px solid black", 
+        cartcontainer: {
+            //padding: "8px", 
+            //border: "5px solid black", 
             //width:{xs:"100%", md: "50%"},
             position:"fixed",
-            top:"150px",
-            right:"4%",
-            width:"636px"  
+            top:{ md:"150px"},
+            bottom:{xs: "0"},
+            right:{md:"15%"},
+            height: "fit-content",
+            width:{xs:"100%", md: "400px"},
+            backgroundColor: "white"
         },
 
+        cartcontent: {
+            display: "flex", 
+            flexDirection: "column", 
+            justifyContent: "center",
+            border: "1px solid gray", 
+            borderRadius: "10px", 
+            height:"fit-content", 
+            padding: "10px",
+            //backgroundColor: "white"
+            //gap: "10px"
+        },
         continue : {
             display: page === Object.keys(title).length -1 ? "none" : "block",
-            width: "100%", 
+            width: {xs: "fit-content", md:"100%"}, 
             margin: "2% auto", 
             backgroundColor: "#57BFC6"
         }
     }
 
-
-
     const handleNext = () => {
         setPage(next => next + 1)
     }
 
+    const smallContent = (
+        <Box sx={styles.cartcontent}>
+            <Stack direction={"row"} justifyContent={"space-between"}>
+
+                <Stack direction={"column"}>
+                    <Typography>Price in Bold</Typography>
+                    <Typography>service and time in grey</Typography>
+                </Stack>
+
+                {/* Make a custom style for the buttons */}
+                <Box>
+                    <Button
+                        sx={styles.continue}
+                        variant="contained"
+                        type="button"
+                        onClick={handleNext}
+                        disabled={disableNext}
+                    >
+                        Continue
+                    </Button> 
+                </Box>
+                
+            </Stack>
+        </Box>
+
+    )
+
 
     const content = (
-        <Box sx={styles.checkout}>
-            <Stack direction={"column"} gap={"5px"} >
+        <Box sx={styles.cartcontent}>
 
-                <Typography variant='h5'>Checkout</Typography>
-    
-                <Stack padding={"10px"} direction="column" justifyContent={"center"} gap={"10px"} sx={{border: "3px solid gray", borderRadius: "15px", height:"200px" }}>
-    
-                <Stack direction={"column"} gap={"2px"}>
-                    <Typography>{data.bookingDate}</Typography>
-                    <Typography>{data.bookingTime}</Typography>
-                </Stack>
-    
-                <Divider variant='middle'/>
-    
-                <Stack direction={"row"} justifyContent={"space-between"}>
-                    <Typography>{data.haircutType}</Typography>
-                    <Typography>£{data.total}</Typography>
-                </Stack>
-    
-                <Divider variant='middle'/>
-    
-                <Stack direction={"row"} justifyContent={"space-between"}>
-                    <Typography sx={{fontWeight: "bold"}}>Total</Typography>
-                    <Typography sx={{fontWeight: "bold"}}>£{data.total}</Typography>
-                </Stack>
+            <Typography variant="h5" alignSelf={"center"} >Cart</Typography>
+
+            <Divider variant='middle'/>
+
+            <Stack direction={"column"} gap={"2px"} marginY={"20px"}>
+                { data.bookingDate 
+                    ? <Stack direction={"row"} gap={"10px"}> 
+                        <CalendarTodayIcon /> 
+                        <Typography>{data.bookingDate}</Typography>
+                        </Stack>
+                    : ""
+                }
+
+                { data.bookingTime 
+                    ? <Stack direction={"row"} gap={"10px"}> 
+                        <ScheduleIcon /> 
+                        <Typography>{data.bookingTime}</Typography>
+                        </Stack>
+                    : ""}
             </Stack>
-    
+
+            <Stack direction={"row"} justifyContent={"space-between"} marginY={"20px"}>
+                <Stack direction={"column"}>
+                    <Typography>{haircutArr[0] + bookingName}</Typography>
+                    <Typography>{haircutArr[1] + (barberArr[0] ? " with "+ barberArr[0] : "")}</Typography>
+                </Stack>
+                <Typography>£{data.total}</Typography>
+            </Stack>
+
+            <Box height={"70px"}></Box>
+
+            <Divider variant='middle'/>
+
+            <Stack direction={"row"} justifyContent={"space-between"}  marginY={"15px"}>
+                <Typography sx={{fontWeight: "bold"}}>Total</Typography>
+                <Typography sx={{fontWeight: "bold"}}>£{data.total}</Typography>
+            </Stack>
+
             {/* Make a custom style for the buttons */}
             <Box>
                 <Button
@@ -74,10 +143,14 @@ const CheckoutBox = () => {
                     Continue
                 </Button> 
             </Box>
-        </Stack> 
-      </Box>    
+        </Box>         
     )
-    return content;
+
+    return (
+        <Box sx={styles.cartcontainer}>
+            {small ? smallContent : content}
+        </Box>
+    );
 }
  
 export default CheckoutBox;

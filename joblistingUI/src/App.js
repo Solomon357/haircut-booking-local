@@ -5,6 +5,7 @@ import FormTest from "./testingcomponents/FormTest";
 import { FormProvider } from "./context/FormContext";
 import ProgressBarTest from "./testingcomponents/ProgressBarTest";
 import HaircutForm from "./pages/HaircutForm";
+import FormTestPage4 from "./testingcomponents/FormTestPage4";
 
 function App() {
   return (
@@ -16,7 +17,7 @@ function App() {
           {/* <Route path="/employer/create" element={<Create />}/> */}
           </Route>
           <Route path="/employee/feed" element={<Feed />}/>
-          <Route path="/multiFormTest" element={<FormProvider><ProgressBarTest /><FormTest /></FormProvider>}/>
+          <Route path="/multiFormTest" element={<FormProvider><ProgressBarTest /><FormTestPage4 /></FormProvider>}/>
       </Routes>
     </BrowserRouter>
   );

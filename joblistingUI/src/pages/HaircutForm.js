@@ -14,7 +14,8 @@ const HaircutForm = () => {
   const styles = {
     pagebody: {
       position: "relative",
-      minHeight: "100vh"
+      minHeight: "100vh",
+      //backgroundColor: "#eeeeee"
     },
     main: {
       paddingBottom: "7rem", // has to be more than footer height
