@@ -1,6 +1,7 @@
 import { Alert, Box, Button, Snackbar, Stack } from "@mui/material";
 import useFormContext from "../../customhooks/useFormContext";
 import { useState } from "react";
+import { PrevButton, SubmitButton } from "../customstyles/Button.styles";
 
 
 const ButtonSection = () => {
@@ -16,7 +17,6 @@ const ButtonSection = () => {
         },
         goback: {
             width: "20%", 
-            backgroundColor: "#E39C9C"
         },
         submit: {
             display: !canSubmit ? "none" : "block",
@@ -42,7 +42,7 @@ const ButtonSection = () => {
     const content = (
         <Box sx={styles.buttonbox}>
             <Stack direction={"row"} justifyContent={"space-between"}>
-                <Button
+                <PrevButton
                     sx={styles.goback}
                     variant="contained"
                     type="button"
@@ -50,10 +50,10 @@ const ButtonSection = () => {
                     disabled={disablePrev}
                 >
                     Go Back
-                </Button>
+                </PrevButton>
             
 
-                <Button
+                <SubmitButton
                     sx={styles.submit}
                     variant="contained"
                     type="submit"
@@ -61,7 +61,7 @@ const ButtonSection = () => {
                     onClick={handleSubmit}
                 >
                     Submit
-                </Button>
+                </SubmitButton>
             </Stack>
             
             

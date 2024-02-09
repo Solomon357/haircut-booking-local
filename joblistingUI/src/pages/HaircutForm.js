@@ -3,9 +3,9 @@ import FormInputs from './FormInputs';
 import FormProgress from './components/FormProgress';
 import SearchBar from './components/SearchBar';
 import HeaderBar from './components/HeaderBar';
-import CheckoutBox from './components/CheckoutBox';
 import Footer from './components/Footer';
 import ButtonSection from './components/ButtonSection';
+import CartBox from './components/CartBox';
 
 
 
@@ -18,7 +18,8 @@ const HaircutForm = () => {
       //backgroundColor: "#eeeeee"
     },
     main: {
-      paddingBottom: "7rem", // has to be more than footer height
+      width: "100%",
+      paddingBottom: "5rem", // has to be more than footer height
       //paddingTop: "0.1rem",
       //border:"1px solid black"
     },
@@ -51,7 +52,7 @@ const HaircutForm = () => {
             <FormInputs />
           </Box>
  
-          <CheckoutBox />
+          <CartBox />
 
           <ButtonSection />  
         </form>

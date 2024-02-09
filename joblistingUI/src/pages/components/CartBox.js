@@ -4,15 +4,17 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import { NextButton } from "../customstyles/Button.styles";
+
 
 //cart box + continue button
-const CheckoutBox = () => {
+const CartBox = () => {
 
     const { page, setPage, title, data, disableNext } = useFormContext();
 
     
     let haircutArr = data.haircutType ? data.haircutType.split(",") : ["Select a Service", ""];
-    let barberArr = data.barberInfo ? data.barberInfo.split(",") : ["", ""];
+    let barberArr = page >= 2 && data.barberInfo ? data.barberInfo.split(",") : ["", ""];
 
     //capitilised for display purposes
     let name = data.haircutBookingName;
@@ -30,7 +32,7 @@ const CheckoutBox = () => {
             //padding: "8px", 
             //border: "5px solid black", 
             //width:{xs:"100%", md: "50%"},
-            position:"fixed",
+            position:{xs:"sticky", md:"fixed"},
             top:{ md:"150px"},
             bottom:{xs: "0"},
             right:{md:"15%"},
@@ -43,8 +45,10 @@ const CheckoutBox = () => {
             display: "flex", 
             flexDirection: "column", 
             justifyContent: "center",
-            border: "1px solid gray", 
-            borderRadius: "10px", 
+            border: {md: "1px solid gray"},
+            borderTop: {xs: "1px solid gray"},
+            borderBottom: {xs: "1px solid gray"},
+            borderRadius: {xs: "0", md: "10px"}, 
             height:"fit-content", 
             padding: "10px",
             //backgroundColor: "white"
@@ -54,7 +58,7 @@ const CheckoutBox = () => {
             display: page === Object.keys(title).length -1 ? "none" : "block",
             width: {xs: "fit-content", md:"100%"}, 
             margin: "2% auto", 
-            backgroundColor: "#57BFC6"
+            //backgroundColor: "#57BFC6"
         }
     }
 
@@ -62,7 +66,8 @@ const CheckoutBox = () => {
         setPage(next => next + 1)
     }
 
-    const smallContent = (
+
+    const smallCart = (
         <Box sx={styles.cartcontent}>
             <Stack direction={"row"} justifyContent={"space-between"}>
 
@@ -73,7 +78,17 @@ const CheckoutBox = () => {
 
                 {/* Make a custom style for the buttons */}
                 <Box>
-                    <Button
+                    <NextButton
+                        sx={styles.continue}
+                        variant="contained"
+                        type="button"
+                        onClick={handleNext}
+                        disabled={disableNext}
+                        disableRipple
+                    >
+                       Continue 
+                    </NextButton>
+                    {/* <Button
                         sx={styles.continue}
                         variant="contained"
                         type="button"
@@ -81,16 +96,14 @@ const CheckoutBox = () => {
                         disabled={disableNext}
                     >
                         Continue
-                    </Button> 
+                    </Button>  */}
                 </Box>
-                
             </Stack>
         </Box>
-
     )
 
 
-    const content = (
+    const bigCart = (
         <Box sx={styles.cartcontent}>
 
             <Typography variant="h5" alignSelf={"center"} >Cart</Typography>
@@ -98,7 +111,7 @@ const CheckoutBox = () => {
             <Divider variant='middle'/>
 
             <Stack direction={"column"} gap={"2px"} marginY={"20px"}>
-                { data.bookingDate 
+                { data.bookingDate && page >= 3
                     ? <Stack direction={"row"} gap={"10px"}> 
                         <CalendarTodayIcon /> 
                         <Typography>{data.bookingDate}</Typography>
@@ -106,7 +119,7 @@ const CheckoutBox = () => {
                     : ""
                 }
 
-                { data.bookingTime 
+                { data.bookingTime && page >= 3 
                     ? <Stack direction={"row"} gap={"10px"}> 
                         <ScheduleIcon /> 
                         <Typography>{data.bookingTime}</Typography>
@@ -133,7 +146,7 @@ const CheckoutBox = () => {
 
             {/* Make a custom style for the buttons */}
             <Box>
-                <Button
+                <NextButton
                     sx={styles.continue}
                     variant="contained"
                     type="button"
@@ -141,16 +154,18 @@ const CheckoutBox = () => {
                     disabled={disableNext}
                 >
                     Continue
-                </Button> 
+                </NextButton> 
             </Box>
         </Box>         
     )
 
-    return (
+    const content = (
         <Box sx={styles.cartcontainer}>
-            {small ? smallContent : content}
+            {small ? smallCart : bigCart}
         </Box>
-    );
+    )
+
+    return content;
 }
  
-export default CheckoutBox;
+export default CartBox;
