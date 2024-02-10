@@ -7,7 +7,7 @@ const FormProgress = () => {
 
   const styles = {
     stepper: {
-      width: '100%', 
+      minWidth: '100%', 
       marginTop: "20px"
     }
   }
