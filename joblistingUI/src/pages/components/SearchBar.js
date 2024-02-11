@@ -1,6 +1,7 @@
-import { Box, IconButton, TextField } from "@mui/material";
+import { Box, IconButton, Input, InputLabel, TextField, Typography } from "@mui/material";
 import useFormContext from "../../customhooks/useFormContext";
 import { useState } from "react";
+import SearchIcon from '@mui/icons-material/Search';
 
 const SearchBar = () => {
   const { page } = useFormContext();
@@ -9,7 +10,7 @@ const SearchBar = () => {
 
 
   const styles = {
-    searchbar : {
+    searchbar: {
       display: page > 0 ? "none": "block",
       position:"sticky", 
       top: "63px", 
@@ -17,7 +18,7 @@ const SearchBar = () => {
       width: {xs:"100%", md: "50%"},
       mb: "20px",
       //padding: "20px",
-      //backgroundColor: "lightcoral", 
+      backgroundColor: "lightcoral", 
       borderRadius: "10px"
       //marginX: "3px", //prob will not agree with me for responsiveness later
       //border: "1px solid grey" 
@@ -27,8 +28,20 @@ const SearchBar = () => {
 
   const content = (
     // <Box sx={styles.searchbar}>
+    //   <SearchIcon />
     //   Search bar will be here
     // </Box>
+
+    //FROM CSS DEMO
+    //the styling is split into these controls
+    // Box: .search-container
+    // Input: (Textfield in my case??) .searchleft
+    // label: .button AND .searchbutton
+    // span (Icon): .mglass
+
+
+
+
     <TextField
       fullWidth
       id="search-bar"
