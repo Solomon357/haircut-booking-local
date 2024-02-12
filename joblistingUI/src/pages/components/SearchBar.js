@@ -1,4 +1,4 @@
-import { Box, IconButton, Input, InputLabel, TextField, Typography } from "@mui/material";
+import { Box, IconButton, Input, InputAdornment, InputLabel, TextField, Typography } from "@mui/material";
 import useFormContext from "../../customhooks/useFormContext";
 import { useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
@@ -6,8 +6,7 @@ import SearchIcon from '@mui/icons-material/Search';
 const SearchBar = () => {
   const { page } = useFormContext();
 
-  const [searchQuery, setSearchQuery] = useState();
-
+  //const [searchQuery, setSearchQuery] = useState();
 
   const styles = {
     searchbar: {
@@ -22,7 +21,28 @@ const SearchBar = () => {
       borderRadius: "10px"
       //marginX: "3px", //prob will not agree with me for responsiveness later
       //border: "1px solid grey" 
-    }
+    },
+    newSearchTest: {
+      display: page > 0 ? "none": "block",
+      position:"sticky", 
+      top: "40px", 
+      alignSelf: "flex-start",
+      // border: "1px solid #ccc",
+      //outline: "none",
+      backgroundSize: "22px",
+      //backgroundPosition: "13px",
+      // borderRadius: "10px",
+      width: "30px",
+      height: "30px",
+      padding: "25px",
+      transition: "all 0.5s",
+      backgroundColor:"white",
+
+      "&:hover": {
+        width: "300px",
+        paddingLeft: "50px"
+      }
+   }
   }
 
 
@@ -40,21 +60,19 @@ const SearchBar = () => {
     // span (Icon): .mglass
 
 
-
-
     <TextField
-      fullWidth
-      id="search-bar"
-      sx={styles.searchbar}
-      onInput={(e) => {
-        setSearchQuery(e.target.value)
+      sx={styles.newSearchTest}
+      id="input-with-icon-textfield"
+      //label="TextField"
+      InputProps={{
+      startAdornment: (
+        <InputAdornment position="start">
+        <SearchIcon />
+        </InputAdornment>
+      ),
       }}
-      //label="Enter a type of Haircut"
-      variant="outlined"
-      placeholder="Search..."
-      
-    >
-    </TextField>
+      variant="standard"
+    />
   )
   return content;
 }

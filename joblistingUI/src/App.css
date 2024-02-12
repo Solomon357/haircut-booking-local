@@ -88,3 +88,53 @@
 
 
 
+
+.MuiInputBase-root{
+	width: 50px;
+	float:inline-start;
+	background-color: blueviolet;
+	border-radius: 100px;
+	transition: all 0.5s;
+}
+
+.MuiInputBase-root button{
+	display: none;
+	/* width: 50px;
+	float: left;
+	background-color: blueviolet; */
+	/* border-radius: 20px; */
+}
+
+
+.MuiInputBase-root.Mui-focused{
+	width: 200px;
+	float: left;
+	background-color: rgb(217, 43, 226);
+	/* border-radius: 20px; */
+}
+
+.MuiInputBase-root.Mui-focused button{
+	display: block;
+	/* width: 50px;
+	float: left;
+	background-color: blueviolet; */
+	/* border-radius: 20px; */
+}
+
+/* height: "40px",
+//         width: "200px",
+//         margin: "0 0 0 0",
+//         float: "right",
+//         "& .MuiOutlinedInput-root": {
+//             "& fieldset": { 
+//                 borderRadius: "20px",
+//                 borderColor: "#000fff"
+//             },
+//         "&.Mui-focused fieldset": {
+//             borderColor: "#C52328",
+//             borderWidth: "2px"
+//         }
+//     }
+// } */
+
+

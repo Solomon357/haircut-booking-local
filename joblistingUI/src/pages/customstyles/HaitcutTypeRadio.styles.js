@@ -8,7 +8,7 @@ const styles = {
         color: "black",
         border: "2px solid #444343", 
         borderRadius: '15px',
-        width:"90%",
+        width:"96%",
         height: "90px",
         padding: '5px 5px',
         margin: "5px",

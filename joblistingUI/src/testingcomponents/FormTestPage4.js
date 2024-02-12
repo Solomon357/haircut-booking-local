@@ -1,5 +1,7 @@
-import { Box, Input, InputLabel, Typography } from "@mui/material";
-
+import { Box, Button, Input, InputAdornment, InputLabel, TextField, Typography } from "@mui/material";
+import SearchIcon from '@mui/icons-material/Search';
+import SendIcon from '@mui/icons-material/Send';
+//import CustomSearchBar from "../pages/customstyles/CustomSearchBar.styles";
 const FormTestPage4 = () => {
 
     // const { data, handleChange } = useFormContext()
@@ -65,6 +67,7 @@ const FormTestPage4 = () => {
             WebkitTransform: "rotate(-45deg)",
             msTransform: "rotate(-45deg)",
         },
+
         searchTest: {
             "&:focus": {
                 transitionDuration: "0.4s",
@@ -75,8 +78,6 @@ const FormTestPage4 = () => {
                 width: "363px", /* Bar width+1px */
                 padding: "0 16px 0 0"
             },
-
-
             position: "absolute",
             left: "49px", /* Button width-1px (Not 50px/100% because that will sometimes show a 1px line between the search box and button) */
             backgroundColor: "white",
@@ -89,17 +90,76 @@ const FormTestPage4 = () => {
             transitionDuration: "0.4s",
             MozTransitionDuration: "0.4s",
             WebkitTransitionDuration: "0.4s",
+        },
+        newSearchTest: {
+           // border: "1px solid #ccc",
+            //outline: "none",
+            backgroundSize: "22px",
+            //backgroundPosition: "13px",
+           // borderRadius: "10px",
+            width: "30px",
+            height: "30px",
+            padding: "25px",
+            transition: "all 0.5s",
+            color:"white",
+
+            "&:hover": {
+                width: "300px",
+                paddingLeft: "50px"
+            }
+        },
+        searchBarStyle: {
+
+            height: "40px",
+            width: "200px",
+            margin: "0 0 0 0",
+            float: "left",
+            //backgroundColor: "green",
+            "& .MuiFormControl-root": {
+                borderColor: "purple",
+                borderWidth: "2px",
+                backgroundColor: "green"
+            }
         }
     }
 
+
+
     return (
-        <Box backgroundColor="black">
-            <Box className="search-container">
+        <Box backgroundColor="white">
+            {/* <Box className="search-container">
                 <input className="search" id="searchleft" type="search" name="q" placeholder="Search"/>
                 <label className="button searchbutton" htmlFor="searchleft"><span className="mglass">&#9906;</span></label>
             </Box>
 
             <Box sx={styles.buttonTest}>hello</Box>
+
+            <TextField
+                sx={styles.newSearchTest}
+                type="text"
+                placeholder="Search here..."
+            /> */}
+
+            <TextField
+                id="input-with-icon-textfield"
+                className="TextField"
+                //label="TextField"
+                InputProps={{
+                    startAdornment: (
+                        <InputAdornment position="start" disablePointerEvents>
+                        <SearchIcon />
+                        </InputAdornment>
+                    ),
+                    endAdornment: (
+                        <Button>hi</Button>
+                    )
+                }}
+                //variant="standard"
+            />
+
+            {/* <input type="text" class="search-click" name="" placeholder="search here..." /> */}
+           
+
         </Box>
 
 
