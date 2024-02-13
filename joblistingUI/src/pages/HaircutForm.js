@@ -23,8 +23,8 @@ const HaircutForm = () => {
     },
     forminputs: {
      // margin: "1%", 
+     //border: "1px solid black",
       width: {xs:"100%", md: "50%"},
-      border: "1px solid black",
       minHeight: "35vh", // maybe tweek i dunno yet??
       display:"flex", 
       flexDirection:"column", 

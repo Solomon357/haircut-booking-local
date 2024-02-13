@@ -33,7 +33,7 @@ const StyledFormControlLabel = styled((props) =>
     //checked label style
     "&.MuiFormControlLabel-root": checked && {
       // Change text color and background here
-      border: "4px solid #57BFC6", 
+      border: "3px solid #57BFC6", 
     }
   })
 );

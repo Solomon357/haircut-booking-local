@@ -72,7 +72,7 @@ const HaircutType = () => {
   ];
 
   const content = (
-    <FormControl sx={{border:"1px solid black", width:"80%", ml:"0px" }}>
+    <FormControl sx={{ width:"80%", zIndex:"0" }}>
       
       <FormLabel id="haircut-radio-buttons">Haircut Options</FormLabel>
       
