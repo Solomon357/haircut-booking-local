@@ -58,14 +58,15 @@ export const FormProvider = ({ children }) => {
             if(name === "haircutType"){ 
                 //** insead of changing data directly consider changing the value variable instead for consistency
                 data.haircutPrice = radioValues[2];
-            } else{
+            } else if(name === "barberInfo"){
                 data.barberPrice = radioValues[2];
             }
+            
             //console.log(radioValues) // test
             //console.log("current haircutPrice: ", data.haircutPrice) // test
             //console.log("current barberPrice: ", data.barberPrice) // test
         }
-        
+        console.log(value)
         //console.log(data.bookingDate)// test
         //sorting the total for checkout
         data.total = data.haircutPrice + data.barberPrice;
@@ -77,20 +78,21 @@ export const FormProvider = ({ children }) => {
     }
 
     //seperate function for handling date change idea
-    // const handleDateChange = (d) => {
-    //     let isoDate = d.toISOString()
-    //     isoDate = isoDate.substring(0, isoDate.indexOf('T'))
-    //     //console.log(isoDate); //test 
-    //     //instead of console.logging i shall update value
-    //     let value = isoDate
-    //     let name = bookingDate
-    //
-    //     //then i can setData with the same functionality as handleChange
-    //     setData(prevData => ({
-    //          ...prevData,
-    //          [name]: value
-    //     })) 
-    // }
+    const handleDateChange = (d) => {
+
+        let isoDate = d.toISOString()
+        isoDate = isoDate.substring(0, isoDate.indexOf('T'))
+        //console.log(isoDate); //test 
+        //instead of console.logging i shall update bookingDate
+        const name = "bookingDate"
+        let value = isoDate
+    
+        //then i can setData with the same functionality as handleChange
+        setData(prevData => ({
+            ...prevData,
+            [name]: value
+        })) 
+    }
 
     const {barberPrice,
         ...requiredInputs } = data
@@ -142,7 +144,7 @@ export const FormProvider = ({ children }) => {
 
         //for more efficiency i could use something like useMemo for expesive functions in this context
     return (
-        <FormContext.Provider value={{ title, page, setPage, data, setData, canSubmit, handleChange, disablePrev, disableNext, prevHide, nextHide, submitHide, currentDate }}>
+        <FormContext.Provider value={{ title, page, setPage, data, setData, canSubmit, handleChange, disablePrev, disableNext, prevHide, nextHide, submitHide, handleDateChange}}>
             {children}
         </FormContext.Provider>
     )
