@@ -6,12 +6,11 @@ const FormContext = createContext({})
 export const FormProvider = ({ children }) => {
 
     //TO DO FOR TOMORROW:
-    //(1). apply to places + ask tamuka to look over how i should word things on my CV 
-    // 1. figure out how i want to implement a scrollable div for radio buttons
-    //(2). finalise checkout box style 
-    // 2. look up designs of time and date pickers
-    //(3). using figma design create a professionally looking multi step form
-    //(4). finally deal with the availability feature
+    //1. work on design of date and time pickers 
+    //2. work on design of final page
+    //3. functionality of search bar 
+    //4. Quality Assurance, add all the fancy animations and ideas i want
+    //(4). finally deal with availability functionality feature
 
     const currentDate = dayjs().format("YYYY-MM-DD");
     const currentTime = dayjs().format("HH:mm");
@@ -43,43 +42,13 @@ export const FormProvider = ({ children }) => {
         total: 0
     })
 
-    // useEffect(() => {
-    //     if (data.sameAsBilling) {
-    //         setData(prevData => ({
-    //             ...prevData,
-    //             shipFirstName: prevData.billFirstName,
-    //             shipLastName: prevData.billLastName,
-    //             shipAddress1: prevData.billAddress1,
-    //             shipAddress2: prevData.billAddress2,
-    //             shipCity: prevData.billCity,
-    //             shipState: prevData.billState,
-    //             shipZipCode: prevData.billZipCode
-    //         }))
-    //     } else {
-    //         setData(prevData => ({
-    //             ...prevData,
-    //             shipFirstName: "",
-    //             shipLastName: "",
-    //             shipAddress1: "",
-    //             shipAddress2: "",
-    //             shipCity: "",
-    //             shipState: "",
-    //             shipZipCode: ""
-    //         }))
-    //     }
-    // }, [data.sameAsBilling])
-
-
     const handleChange = e => {
-        //type might become irrelevant when working with mui
-        //might need to change this to "id"
         const type = e.target.type 
-        //console.log(type)
+        //console.log(type) // test
         const name = e.target.name
 
         let value = e.target.value
 
-        //DatePicker works differnt than normal values so might need a casefor type "date"
         //im going to write code here that deals with type "radio"
         if(type === "radio"){
             let radioValues = value.split(","); //in order to create an array of substrings
@@ -87,6 +56,7 @@ export const FormProvider = ({ children }) => {
 
             //this if statement assigns price based on which radio group is being accessed
             if(name === "haircutType"){ 
+                //** insead of changing data directly consider changing the value variable instead for consistency
                 data.haircutPrice = radioValues[2];
             } else{
                 data.barberPrice = radioValues[2];
@@ -100,26 +70,39 @@ export const FormProvider = ({ children }) => {
         //sorting the total for checkout
         data.total = data.haircutPrice + data.barberPrice;
 
-
         setData(prevData => ({
             ...prevData,
             [name]: value
         }))
     }
 
+    //seperate function for handling date change idea
+    // const handleDateChange = (d) => {
+    //     let isoDate = d.toISOString()
+    //     isoDate = isoDate.substring(0, isoDate.indexOf('T'))
+    //     //console.log(isoDate); //test 
+    //     //instead of console.logging i shall update value
+    //     let value = isoDate
+    //     let name = bookingDate
+    //
+    //     //then i can setData with the same functionality as handleChange
+    //     setData(prevData => ({
+    //          ...prevData,
+    //          [name]: value
+    //     })) 
+    // }
+
     const {barberPrice,
         ...requiredInputs } = data
 
     const canSubmit = [...Object.values(requiredInputs)].every(Boolean) && page === Object.keys(title).length - 1
 
-    //can only move from page 1 to page 2 once evey value on current page has a value
+    //can only move to the next page once evey value on current page has a value
     const canNextPage1 = Object.keys(data)
         .filter(key => key.startsWith('haircutT'))
         .map(key => data[key])
         .every(Boolean)
 
-    //can only move from page 2 to page 3 once evey value on current page is true (they all have values)
-    // i think i want to change this to "once barberInfo is true" because i dont wnat this to take barberPrice into account
     const canNextPage2 = Object.keys(data)
         .filter(key => key.startsWith('haircutB'))
         .map(key => data[key])
@@ -130,7 +113,6 @@ export const FormProvider = ({ children }) => {
         .map(key => data[key])
         .every(Boolean)
 
-    //can only move from page 3 to page 4 once evey value on current page is true (they all have values)
     const canNextPage4 = Object.keys(data)
         .filter(key => key.startsWith('booking'))
         .map(key => data[key])

@@ -2,8 +2,9 @@ import useFormContext from "../customhooks/useFormContext";
 import HaircutType from "./HaircutType";
 import HaircutName from "./HaircutName";
 import HaircutBarber from "./HaircutBarber";
-import HaircutDate from "./HaircutDate";
+import HaircutDatetime from "./HaircutDatetime";
 import HaircutConfirm from "./HaircutConfirm";
+
 
 
 const FormInputs = () => {
@@ -13,7 +14,7 @@ const FormInputs = () => {
         0: <HaircutType />,
         1: <HaircutName />,
         2: <HaircutBarber />,
-        3: <HaircutDate />,
+        3: <HaircutDatetime />,
         4: <HaircutConfirm />
     }
 
