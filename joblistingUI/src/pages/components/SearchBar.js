@@ -1,13 +1,13 @@
-import { Box, Button, IconButton, Input, InputAdornment, InputLabel, TextField, Typography } from "@mui/material";
+import { InputAdornment, TextField} from "@mui/material";
 import useFormContext from "../../customhooks/useFormContext";
-import { useState } from "react";
+//import { useState } from "react";
 import SearchIcon from '@mui/icons-material/Search';
 
 const SearchBar = () => {
   const { page } = useFormContext();
 
   //const [searchQuery, setSearchQuery] = useState();
-  //
+  
   const styles = {
     searchcontainer: {
       display: page > 0 ? "none": "block",
@@ -25,20 +25,20 @@ const SearchBar = () => {
       cursor: "pointer",
 
       "& button": {
-          display: "none"
+        display: "none"
       },
 
       "&.Mui-focused": {
-          width: "200px",
-          float: "left",
-          backgroundColor: "white",
-          borderRadius: "4px",
-          zIndex: "10",
+        width: "200px",
+        float: "left",
+        backgroundColor: "white",
+        borderRadius: "4px",
+        zIndex: "10",
       },
 
       "&.Mui-focused button":{
-          display: "block"
-      },
+        display: "block"
+      }
     }
   }
 
@@ -51,15 +51,15 @@ const SearchBar = () => {
       className="TextField"
       placeholder="Search here..."
       InputProps={{
-          sx: { ...styles.searchfield },
-          startAdornment: (
-              <InputAdornment position="start" disablePointerEvents sx={{paddingLeft: "2px"}}>
-                  <SearchIcon />
-              </InputAdornment>
-          ),
-          // endAdornment: (
-          //     <Button>hi</Button>
-          // )
+        sx: { ...styles.searchfield },
+        startAdornment: (
+          <InputAdornment position="start" disablePointerEvents sx={{paddingLeft: "2px"}}>
+            <SearchIcon />
+          </InputAdornment>
+        ),
+        // endAdornment: (
+        //     <Button>hi</Button>
+        // )
       }}
     />
   )

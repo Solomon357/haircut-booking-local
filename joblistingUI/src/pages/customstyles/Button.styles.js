@@ -3,13 +3,13 @@ import { Button }  from '@mui/material';
 
 
 export const NextButton = styled(Button)({
-    backgroundColor: '#57BFC6',
-    boxShadow: 'none',
-    '&:hover': {
-      backgroundColor: '#12aab5',
-      boxShadow: 'none'
-    }
-  });
+  backgroundColor: '#57BFC6',
+  boxShadow: 'none',
+  '&:hover': {
+    backgroundColor: '#12aab5',
+    boxShadow: 'none'
+  }
+});
 
 export const PrevButton = styled(Button)({
   backgroundColor: '#E39C9C',

@@ -1,7 +1,7 @@
 import { FormControl, FormLabel, Radio, RadioGroup, Stack, Typography } from "@mui/material";
 import useFormContext from "../customhooks/useFormContext";
 import { ReactComponent as CheckedIcon } from "../images/filled_checked_icon.svg"
-import { HaircutControlLabel } from "./customstyles/HaitcutTypeRadio.styles";
+import { CustomControlLabel } from "./customstyles/CustomRadio.styles";
 
 const HaircutType = () => {
 
@@ -86,7 +86,7 @@ const HaircutType = () => {
           let haircutArr = haircutValue.split(","); 
 
           return(
-            <HaircutControlLabel
+            <CustomControlLabel
               labelPlacement="start"
               key={haircutValue+index} 
               checked={data.haircutType === haircutValue} 

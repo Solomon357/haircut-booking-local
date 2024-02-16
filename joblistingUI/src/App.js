@@ -1,7 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Home, Feed } from "./pages"
-import FormTest from "./testingcomponents/FormTest";
 import { FormProvider } from "./context/FormContext";
 import ProgressBarTest from "./testingcomponents/ProgressBarTest";
 import HaircutForm from "./pages/HaircutForm";

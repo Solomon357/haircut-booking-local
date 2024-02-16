@@ -1,21 +1,20 @@
 import { Avatar, FormControl, FormLabel, Radio, RadioGroup, Stack, Typography } from "@mui/material";
 import useFormContext from "../customhooks/useFormContext";
-import { ReactComponent as CheckedIcon } from "../images/filled_checked_icon.svg"
 import { BarberControlLabel } from "./customstyles/BarbarInfoRadio.styles";
 
 const HaircutBarber = () => {
   const { data, handleChange } = useFormContext();
 
   const barberOptions = [
-      {
-        barberValue: "Jeff (Apprentice),Apprentice,0,J" 
-      },
-      {
-        barberValue: "Jonny,Mid-level barber,3,J"
-      },
-      {
-        barberValue: "Taylor,Senior barber,5,T"
-      }
+    {
+      barberValue: "Jeff (Apprentice),Apprentice,0,J" 
+    },
+    {
+      barberValue: "Jonny,Mid-level barber,3,J"
+    },
+    {
+      barberValue: "Taylor,Senior barber,5,T"
+    }
   ];
 
 

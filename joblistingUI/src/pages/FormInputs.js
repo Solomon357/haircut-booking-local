@@ -8,17 +8,17 @@ import HaircutConfirm from "./HaircutConfirm";
 
 
 const FormInputs = () => {
-    const { page } = useFormContext();
+  const { page } = useFormContext();
 
-    const display = {
-        0: <HaircutType />,
-        1: <HaircutName />,
-        2: <HaircutBarber />,
-        3: <HaircutDatetime />,
-        4: <HaircutConfirm />
-    }
+  const display = {
+    0: <HaircutType />,
+    1: <HaircutName />,
+    2: <HaircutBarber />,
+    3: <HaircutDatetime />,
+    4: <HaircutConfirm />
+  }
 
-    return display[page];
+  return display[page];
 }
  
 export default FormInputs;

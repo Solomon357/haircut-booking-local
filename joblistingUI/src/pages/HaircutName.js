@@ -3,32 +3,31 @@ import useFormContext from "../customhooks/useFormContext";
 
 
 const HaircutName = () => {
+  const { data, handleChange } = useFormContext();
 
-    const { data, handleChange } = useFormContext();
+  const styles = {
+    namefield : {
+      width: "50%", 
+      margin: "2%",
+    }
+  };
 
-    const styles = {
-        namefield : {
-            width: "50%", 
-            margin: "2%",
-        }
-    };
+  const content = (
+    <TextField
+      type="string"
+      sx={styles.namefield}
+      required
+      id="haircutBookingName"
+      name="haircutBookingName"
+      label="Booking Name"
+      variant="outlined"
+      onChange={handleChange}
+      value={data.haircutBookingName}
+      inputProps={{style: {textTransform: 'capitalize'}}}
+    />
+  );
 
-    const content = (
-        <TextField
-            type="string"
-            sx={styles.namefield}
-            required
-            id="haircutBookingName"
-            name="haircutBookingName"
-            label="Booking Name"
-            variant="outlined"
-            onChange={handleChange}
-            value={data.haircutBookingName}
-            inputProps={{style: {textTransform: 'capitalize'}}}
-        />
-    );
-
-    return content;
+  return content;
 }
  
 export default HaircutName;
