@@ -70,8 +70,8 @@ const CartBox = () => {
       <Stack direction={"row"} justifyContent={"space-between"}>
 
         <Stack direction={"column"}>
-          <Typography>Price in Bold</Typography>
-          <Typography>service and time in grey</Typography>
+          <Typography fontWeight={"bold"}> £{data.total}</Typography>
+          <Typography color={"gray"}>{haircutArr[0]} &bull; {haircutArr[1]}</Typography>
         </Stack>
 
         <Box>

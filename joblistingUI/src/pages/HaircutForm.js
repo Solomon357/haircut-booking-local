@@ -1,7 +1,6 @@
 import { Box } from '@mui/material';
 import FormInputs from './FormInputs';
 import FormProgress from './components/FormProgress';
-import SearchBar from './components/SearchBar';
 import HeaderBar from './components/HeaderBar';
 import Footer from './components/Footer';
 import ButtonSection from './components/ButtonSection';
@@ -44,7 +43,6 @@ const HaircutForm = () => {
 
         <form>
           <Box sx={styles.forminputs}>
-            <SearchBar />
             <FormInputs />
           </Box>
  

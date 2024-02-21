@@ -5,10 +5,12 @@ const FormContext = createContext({})
 export const FormProvider = ({ children }) => {
 
   //TO DO FOR TOMORROW: 
-  //1. work on design of final page
-  //2. functionality of search bar 
-  //3. Quality Assurance, add all the fancy animations and ideas i want
-  //(4). finally deal with availability functionality feature
+  //1. implement useMemo hook
+  //2. functionality of search bar
+  //3. change design of stepper? 
+  //4. Quality Assurance, add all the fancy animations and ideas i want
+  //(5). finally deal with availability functionality
+  //(6). submitting form should return us to home while also giving us confirmation
   
   const title = {
     0: "Select Haircut Type",
@@ -118,7 +120,7 @@ export const FormProvider = ({ children }) => {
     || (page === 2 && !canNextPage3)
     || (page === 3 && !canNextPage4)
 
-//for more efficiency i could use something like useMemo for expesive functions in this context
+//for more efficiency i could use something like useMemo for expensive functions in this context
   return (
     <FormContext.Provider value={{ setData, setPage, handleChange, handleDateChange, title, page, data, canSubmit, disablePrev, disableNext }}>
       {children}
