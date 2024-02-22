@@ -13,7 +13,12 @@ import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
-import com.solocuts.joblistings.model.Post;
+
+import com.solocuts.joblistings.model.Info;
+//import com.solocuts.joblistings.model.Post;
+
+//might be up for deletion icl
+//if i can implement search in the ui side then this will be useless
 
 @Component
 public class SearchRepoImpl implements SearchRepo{
@@ -26,9 +31,9 @@ public class SearchRepoImpl implements SearchRepo{
 
 
     @Override
-    public List<Post> findByText(String term) {
+    public List<Info> findByText(String term) {
 
-       final List<Post> posts = new ArrayList<>();
+       final List<Info> posts = new ArrayList<>();
 
        //now its time to fill the array before returning it
        //looks complicated but what we're essenitally doing is 
@@ -37,19 +42,20 @@ public class SearchRepoImpl implements SearchRepo{
        //because java is java it looks complex but the below code is no
        //different to a JSON structure telling mongoDB how to search
 
-       MongoDatabase database = client.getDatabase("soloproject");
-       MongoCollection<Document> collection = database.getCollection("JobPost");
+       MongoDatabase database = client.getDatabase("haircutApp");
+       MongoCollection<Document> collection = database.getCollection("HaircutOptions");
        AggregateIterable<Document> result = collection.aggregate(Arrays.asList(new Document("$search", 
+       //going to have to include index name now in this pipeline
         new Document("text", 
         new Document("query", term)
-        .append("path", Arrays.asList("techs", "desc", "profile")))), 
+        .append("path","value"))), 
         new Document("$sort", 
-        new Document("exp", 1L)), 
-        new Document("$limit", 5L)));
+        new Document("value", 1L)) 
+        //new Document("$limit", 5L)
+        ));
        
        //because its java we're doing a lambda to cconvert a document format to a java format so spring can actually use this data
-       result.forEach(doc -> posts.add(converter.read(Post.class, doc)));
-
+       result.forEach(doc -> posts.add(converter.read(Info.class, doc)));
 
        return posts;
     }

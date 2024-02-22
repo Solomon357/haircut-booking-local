@@ -1,6 +1,5 @@
 package com.solocuts.joblistings.model;
 
-import java.util.Arrays;
 
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -8,57 +7,100 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Post {
     // all the keys of our mongodb document
     //this is where I change the type of data that my database is receiving 
-    private Object[] haircut; // originally String profile
-    private String name;
-    private int price;
-    private Object[] barber; // originally String[] techs
+    private String haircutType; 
+    private int haircutPrice;
+    private String haircutBookingName;
+    private String bookingDate;
+    private String bookingTime;
+    private String barberInfo; 
+    private int barberPrice;
+    private int total;
 
 
     //constructor
     public Post(){
+        //empty because nothing needs to be constructed
     }
     
     //getters and setters
-    public Object[] getHaircut() {
-        return haircut;
+
+    public void setHaircutType(String haircut) {
+        this.haircutType = haircut;
     }
 
-    public void setHaircut(Object[] haircut) {
-        this.haircut = haircut;
+    public String getHaircutType() {
+        return haircutType;
     }
 
-    public String getName() {
-        return name;
+    public void setHaircutPrice(int price) {
+        this.haircutPrice = price;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public int getHaircutPrice() {
+        return haircutPrice;
     }
 
-    public int getPrice() {
-        return price;
+    public void setHaircutBookingName(String name) {
+        this.haircutBookingName = name;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public String getHaircutBookingName() {
+        return haircutBookingName;
     }
 
-    public Object[] getBarber() {
-        return barber;
+    public void setBookingDate(String date) {
+        this.bookingDate = date;
     }
 
-    public void setBarber(Object[] barber) {
-        this.barber = barber;
+    public String getBookingDate() {
+        return bookingDate;
     }
+
+    public void setBookingTime(String time) {
+        this.bookingTime = time;
+    }
+
+    public String getBookingTime() {
+        return bookingTime;
+    }
+
+    public void setBarber(String barber) {
+        this.barberInfo = barber;
+    }
+
+    public String getBarberInfo() {
+        return barberInfo;
+    }
+
+    public void setBarberPrice(int barberPrice) {
+        this.barberPrice = barberPrice;
+    }
+
+    public int getbarberPrice() {
+        return barberPrice;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
 
     //toString for confirming accurate data has been read
     @Override
     public String toString() {
         return "Post{" +
-                "haircut='" + Arrays.toString(haircut) + '\'' +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", barber=" + Arrays.toString(barber) +
+                "haircutType='" + haircutType + '\'' +
+                ", haircutPrice='" + haircutPrice + '\'' +
+                ", haircutBookingName='" + haircutBookingName + '\'' +
+                ", bookingDate=" + bookingDate +
+                ", bookingTime=" + bookingTime +
+                ", barberInfo=" + barberInfo +
+                ", barberPrice=" + barberPrice +
+                ", total=" + total +
                 '}';
     }
 }

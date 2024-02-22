@@ -7,7 +7,6 @@ import {
   InputAdornment,
   Button,
 } from "@mui/material";
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import { Link } from "react-router-dom";
@@ -15,24 +14,32 @@ import { Link } from "react-router-dom";
 const Feed = () => {
   //useStates
   const [query, setQuery] = useState("");
-  const [post, setPost] = useState();
-
-  //
+  const [filteredPosts, setFilteredPosts] = useState([]);
+  const [post, setPost] = useState([]);
+  
   useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await axios.get(`http://localhost:8080/posts/${query}`);
-      setPost(response.data);
-    };
-    const fetchInitialPosts = async () => {
-        const response = await axios.get(`http://localhost:8080/allPosts`);
-        console.log(response);
-        setPost(response.data);
-    }
-    if (query.length === 0) fetchInitialPosts();
-    if (query.length > 2) fetchPosts();
-  }, [query]);
+    fetch(`http://localhost:8080/allInfo`) //fetching from API
+      .then(response => response.json())
+      .then(data => {
+        setPost(data)
+        setFilteredPosts(data)
+        //console.log("Info data coming in: ", data);
+      })
+      .catch(err => console.log(err))
+  }, []);
 
-console.log(post);
+
+  const handleInputChange = (e) => { 
+    const searchTerm = e.target.value;
+    setQuery(searchTerm)
+
+    // filter the items using the  state
+    const filteredItems = post.filter((options) =>
+      options.value.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
+    setFilteredPosts(filteredItems);
+  }
 
   return (
     <Grid container spacing={2} sx={{ margin: "2%" }}>
@@ -52,40 +59,41 @@ console.log(post);
             placeholder="Search..."
             sx={{ width: "75%", padding: "2% auto" }}
             fullWidth
-            onChange={(e) => setQuery(e.target.value)}
+            value={query}
+            onChange={handleInputChange}
           />
         </Box>
       </Grid>
       
-      {post &&
-        post.map((p) => {
+      {filteredPosts &&
+        filteredPosts.map((options) => {
           return (
-            <Grid key={p.id} item xs={12} md={6} lg={4}>
+            <Grid item xs={12} md={6} lg={4}>
               <Card sx={{ padding: "3%", overflow: "hidden", width: "84%" }}>
                 <Typography
                   variant="h5"
                   sx={{ fontSize: "2rem", fontWeight: "600" }}
                 >
-             {p.profile}
+                  {options.value}
                 </Typography>
-                <Typography sx={{ color: "#585858", marginTop:"2%" }} variant="body" >
-                  Description: {p.desc}
+                {/* <Typography sx={{ color: "#585858", marginTop:"2%" }} variant="body" >
+                  Description: {options.desc}
                 </Typography>
                 <br />
                 <br />
                 <Typography variant="h6">
-                  Years of Experience: {p.exp} years
+                  Years of Experience: {options.exp} years
                 </Typography>
 
                 <Typography gutterBottom  variant="body">Skills : </Typography>
-                {p.techs.map((s, i) => {
+                {options.techs.map((s, i) => {
                   return (
                     <Typography variant="body" gutterBottom key={i}>
                       {s} .
                       {` `}
                     </Typography>
                   );
-                })}
+                })} */}
   
               </Card>
             </Grid>

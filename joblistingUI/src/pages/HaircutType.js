@@ -88,12 +88,11 @@ const HaircutType = () => {
         searchInput={searchQuery} 
         handleSearch={handleSearchChange}
       />
-      
-      {filteredQuery.length !== 0 ? 
-        haircutInputs
-      :
-      // make this look better later
-      <Typography>No matches from search!! please type something else</Typography>
+
+      {filteredQuery.length !== 0 
+      ? haircutInputs
+      : // make this look better later
+       <Typography>No matches from search!! please type something else</Typography>
       }
       
     </>

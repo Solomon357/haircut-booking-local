@@ -27,38 +27,39 @@ import org.springframework.web.bind.annotation.RequestBody;
 @RestController
 //to connect this with reactjs ui
 @CrossOrigin(origins = "http://localhost:3000")// im assuming i can add multiple origins here, which means I can also include the hosting link when i get to that
+
 public class PostController 
 {   
     //auto wired means that Spring will create an object for me and map it automatically 
     @Autowired
     PostRepo repo; //repo is an object of class PostRepo that can do CRUD operations.
 
-    // srepo is a object of class SearchRepo that handles the search
-    @Autowired
-    SearchRepo srepo;
+    // // srepo is a object of class SearchRepo that handles the search
+    // @Autowired
+    // SearchRepo srepo;
 
-    @RequestMapping("/")
-    public void redirect(HttpServletResponse response) throws IOException {
-        // "/" might be replaced with whatever my reactjs homepage will be
-        response.sendRedirect("/");
-    }
+    // @RequestMapping("/")
+    // public void redirect(HttpServletResponse response) throws IOException {
+    //     // "/" might be replaced with whatever my reactjs homepage will be
+    //     response.sendRedirect("/");
+    // }
 
     //returns the endpoint 
-    @GetMapping("/allPosts")
-    @CrossOrigin
-    public List<Post> getAllPosts()
-    {
-        //GET request for all records in database
-        return repo.findAll();
-    }
+    // @GetMapping("/allPosts")
+    // @CrossOrigin
+    // public List<Post> getAllPosts()
+    // {
+    //     //GET request for all records in database
+    //     return repo.findAll();
+    // }
 
     //searching for specific endpoints
-    @GetMapping("/posts/{term}")
-    @CrossOrigin
-    public List<Post> search(@PathVariable String term)
-    {
-        return srepo.findByText(term);
-    }
+    // @GetMapping("/posts/{term}")
+    // @CrossOrigin
+    // public List<Post> search(@PathVariable String term)
+    // {
+    //     return srepo.findByText(term);
+    // }
 
     //functionality of submitting a job post
 

@@ -2,9 +2,9 @@ package com.solocuts.joblistings.repository;
 
 import java.util.List;
 
-import com.solocuts.joblistings.model.Post;
+import com.solocuts.joblistings.model.Info;
 
 public interface SearchRepo {
     
-    List<Post> findByText(String term);
+    List<Info> findByText(String term);
 }
