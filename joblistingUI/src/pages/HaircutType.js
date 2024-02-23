@@ -103,8 +103,8 @@ const HaircutType = () => {
       {error &&  <Typography>Sorry something went wrong! please try again</Typography>}
 
       {!isLoading && !error && filteredOptions.length === 0 
-      ? <Typography>No matches from search!! please type something else</Typography>
-      : // make this look better later
+      ? <Typography>No matches from search!! please type something else</Typography> // make this look better later
+      : 
        haircutInputs
       }
       
