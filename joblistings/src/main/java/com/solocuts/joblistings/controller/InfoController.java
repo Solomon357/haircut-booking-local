@@ -36,11 +36,11 @@ public class InfoController
 
     //in the tutorial, this is for the swagger API which i do not have,
     // not sure if i can repurpose this for something else later bare with me
-    @RequestMapping("/")
-    public void redirect(HttpServletResponse response) throws IOException {
-        // "/" might be replaced with whatever my reactjs homepage will be
-        response.sendRedirect("/");
-    }
+    // @RequestMapping("/")
+    // public void redirect(HttpServletResponse response) throws IOException {
+    //     // "/" might be replaced with whatever my reactjs homepage will be
+    //     response.sendRedirect("/");
+    // }
 
     @GetMapping("/allInfo")
     @CrossOrigin
