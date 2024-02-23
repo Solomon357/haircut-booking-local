@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Info {
 
     private String value;
+    private int id;
 
     //constructor
     public Info(){
@@ -19,12 +20,21 @@ public class Info {
     public void setValue(String value) {
         this.value = value;
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
     //toString for confirming accurate data has been read
     @Override
     public String toString() {
         return "Info{" +
                 "value='" + value + '\'' + 
+                "id='" + id + '\'' + 
                 '}';
                 
     }

@@ -9,14 +9,14 @@ import { NextButton } from "../customstyles/Button.styles";
 
 //cart box + continue button
 const CartBox = () => {
-  const { page, setPage, title, data, disableNext } = useFormContext();
+  const { page, setPage, title, form, disableNext } = useFormContext();
 
   
-  let haircutArr = data.haircutType ? data.haircutType.split(",") : ["Select a Service", ""];
-  let barberArr = page >= 2 && data.barberInfo ? data.barberInfo.split(",") : ["", ""];
+  let haircutArr = form.haircutType ? form.haircutType.split(",") : ["Select a Service", ""];
+  let barberArr = page >= 2 && form.barberInfo ? form.barberInfo.split(",") : ["", ""];
 
   //capitilised for display purposes
-  let name = data.haircutBookingName;
+  let name = form.haircutBookingName;
   let bookingName = page > 1 && name 
     ? " for "+ name.charAt(0).toUpperCase() + name.slice(1)  
     : ""
@@ -70,7 +70,7 @@ const CartBox = () => {
       <Stack direction={"row"} justifyContent={"space-between"}>
 
         <Stack direction={"column"}>
-          <Typography fontWeight={"bold"}> £{data.total}</Typography>
+          <Typography fontWeight={"bold"}> £{form.total}</Typography>
           <Typography color={"gray"}>{haircutArr[0]} &bull; {haircutArr[1]}</Typography>
         </Stack>
 
@@ -99,18 +99,18 @@ const CartBox = () => {
       <Divider variant='middle'/>
 
       <Stack direction={"column"} gap={"2px"} marginY={"20px"}>
-        { data.bookingDate && page >= 3
+        { form.bookingDate && page >= 3
           ? <Stack direction={"row"} gap={"10px"}> 
               <CalendarTodayIcon /> 
-              <Typography>{data.bookingDate}</Typography>
+              <Typography>{form.bookingDate}</Typography>
             </Stack>
           : ""
         }
 
-        { data.bookingTime && page >= 3 
+        { form.bookingTime && page >= 3 
           ? <Stack direction={"row"} gap={"10px"}> 
               <ScheduleIcon /> 
-              <Typography>{data.bookingTime}</Typography>
+              <Typography>{form.bookingTime}</Typography>
             </Stack>
           : ""
         }
@@ -121,7 +121,7 @@ const CartBox = () => {
           <Typography>{haircutArr[0] + bookingName}</Typography>
           <Typography>{haircutArr[1] + (barberArr[0] ? " with "+ barberArr[0] : "")}</Typography>
         </Stack>
-        <Typography>£{data.total}</Typography>
+        <Typography>£{form.total}</Typography>
       </Stack>
 
       <Box height={"70px"}></Box>
@@ -130,7 +130,7 @@ const CartBox = () => {
 
       <Stack direction={"row"} justifyContent={"space-between"}  marginY={"15px"}>
         <Typography sx={{fontWeight: "bold"}}>Total</Typography>
-        <Typography sx={{fontWeight: "bold"}}>£{data.total}</Typography>
+        <Typography sx={{fontWeight: "bold"}}>£{form.total}</Typography>
       </Stack>
 
       <Box>

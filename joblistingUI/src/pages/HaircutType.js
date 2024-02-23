@@ -2,49 +2,58 @@ import { FormControl, FormLabel, Radio, RadioGroup, Stack, Typography } from "@m
 import useFormContext from "../customhooks/useFormContext";
 import { ReactComponent as CheckedIcon } from "../images/filled_checked_icon.svg"
 import { CustomControlLabel } from "./customstyles/CustomRadio.styles";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar";
+import { useFetch } from "../customhooks/useFetch";
+
+//haircut option will most likely be accessed in mongo to allow searching
+  // const haircutOptions = [
+  //   { value: "Skin Fade,30-45 mins,12", id:1 },
+  //   { value: "Grade 1 all over,30 mins,7", id:2 },
+  //   { value: "Beard Trim,30 mins,7", id:3 },
+  //   { value: "Student Discount,30-45 mins,10", id:4 },
+  //   { value: "Hair Wash,15 mins,10", id:5 },
+  //   { value: "haircutName6,30-45 mins,12", id:6 },
+  //   { value: "haircutName7,30 mins,7", id:7 },
+  //   { value: "haircutName8,30 mins,7", id:8 },
+  //   { value: "haircutName9,30-45 mins,10", id:9 },
+  //   { value: "haircutName10,15 mins,10", id:10 },
+  //   { value: "haircutName11,30-45 mins,12", id:11 },
+  //   { value: "haircutName12,30 mins,7", id:12 },
+  //   { value: "haircutName13,30 mins,7", id:13 },
+  //   { value: "haircutName14,30-45 mins,10", id:14 },
+  //   { value: "haircutName15,15 mins,10", id:15 },
+  //   { value: "haircutName16,30-45 mins,12", id:16 },
+  //   { value: "haircutName17,30 mins,7", id:17 },
+  //   { value: "haircutName18,30 mins,7", id:18 },
+  //   { value: "haircutName19,30-45 mins,10", id:19 },
+  //   { value: "haircutName20,15 mins,10", id:20 }
+  // ];
 
 const HaircutType = () => {
 
-  const { data, handleChange } = useFormContext();
-
-  //haircut option will most likely be accessed in mongo to allow searching
-  const haircutOptions = [
-    { value: "Skin Fade,30-45 mins,12", id:1 },
-    { value: "Grade 1 all over,30 mins,7", id:2 },
-    { value: "Beard Trim,30 mins,7", id:3 },
-    { value: "Student Discount,30-45 mins,10", id:4 },
-    { value: "Hair Wash,15 mins,10", id:5 },
-    { value: "haircutName6,30-45 mins,12", id:6 },
-    { value: "haircutName7,30 mins,7", id:7 },
-    { value: "haircutName8,30 mins,7", id:8 },
-    { value: "haircutName9,30-45 mins,10", id:9 },
-    { value: "haircutName10,15 mins,10", id:10 },
-    { value: "haircutName11,30-45 mins,12", id:11 },
-    { value: "haircutName12,30 mins,7", id:12 },
-    { value: "haircutName13,30 mins,7", id:13 },
-    { value: "haircutName14,30-45 mins,10", id:14 },
-    { value: "haircutName15,15 mins,10", id:15 },
-    { value: "haircutName16,30-45 mins,12", id:16 },
-    { value: "haircutName17,30 mins,7", id:17 },
-    { value: "haircutName18,30 mins,7", id:18 },
-    { value: "haircutName19,30-45 mins,10", id:19 },
-    { value: "haircutName20,15 mins,10", id:20 }
-  ];
-
+  const { form, handleChange } = useFormContext();
+  const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allInfo`)
   const [searchQuery, setSearchQuery] = useState("");
-  const [filteredQuery, setFilteredQuery] = useState(haircutOptions);
+  const [filteredOptions, setFilteredOptions] = useState([]);
+
+  useEffect(() => {
+    //if there are no keys in options then theres no data
+    if (Object.keys(allOptions).length > 0){
+      setFilteredOptions(allOptions)
+    }
+  }, [allOptions])
+
 
   const handleSearchChange = (e) => {
     const searchTerm = e.target.value;
     setSearchQuery(searchTerm)
 
-    const filteredOptions = haircutOptions.filter((options) =>
+    const filteredItems = allOptions.filter((options) =>
       options.value.toLowerCase().includes(searchTerm.toLowerCase())
     )
 
-    setFilteredQuery(filteredOptions)
+    setFilteredOptions(filteredItems)
   }
 
   const haircutInputs = (
@@ -55,16 +64,17 @@ const HaircutType = () => {
       <RadioGroup
         aria-labelledby="haircut-radio-buttons"
         name="haircutType"
-        value ={haircutOptions.value} 
+        value={allOptions.value} 
         onChange = {handleChange}
       >
-        {filteredQuery.map((haircuts) => {
+        {filteredOptions && 
+          filteredOptions.map((haircuts) => {
           let haircutArr = haircuts.value.split(","); 
           return(
             <CustomControlLabel
               labelPlacement="start"
               key={haircuts.id} 
-              checked={data.haircutType === haircuts.value} 
+              checked={form.haircutType === haircuts.value} 
               value={haircuts.value} 
               control={<Radio checkedIcon={<CheckedIcon fill="#57BFC6" width={"25px"}/>} />} 
               label= {
@@ -88,11 +98,14 @@ const HaircutType = () => {
         searchInput={searchQuery} 
         handleSearch={handleSearchChange}
       />
+      {isLoading && <Typography>this will be a spinner later</Typography>}
 
-      {filteredQuery.length !== 0 
-      ? haircutInputs
+      {error &&  <Typography>Sorry something went wrong! please try again</Typography>}
+
+      {!isLoading && !error && filteredOptions.length === 0 
+      ? <Typography>No matches from search!! please type something else</Typography>
       : // make this look better later
-       <Typography>No matches from search!! please type something else</Typography>
+       haircutInputs
       }
       
     </>

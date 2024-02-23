@@ -5,12 +5,13 @@ const FormContext = createContext({})
 export const FormProvider = ({ children }) => {
 
   //TO DO FOR TOMORROW: 
-  //1. implement useMemo hook
-  //2. functionality of search bar
+  //1. fetch data in main app context + make submit button work
+  //(1). submitting form should return us to home while also giving us confirmation 
+  //2. implement useMemo hook
   //3. change design of stepper? 
   //4. Quality Assurance, add all the fancy animations and ideas i want
   //(5). finally deal with availability functionality
-  //(6). submitting form should return us to home while also giving us confirmation
+
   
   const title = {
     0: "Select Haircut Type",
@@ -23,7 +24,7 @@ export const FormProvider = ({ children }) => {
   const [page, setPage] = useState(0)
 
   //barberInfo[2] should definitely be availability, OR i add another element to the array for availability
-  const [data, setData] = useState({
+  const [form, setForm] = useState({
     haircutType: "",
     haircutPrice: 0,
     haircutBookingName: "",
@@ -48,9 +49,9 @@ export const FormProvider = ({ children }) => {
       //this if statement assigns price based on which radio group is being accessed
       if(name === "haircutType"){ 
         //** insead of changing data directly consider changing the value variable instead for consistency
-        data.haircutPrice = radioValues[2];
+        form.haircutPrice = radioValues[2];
       } else if(name === "barberInfo"){
-        data.barberPrice = radioValues[2];
+        form.barberPrice = radioValues[2];
       }
       
       //console.log(radioValues) // test
@@ -59,9 +60,9 @@ export const FormProvider = ({ children }) => {
     }
 
     //console.log(data.bookingDate)// test
-    data.total = data.haircutPrice + data.barberPrice;
+    form.total = form.haircutPrice + form.barberPrice;
 
-    setData(prevData => ({
+    setForm(prevData => ({
       ...prevData,
       [name]: value
     }))
@@ -77,36 +78,36 @@ export const FormProvider = ({ children }) => {
     //console.log(isoDate); //test
 
     //then i can setData with the same functionality as handleChange
-    setData(prevData => ({
+    setForm(prevData => ({
       ...prevData,
       [name]: value
     })) 
   }
 
   const {barberPrice,
-    ...requiredInputs } = data
+    ...requiredInputs } = form
 
   const canSubmit = [...Object.values(requiredInputs)].every(Boolean) && page === Object.keys(title).length - 1
 
   //can only move to the next page once evey value on current page has a value
-  const canNextPage1 = Object.keys(data)
+  const canNextPage1 = Object.keys(form)
     .filter(key => key.startsWith('haircutT'))
-    .map(key => data[key])
+    .map(key => form[key])
     .every(Boolean)
 
-  const canNextPage2 = Object.keys(data)
+  const canNextPage2 = Object.keys(form)
     .filter(key => key.startsWith('haircutB'))
-    .map(key => data[key])
+    .map(key => form[key])
     .every(Boolean)
 
-  const canNextPage3 = Object.keys(data)
+  const canNextPage3 = Object.keys(form)
     .filter(key => key.startsWith('barberI'))
-    .map(key => data[key])
+    .map(key => form[key])
     .every(Boolean)
 
-  const canNextPage4 = Object.keys(data)
+  const canNextPage4 = Object.keys(form)
     .filter(key => key.startsWith('booking'))
-    .map(key => data[key])
+    .map(key => form[key])
     .every(Boolean)
 
   // disable prev button if page has an Object.key value of 0
@@ -122,7 +123,7 @@ export const FormProvider = ({ children }) => {
 
 //for more efficiency i could use something like useMemo for expensive functions in this context
   return (
-    <FormContext.Provider value={{ setData, setPage, handleChange, handleDateChange, title, page, data, canSubmit, disablePrev, disableNext }}>
+    <FormContext.Provider value={{ setForm, setPage, handleChange, handleDateChange, title, page, form, canSubmit, disablePrev, disableNext }}>
       {children}
     </FormContext.Provider>
   )

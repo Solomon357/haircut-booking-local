@@ -7,7 +7,7 @@ import { ReactComponent as CheckedIcon } from "../images/filled_checked_icon.svg
 
 
 const HaircutDatetime = () => {
-  const { data, handleChange, handleDateChange } = useFormContext();
+  const { form, handleChange, handleDateChange } = useFormContext();
 
   //i will decide wether to store timeOptions as an array of values of objects later (woll most likey be stored as values though)
 
@@ -74,7 +74,7 @@ const HaircutDatetime = () => {
               <CustomControlLabel
                 labelPlacement="start"
                 key={timeValue+index} 
-                checked={data.bookingTime === timeValue} 
+                checked={form.bookingTime === timeValue} 
                 value={timeValue} 
                 control={<Radio checkedIcon={<CheckedIcon fill="#57BFC6" width={"25px"}/>} />}  
                 label= {timeValue} 

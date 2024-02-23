@@ -3,7 +3,7 @@ import useFormContext from "../customhooks/useFormContext";
 import { BarberControlLabel } from "./customstyles/BarbarInfoRadio.styles";
 
 const HaircutBarber = () => {
-  const { data, handleChange } = useFormContext();
+  const { form, handleChange } = useFormContext();
 
   const barberOptions = [
     {
@@ -36,7 +36,7 @@ const HaircutBarber = () => {
             <BarberControlLabel 
               labelPlacement="bottom"
               key={barberValue+index} 
-              checked={data.barberInfo === barberValue} 
+              checked={form.barberInfo === barberValue} 
               value={barberValue} 
               control={<Radio sx={{display: "none"}} />} 
               label={
@@ -44,7 +44,7 @@ const HaircutBarber = () => {
                   <Avatar>{barberArr[3]}</Avatar>
                   <Typography>{barberArr[0]}</Typography>
                   <Typography sx={{color: '#898989'}}>{barberArr[1]}</Typography>
-                  <Typography>£{(data.haircutPrice + (+barberArr[2]))}</Typography>
+                  <Typography>£{(form.haircutPrice + (+barberArr[2]))}</Typography>
                 </Stack>
               } 
             />

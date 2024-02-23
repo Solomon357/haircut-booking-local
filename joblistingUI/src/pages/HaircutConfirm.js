@@ -1,4 +1,4 @@
-import { Alert, Box, Paper, Snackbar, Stack, Typography } from "@mui/material";
+import { Alert, Box, Snackbar, Stack, Typography } from "@mui/material";
 import useFormContext from "../customhooks/useFormContext";
 import { SubmitButton } from "./customstyles/Button.styles";
 import { useState } from "react";
@@ -8,8 +8,9 @@ import ThumbsUpImg from "../images/thumbs_up.png"
 
 const HaircutConfirm = () => {
 
-  const { data, canSubmit } = useFormContext();
+  const { form, canSubmit } = useFormContext();
   const [successToast, setSuccessToast] = useState(false);
+  const [errorToast, setErrorToast] = useState(false);
 
   const styles = {
     submit: {
@@ -20,13 +21,39 @@ const HaircutConfirm = () => {
 
   const handleClose = () => {
     setSuccessToast(false);
+    setErrorToast(false)
   };
 
-  const handleSubmit = e => {
-    e.preventDefault()
-    console.log(JSON.stringify(data))
-    setSuccessToast(true)
-  }
+  //tester submit function
+  // const handleSubmit = e => {
+  //   e.preventDefault()
+  //   console.log(JSON.stringify(form))
+  //   setSuccessToast(true)
+  // }
+
+
+  // proper handleSubmit function will be here
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:8080/submitpost", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    })
+    .then((response) => console.log(response))
+    .then((data) => {
+      console.log("Success:", data);
+      setSuccessToast(true)
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      setErrorToast(true)
+    });
+    //navigate('/employee/feed');
+    //window.location.reload();
+  };
 
 
   const content = (
@@ -36,13 +63,13 @@ const HaircutConfirm = () => {
         <Box sx={{ display:"flex", flexDirection:"column", alignItems:"center"}}>
           <img 
             src={ThumbsUpImg}
-            alt={"image cannot be displayed"}  
+            alt={"cannot be displayed"}  
             width= "200px" 
             height="200px"  
           />
           
           {/* an icon with a thumbs up wil prob go here, add a lil animation here for style points */}
-          <Typography variant="h4">Thanks {data.haircutBookingName}!</Typography>
+          <Typography variant="h4">Thanks {form.haircutBookingName}!</Typography>
         </Box>
         <Typography textAlign={"center"}>Please make sure the details in the cart are correct before confirming your booking!</Typography>
 
@@ -59,6 +86,12 @@ const HaircutConfirm = () => {
         <Snackbar open={successToast} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="success" variant="filled">
             Booking successful! See you soon
+          </Alert>
+        </Snackbar>
+
+        <Snackbar open={errorToast} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="error" variant="filled">
+            Something went wrong! Please try again
           </Alert>
         </Snackbar>
       </Stack>

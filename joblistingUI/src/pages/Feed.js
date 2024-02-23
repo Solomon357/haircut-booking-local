@@ -33,12 +33,14 @@ const Feed = () => {
     const searchTerm = e.target.value;
     setQuery(searchTerm)
 
-    // filter the items using the  state
+    // filter the items using the post state
+   
     const filteredItems = post.filter((options) =>
       options.value.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
     setFilteredPosts(filteredItems);
+    
   }
 
   return (

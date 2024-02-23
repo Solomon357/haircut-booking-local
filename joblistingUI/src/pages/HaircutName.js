@@ -3,7 +3,7 @@ import useFormContext from "../customhooks/useFormContext";
 
 
 const HaircutName = () => {
-  const { data, handleChange } = useFormContext();
+  const { form, handleChange } = useFormContext();
 
   const styles = {
     namefield : {
@@ -22,7 +22,7 @@ const HaircutName = () => {
       label="Booking Name"
       variant="outlined"
       onChange={handleChange}
-      value={data.haircutBookingName}
+      value={form.haircutBookingName}
       inputProps={{style: {textTransform: 'capitalize'}}}
     />
   );
