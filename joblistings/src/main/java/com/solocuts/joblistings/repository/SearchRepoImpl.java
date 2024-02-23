@@ -14,7 +14,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
 
-import com.solocuts.joblistings.model.Info;
+import com.solocuts.joblistings.model.HaircutInfo;
 //import com.solocuts.joblistings.model.Post;
 
 //might be up for deletion icl
@@ -31,9 +31,9 @@ public class SearchRepoImpl implements SearchRepo{
 
 
     @Override
-    public List<Info> findByText(String term) {
+    public List<HaircutInfo> findByText(String term) {
 
-       final List<Info> posts = new ArrayList<>();
+       final List<HaircutInfo> posts = new ArrayList<>();
 
        //now its time to fill the array before returning it
        //looks complicated but what we're essenitally doing is 
@@ -55,7 +55,7 @@ public class SearchRepoImpl implements SearchRepo{
         ));
        
        //because its java we're doing a lambda to cconvert a document format to a java format so spring can actually use this data
-       result.forEach(doc -> posts.add(converter.read(Info.class, doc)));
+       result.forEach(doc -> posts.add(converter.read(HaircutInfo.class, doc)));
 
        return posts;
     }

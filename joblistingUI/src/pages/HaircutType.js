@@ -1,4 +1,4 @@
-import { FormControl, FormLabel, Radio, RadioGroup, Stack, Typography } from "@mui/material";
+import { CircularProgress, FormControl, FormLabel, Radio, RadioGroup, Stack, Typography } from "@mui/material";
 import useFormContext from "../customhooks/useFormContext";
 import { ReactComponent as CheckedIcon } from "../images/filled_checked_icon.svg"
 import { CustomControlLabel } from "./customstyles/CustomRadio.styles";
@@ -33,7 +33,7 @@ import { useFetch } from "../customhooks/useFetch";
 const HaircutType = () => {
 
   const { form, handleChange } = useFormContext();
-  const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allInfo`)
+  const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allHaircutInfo`)
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredOptions, setFilteredOptions] = useState([]);
 
@@ -98,7 +98,7 @@ const HaircutType = () => {
         searchInput={searchQuery} 
         handleSearch={handleSearchChange}
       />
-      {isLoading && <Typography>this will be a spinner later</Typography>}
+      {isLoading && <CircularProgress />}
 
       {error &&  <Typography>Sorry something went wrong! please try again</Typography>}
 

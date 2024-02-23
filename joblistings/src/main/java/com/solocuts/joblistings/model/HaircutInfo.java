@@ -3,13 +3,13 @@ package com.solocuts.joblistings.model;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "HaircutOptions")
-public class Info {
+public class HaircutInfo {
 
     private String value;
     private int id;
 
     //constructor
-    public Info(){
+    public HaircutInfo(){
         //empty because nothing needs to be constructed
     }
 
@@ -32,7 +32,7 @@ public class Info {
     //toString for confirming accurate data has been read
     @Override
     public String toString() {
-        return "Info{" +
+        return "HaircutInfo{" +
                 "value='" + value + '\'' + 
                 "id='" + id + '\'' + 
                 '}';

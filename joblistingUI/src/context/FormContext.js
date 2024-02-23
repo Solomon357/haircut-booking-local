@@ -5,7 +5,7 @@ const FormContext = createContext({})
 export const FormProvider = ({ children }) => {
 
   //TO DO FOR TOMORROW: 
-  //1. fetch data in main app context + make submit button work
+  //1. Add to MVC and React to allow fetching of barber and time options aswell
   //(1). submitting form should return us to home while also giving us confirmation 
   //2. implement useMemo hook
   //3. change design of stepper? 
