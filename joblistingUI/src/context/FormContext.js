@@ -2,28 +2,27 @@ import { createContext, useState } from "react";
 
 const FormContext = createContext({})
 
+// "title" being placed here has the same effect as importing title from a separate file, 
+// this way title doesnt re-render every time FormProvider runs
+const title = {
+  0: "Select Haircut Type",
+  1: 'Name of Booking',
+  2: 'Select Professional',
+  3: 'Select Date & Time',
+  4: 'Confirmation',
+}
+
 export const FormProvider = ({ children }) => {
 
   //TO DO FOR TOMORROW: 
-  //1. Add to MVC and React to allow fetching of barber and time options aswell
   //(1). submitting form should return us to home while also giving us confirmation 
   //2. implement useMemo hook
   //3. change design of stepper? 
   //4. Quality Assurance, add all the fancy animations and ideas i want
   //(5). finally deal with availability functionality
 
-  
-  const title = {
-    0: "Select Haircut Type",
-    1: 'Name of Booking',
-    2: 'Select Professional',
-    3: 'Select Date & Time',
-    4: 'Confirmation',
-  }
-
   const [page, setPage] = useState(0)
 
-  //barberInfo[2] should definitely be availability, OR i add another element to the array for availability
   const [form, setForm] = useState({
     haircutType: "",
     haircutPrice: 0,
@@ -77,51 +76,45 @@ export const FormProvider = ({ children }) => {
     let value = isoDate
     //console.log(isoDate); //test
 
-    //then i can setData with the same functionality as handleChange
+    //then i can setForm with the same functionality as handleChange
     setForm(prevData => ({
       ...prevData,
       [name]: value
     })) 
   }
 
-  const {barberPrice,
-    ...requiredInputs } = form
+  //so this operation is only performed at the end of the form
+  let canSubmit
+  if(page === Object.keys(title).length - 1){
+    const {barberPrice,
+      ...requiredInputs } = form
+  
+    canSubmit = [...Object.values(requiredInputs)].every(Boolean)
+  }
 
-  const canSubmit = [...Object.values(requiredInputs)].every(Boolean) && page === Object.keys(title).length - 1
-
+  const pageIdentifier = {
+    0: 'haircutT',
+    1: 'haircutB',
+    2: 'barberI',
+    3: 'booking'
+  }
   //can only move to the next page once evey value on current page has a value
-  const canNextPage1 = Object.keys(form)
-    .filter(key => key.startsWith('haircutT'))
+  const canNextPage = Object.keys(form)
+    .filter(key => key.startsWith(pageIdentifier[page]))
     .map(key => form[key])
     .every(Boolean)
 
-  const canNextPage2 = Object.keys(form)
-    .filter(key => key.startsWith('haircutB'))
-    .map(key => form[key])
-    .every(Boolean)
-
-  const canNextPage3 = Object.keys(form)
-    .filter(key => key.startsWith('barberI'))
-    .map(key => form[key])
-    .every(Boolean)
-
-  const canNextPage4 = Object.keys(form)
-    .filter(key => key.startsWith('booking'))
-    .map(key => form[key])
-    .every(Boolean)
-
-  // disable prev button if page has an Object.key value of 0
+  
   const disablePrev = page === 0
   
   //disable next based on parameters established above
   const disableNext =
     (page === Object.keys(title).length - 1)
-    || (page === 0 && !canNextPage1)
-    || (page === 1 && !canNextPage2)
-    || (page === 2 && !canNextPage3)
-    || (page === 3 && !canNextPage4)
+    || (page === 0 && !canNextPage)
+    || (page === 1 && !canNextPage)
+    || (page === 2 && !canNextPage)
+    || (page === 3 && !canNextPage)
 
-//for more efficiency i could use something like useMemo for expensive functions in this context
   return (
     <FormContext.Provider value={{ setForm, setPage, handleChange, handleDateChange, title, page, form, canSubmit, disablePrev, disableNext }}>
       {children}
