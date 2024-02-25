@@ -3,7 +3,6 @@ import EmailIcon from '@mui/icons-material/Email';
 
 
 const Footer = () => {
-   
   const styles = {
     footer: {
       position: "absolute",

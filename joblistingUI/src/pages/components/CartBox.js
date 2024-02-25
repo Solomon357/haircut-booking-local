@@ -9,8 +9,7 @@ import { NextButton } from "../customstyles/Button.styles";
 
 //cart box + continue button
 const CartBox = () => {
-  const { page, setPage, title, form, disableNext } = useFormContext();
-
+  const { page, setPage, canSubmit, form, disableNext } = useFormContext();
   
   let haircutArr = form.haircutType ? form.haircutType.split(",") : ["Select a Service", ""];
   let barberArr = page >= 2 && form.barberInfo ? form.barberInfo.split(",") : ["", ""];
@@ -54,7 +53,7 @@ const CartBox = () => {
       //gap: "10px"
     },
     continue : {
-      display: page === Object.keys(title).length -1 ? "none" : "block",
+      display: canSubmit ? "none" : "block",
       width: {xs: "fit-content", md:"100%"}, 
       margin: "2% auto", 
     }
