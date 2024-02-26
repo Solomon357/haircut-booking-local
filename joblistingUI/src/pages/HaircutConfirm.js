@@ -3,14 +3,15 @@ import useFormContext from "../customhooks/useFormContext";
 import { SubmitButton } from "./customstyles/Button.styles";
 import { useState } from "react";
 import ThumbsUpImg from "../images/thumbs_up.png"
+import { useNavigate } from "react-router-dom";
 
 
 
 const HaircutConfirm = () => {
   const { form, canSubmit } = useFormContext();
-  const [successToast, setSuccessToast] = useState(false);
+  //const [successToast, setSuccessToast] = useState(false);
   const [errorToast, setErrorToast] = useState(false);
-
+  const navigate = useNavigate();
   const styles = {
     submit: {
       display: !canSubmit ? "none" : "block",
@@ -19,39 +20,38 @@ const HaircutConfirm = () => {
   }
 
   const handleClose = () => {
-    setSuccessToast(false);
+    //setSuccessToast(false);
     setErrorToast(false)
   };
 
   //tester submit function
-  const handleSubmit = e => {
-    e.preventDefault()
-    console.log(JSON.stringify(form))
-    setSuccessToast(true)
-  }
-
-  // proper handleSubmit function is here
-  // const handleSubmit = (e) => {
+  // const handleSubmit = e => {
   //   e.preventDefault();
-  //   fetch("http://localhost:8080/submitpost", {
-  //     method: "POST", // or 'PUT'
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(form),
-  //   })
-  //   .then((response) => console.log(response))
-  //   .then((data) => {
-  //     console.log("Success:", data);
-  //     setSuccessToast(true)
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error:", error);
-  //     setErrorToast(true)
-  //   });
-  //   //navigate('/employee/feed');
-  //   //window.location.reload();
-  // };
+  //   console.log(JSON.stringify(form))
+  //   navigate('/', {state: true});
+  // }
+
+ // proper handleSubmit function is here
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:8081/submitpost", {
+      method: "POST", // or 'PUT'
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    })
+    .then((response) => {
+      console.log(response)
+      console.log("Success!")
+      navigate('/', {state: true})
+    })
+    .catch((error) => {
+      console.error("Error:", error)
+      setErrorToast(true)
+    });
+    
+  };
 
 
   const content = (
@@ -81,11 +81,11 @@ const HaircutConfirm = () => {
           Book Haircut
         </SubmitButton>
 
-        <Snackbar open={successToast} autoHideDuration={6000} onClose={handleClose}>
+        {/* <Snackbar open={successToast} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="success" variant="filled">
             Booking successful! See you soon
           </Alert>
-        </Snackbar>
+        </Snackbar> */}
 
         <Snackbar open={errorToast} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="error" variant="filled">

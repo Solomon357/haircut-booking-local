@@ -1,9 +1,29 @@
-import React from "react";
-import { Typography, Button } from "@mui/material";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Typography, Button, Snackbar, Alert } from "@mui/material";
+import { Link, useLocation } from "react-router-dom";
 import "../App.css"
 
 const Home = () => {
+
+  const location = useLocation();
+  const [successToast, setSuccessToast] = useState();
+
+
+  useEffect(() => {
+    if (location.state === null) {
+      setSuccessToast(false)
+    } else {
+      setSuccessToast(location.state)
+      window.history.replaceState({}, '') // so that snackbar does not repeat on refresh
+    }
+  }, [location])
+  
+
+  const handleClose = () => {
+    setSuccessToast(false);
+  };
+
+
   return (
     <div>
       <Typography sx={{ margin:"5%" }} variant="h3" align="center">
@@ -33,6 +53,11 @@ const Home = () => {
           </Button>
           </li>
         </ul>
+        <Snackbar open={successToast} autoHideDuration={6000} onClose={handleClose}>
+          <Alert onClose={handleClose} severity="success" variant="filled">
+            Booking successful! See you soon
+          </Alert>
+        </Snackbar>
       </div>
     </div>
   );

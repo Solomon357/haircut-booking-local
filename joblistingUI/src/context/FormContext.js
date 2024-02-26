@@ -15,11 +15,9 @@ const title = {
 export const FormProvider = ({ children }) => {
 
   //TO DO FOR TOMORROW: 
-  //(1). submitting form should return us to home while also giving us confirmation 
-  //2. implement useMemo hook
-  //3. change design of stepper? 
-  //4. Quality Assurance, add all the fancy animations and ideas i want
-  //(5). finally deal with availability functionality
+  //1. change design of stepper? 
+  //2. Quality Assurance, add all the fancy animations and ideas i want
+  //(3). finally deal with availability functionality??
 
   const [page, setPage] = useState(0)
 
