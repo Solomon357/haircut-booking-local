@@ -7,7 +7,6 @@ import ThumbsUpImg from "../images/thumbs_up.png"
 
 
 const HaircutConfirm = () => {
-
   const { form, canSubmit } = useFormContext();
   const [successToast, setSuccessToast] = useState(false);
   const [errorToast, setErrorToast] = useState(false);
@@ -25,35 +24,34 @@ const HaircutConfirm = () => {
   };
 
   //tester submit function
-  // const handleSubmit = e => {
-  //   e.preventDefault()
-  //   console.log(JSON.stringify(form))
-  //   setSuccessToast(true)
-  // }
+  const handleSubmit = e => {
+    e.preventDefault()
+    console.log(JSON.stringify(form))
+    setSuccessToast(true)
+  }
 
-
-  // proper handleSubmit function will be here
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch("http://localhost:8080/submitpost", {
-      method: "POST", // or 'PUT'
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    })
-    .then((response) => console.log(response))
-    .then((data) => {
-      console.log("Success:", data);
-      setSuccessToast(true)
-    })
-    .catch((error) => {
-      console.error("Error:", error);
-      setErrorToast(true)
-    });
-    //navigate('/employee/feed');
-    //window.location.reload();
-  };
+  // proper handleSubmit function is here
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   fetch("http://localhost:8080/submitpost", {
+  //     method: "POST", // or 'PUT'
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(form),
+  //   })
+  //   .then((response) => console.log(response))
+  //   .then((data) => {
+  //     console.log("Success:", data);
+  //     setSuccessToast(true)
+  //   })
+  //   .catch((error) => {
+  //     console.error("Error:", error);
+  //     setErrorToast(true)
+  //   });
+  //   //navigate('/employee/feed');
+  //   //window.location.reload();
+  // };
 
 
   const content = (

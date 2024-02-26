@@ -3,10 +3,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import { SearchField } from "../pages/customstyles/SearchField.styles";
 const FormTestPage4 = () => {
 
-    // const { data, handleChange } = useFormContext()
-    //const theme = useTheme();
-    //const matches = useMediaQuery(theme.breakpoints.down("md"));
-
     const styles = {
         search: {
             borderRadius: "40px",
@@ -94,32 +90,6 @@ const FormTestPage4 = () => {
            
 
         </Box>
-
-
-        // <div>
-        //   {matches ? (
-        //     <Box 
-        //         sx={{ 
-        //             backgroundColor: "green",
-        //             height: "400px"
-        //         }}
-        //     >
-        //         "XS in my project"
-        //     </Box>
-        //   ) : (
-        //     <Box 
-        //         sx={{ 
-        //             backgroundColor: "red", 
-        //             position: "absolute",
-        //             bottom: "0",
-        //             right:"0",
-        //             left:"0"
-        //         }}
-        //     >
-        //         "MD and up"
-        //     </Box>
-        //   )}
-        // </div>
     );
  }
   

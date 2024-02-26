@@ -11,35 +11,21 @@ const HaircutDatetime = () => {
   const { form, handleChange, handleDateChange } = useFormContext();
   const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allTimeInfo`);
 
-  // const timeOptions = [
-  //   {
-  //     timeValue: "09:00"
-  //   },
-  //   {
-  //     timeValue: "09:30"
-  //   },
-  //   {
-  //     timeValue: "10:00"
-  //   },
-  //   {
-  //     timeValue: "10:30"
-  //   },
-  //   {
-  //     timeValue: "11:00"
-  //   },
-  //   {
-  //     timeValue: "11:30"
-  //   },
-  //   {
-  //     timeValue: "12:00"
-  //   },
-  // ];
-
   //for my time radio btns i could have it in a structure like:
   //{ time: 17:30, isbooked: false} or ["17:30", false]
 
   // where if checked it will change false to true and also once submitted
   // will change the value in mongodb to deal with availability
+
+
+  //to stop the DatePicker buttons from refreshing on click i need 
+  //to access buttons from DOM because the import doesnt allow me to access button event 
+  //through "handleDateChange"
+  const dateButtons = document.querySelectorAll("button[class^='DatePicker_button__']")
+
+  for(let i = 0; i < dateButtons.length; i++){
+    dateButtons[i].addEventListener("click", (e) => {e.preventDefault()})
+  }
 
   const timeInputs = (
     <FormControl sx={{width: "80%"}}>
@@ -80,7 +66,6 @@ const HaircutDatetime = () => {
     >
       <Typography variant="h5">Pick Date</Typography>
 
-      {/* Potential bug that causes page refresh on button click??? */}
       <DatePicker 
         getSelectedDay={handleDateChange}
         color={"#57BFC6"}

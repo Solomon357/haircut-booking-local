@@ -11,8 +11,8 @@
 }
 
 /* had to override the inline styles sadly */
-/* [class^="DatePicker_button__"] {
+[class^="DatePicker_button__"] {
   border-radius: 0% !important;
   width: 45px !important;
   height: 45px !important;
-} */
+}
