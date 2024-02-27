@@ -6,32 +6,7 @@ import { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar";
 import { useFetch } from "../customhooks/useFetch";
 
-//haircut option will most likely be accessed in mongo to allow searching
-  // const haircutOptions = [
-  //   { value: "Skin Fade,30-45 mins,12", id:1 },
-  //   { value: "Grade 1 all over,30 mins,7", id:2 },
-  //   { value: "Beard Trim,30 mins,7", id:3 },
-  //   { value: "Student Discount,30-45 mins,10", id:4 },
-  //   { value: "Hair Wash,15 mins,10", id:5 },
-  //   { value: "haircutName6,30-45 mins,12", id:6 },
-  //   { value: "haircutName7,30 mins,7", id:7 },
-  //   { value: "haircutName8,30 mins,7", id:8 },
-  //   { value: "haircutName9,30-45 mins,10", id:9 },
-  //   { value: "haircutName10,15 mins,10", id:10 },
-  //   { value: "haircutName11,30-45 mins,12", id:11 },
-  //   { value: "haircutName12,30 mins,7", id:12 },
-  //   { value: "haircutName13,30 mins,7", id:13 },
-  //   { value: "haircutName14,30-45 mins,10", id:14 },
-  //   { value: "haircutName15,15 mins,10", id:15 },
-  //   { value: "haircutName16,30-45 mins,12", id:16 },
-  //   { value: "haircutName17,30 mins,7", id:17 },
-  //   { value: "haircutName18,30 mins,7", id:18 },
-  //   { value: "haircutName19,30-45 mins,10", id:19 },
-  //   { value: "haircutName20,15 mins,10", id:20 }
-  // ];
-
 const HaircutType = () => {
-
   const { form, handleChange } = useFormContext();
   const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allHaircutInfo`)
   const [searchQuery, setSearchQuery] = useState("");

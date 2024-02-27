@@ -23,25 +23,17 @@ const Home = () => {
     setSuccessToast(false);
   };
 
-
-  return (
+  const content = (
     <div>
       <Typography sx={{ margin:"5%" }} variant="h3" align="center">
-        Get Hired or Hire people for free!
+        Welcome! Click below to get started
       </Typography>
       <div>
         <ul className="ul">
           <li>
           <Button sx={{ margin:"2% 3%"}} variant="outlined">
-            <Link to="/employer/dashboard">
+            <Link to="/bookHaircut">
               Book a haircut
-            </Link>
-          </Button>
-          </li>
-          <li>
-          <Button sx={{ margin:"2% 3%"}} variant="outlined">
-            <Link to="/employee/feed">
-              Get Job Now
             </Link>
           </Button>
           </li>
@@ -60,7 +52,9 @@ const Home = () => {
         </Snackbar>
       </div>
     </div>
-  );
+  )
+
+  return content
 };
 
 export default Home;
