@@ -34,7 +34,7 @@ export const FormProvider = ({ children }) => {
 
   const handleChange = e => {
     const type = e.target.type 
-    //console.log(type) // test
+    
     const name = e.target.name
 
     let value = e.target.value
@@ -50,13 +50,8 @@ export const FormProvider = ({ children }) => {
       } else if(name === "barberInfo"){
         form.barberPrice = radioValues[2];
       }
-      
-      //console.log(radioValues) // test
-      //console.log("current haircutPrice: ", data.haircutPrice) // test
-      //console.log("current barberPrice: ", data.barberPrice) // test
     }
 
-    //console.log(data.bookingDate)// test
     form.total = form.haircutPrice + form.barberPrice;
 
     setForm(prevData => ({
@@ -67,12 +62,10 @@ export const FormProvider = ({ children }) => {
 
   //needed to be separated from handleChange because name is not a prop in DatePicker
   const handleDateChange = (date) => {
-    //date.preventDefault()
     let isoDate = date.toISOString()
     isoDate = isoDate.substring(0, isoDate.indexOf('T')) 
     const name = "bookingDate"
     let value = isoDate
-    //console.log(isoDate); //test
 
     //then i can setForm with the same functionality as handleChange
     setForm(prevData => ({
@@ -94,8 +87,9 @@ export const FormProvider = ({ children }) => {
     0: 'haircutT',
     1: 'haircutB',
     2: 'barberI',
-    3: 'booking'
+    3: 'book'
   }
+  
   //can only move to the next page once evey value on current page has a value
   const canNextPage = Object.keys(form)
     .filter(key => key.startsWith(pageIdentifier[page]))

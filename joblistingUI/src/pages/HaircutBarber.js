@@ -4,7 +4,6 @@ import { BarberControlLabel } from "./customstyles/BarbarInfoRadio.styles";
 import { useFetch } from "../customhooks/useFetch";
 
 const HaircutBarber = () => {
-
   const { form, handleChange } = useFormContext();
   const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allBarberInfo`);
 

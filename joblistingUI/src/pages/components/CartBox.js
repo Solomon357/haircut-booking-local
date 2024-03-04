@@ -6,8 +6,6 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { NextButton } from "../customstyles/Button.styles";
 
-
-//cart box + continue button
 const CartBox = () => {
   const { page, setPage, canSubmit, form, disableNext } = useFormContext();
   
@@ -20,16 +18,13 @@ const CartBox = () => {
     ? " for "+ name.charAt(0).toUpperCase() + name.slice(1)  
     : ""
   ;
+
   //im using this to try render based on mui breakpoints
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.down('md')) 
 
-  
   const styles = {
     cartcontainer: {
-      //padding: "8px", 
-      //border: "5px solid black", 
-      //width:{xs:"100%", md: "50%"},
       position:{xs:"sticky", md:"fixed"},
       top:{ md:"150px"},
       bottom:{xs: "0"},
@@ -48,9 +43,7 @@ const CartBox = () => {
       borderBottom: {xs: "1px solid gray"},
       borderRadius: {xs: "0", md: "10px"}, 
       height:"fit-content", 
-      padding: "10px",
-      //backgroundColor: "white"
-      //gap: "10px"
+      padding: "10px"
     },
     continue : {
       display: canSubmit ? "none" : "block",

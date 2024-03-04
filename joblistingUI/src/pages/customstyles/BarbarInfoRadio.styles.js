@@ -4,7 +4,6 @@ import { FormControlLabel, useRadioGroup } from "@mui/material";
 const styles = {
   //make responsive later
   customformlabel: {
-    //position: "relative",
     color: "black",
     border: "2px solid #444343", 
     borderRadius: '15px',
@@ -15,8 +14,6 @@ const styles = {
     display: "flex",
     justifyContent:"space-between",
     typography: "Saira Condensed",
-    // backgroundColor: "white",
-    
     "&:hover": {
       backgroundColor: "#e5e5e5",
     }
@@ -34,10 +31,9 @@ const StyledFormControlLabel = styled((props) =>
   })
 );
 
-// Custom FormControl
+// Custom BarberControl
 export function BarberControlLabel(props) {
   const radioGroup = useRadioGroup();
-
   let checked = false;
 
   if (radioGroup) {

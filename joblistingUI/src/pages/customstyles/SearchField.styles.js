@@ -6,12 +6,6 @@ export const SearchField = styled(TextField)({
   width: "55px",
   transition: "all 0.5s",
   cursor: "pointer",
-
-  // dont think i need a button tbh
-  // "& button": {
-  //     display: "none"
-  // },
-
   "&.Mui-focused": {
     width: "200px",
     float: "left",
@@ -19,7 +13,4 @@ export const SearchField = styled(TextField)({
     borderRadius: "4px",
     zIndex: "10",
   },
-  // "&.Mui-focused button":{
-  //     display: "block"
-  // },
 })

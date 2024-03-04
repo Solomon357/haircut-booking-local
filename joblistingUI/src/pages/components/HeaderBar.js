@@ -10,7 +10,6 @@ const HeaderBar = () => {
   return useMemo(()=> {
     const styles = {
       appbar: {
-        //border: "1px solid black",
         position: "sticky",
         top: "0", 
         backgroundColor: "#57bfc6"

@@ -1,7 +1,6 @@
 import { Box, Container, Stack, Toolbar, Typography } from "@mui/material";
 import EmailIcon from '@mui/icons-material/Email';
 
-
 const Footer = () => {
   const styles = {
     footer: {
@@ -38,7 +37,6 @@ const Footer = () => {
       </Container>
     </Box>
   )
-
 
   return content;
 }

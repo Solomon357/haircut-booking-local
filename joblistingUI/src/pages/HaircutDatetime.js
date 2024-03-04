@@ -11,16 +11,8 @@ const HaircutDatetime = () => {
   const { form, handleChange, handleDateChange } = useFormContext();
   const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allTimeInfo`);
 
-  //for my time radio btns i could have it in a structure like:
-  //{ time: 17:30, isbooked: false} or ["17:30", false]
-
-  // where if checked it will change false to true and also once submitted
-  // will change the value in mongodb to deal with availability
-
-
-  //to stop the DatePicker buttons from refreshing on click i need 
-  //to access buttons from DOM because the import doesnt allow me to access button event 
-  //through "handleDateChange"
+  //because DatePicker import doesnt allow me to access button events through "handleDateChange", 
+  //I'm accessing buttons through DOM instead to stop refreshing on click 
   const dateButtons = document.querySelectorAll("button[class^='DatePicker_button__']")
 
   for(let i = 0; i < dateButtons.length; i++){
@@ -50,7 +42,6 @@ const HaircutDatetime = () => {
         })}
       </RadioGroup>
     </FormControl>
-
   )
 
   const content = (      
@@ -75,12 +66,7 @@ const HaircutDatetime = () => {
 
       {error &&  <Typography>Sorry something went wrong! please try again</Typography>}
 
-      {!isLoading && !error && allOptions.length === 0 
-      ? <Typography>No matches from search!! please type something else</Typography> // make this look better later
-      : 
-      timeInputs
-    }
-      
+      {!isLoading && !error && timeInputs}
     </Box>
   );
 

@@ -6,7 +6,6 @@ const SearchBar = ({ searchInput, handleSearch }) => {
 
   const styles = {
     searchcontainer: {
-      //display: page > 0 ? "none": "block",
       position:"sticky", 
       top: "64px", 
       alignSelf: "flex-start",
@@ -54,13 +53,11 @@ const SearchBar = ({ searchInput, handleSearch }) => {
           <InputAdornment position="start" disablePointerEvents sx={{paddingLeft: "2px"}}>
             <SearchIcon />
           </InputAdornment>
-        ),
-        // endAdornment: (
-        //     <Button>hi</Button>
-        // )
+        )
       }}
     />
   )
+  
   return content;
 }
  

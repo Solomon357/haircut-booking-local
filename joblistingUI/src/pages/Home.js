@@ -4,10 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 import "../App.css"
 
 const Home = () => {
-
   const location = useLocation();
   const [successToast, setSuccessToast] = useState();
-
 
   useEffect(() => {
     if (location.state === null) {
@@ -18,7 +16,6 @@ const Home = () => {
     }
   }, [location])
   
-
   const handleClose = () => {
     setSuccessToast(false);
   };
@@ -45,7 +42,7 @@ const Home = () => {
           </Button>
           </li>
         </ul>
-        <Snackbar open={successToast} autoHideDuration={6000} onClose={handleClose}>
+        <Snackbar open={successToast} autoHideDuration={5000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="success" variant="filled">
             Booking successful! See you soon
           </Alert>

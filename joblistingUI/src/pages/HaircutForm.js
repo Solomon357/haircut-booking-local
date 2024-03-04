@@ -7,22 +7,16 @@ import ButtonSection from './components/ButtonSection';
 import CartBox from './components/CartBox';
 
 const HaircutForm = () => {
-
   const styles = {
     pagebody: {
       position: "relative",
       minHeight: "100vh",
-      //backgroundColor: "#eeeeee"
     },
     main: {
       minWidth: "100%",
       paddingBottom: "5rem", // has to be more than footer height
-      //paddingTop: "0.1rem",
-      //border:"1px solid black"
     },
     forminputs: {
-     // margin: "1%", 
-     //border: "1px solid black",
       width: {xs:"100%", md: "50%"},
       minHeight: "35vh", // maybe tweek i dunno yet??
       display:"flex", 

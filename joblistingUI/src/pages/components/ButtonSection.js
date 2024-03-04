@@ -3,11 +3,11 @@ import useFormContext from "../../customhooks/useFormContext";
 import { PrevButton } from "../customstyles/Button.styles";
 import { useMemo } from "react";
 
-
 const ButtonSection = () => {
   const { setPage, disablePrev, canSubmit } = useFormContext();
 
   return useMemo(() => {
+    
     const styles = {
       buttonbox: {
         paddingX:"20px", 

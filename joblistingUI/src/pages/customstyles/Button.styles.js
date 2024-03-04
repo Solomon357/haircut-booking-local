@@ -1,7 +1,6 @@
 import { styled } from '@mui/material/styles';
 import { Button }  from '@mui/material';
 
-
 export const NextButton = styled(Button)({
   backgroundColor: '#57BFC6',
   boxShadow: 'none',

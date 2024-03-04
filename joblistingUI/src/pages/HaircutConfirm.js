@@ -5,8 +5,6 @@ import { useState } from "react";
 import ThumbsUpImg from "../images/thumbs_up.png"
 import { useNavigate } from "react-router-dom";
 
-
-
 const HaircutConfirm = () => {
   const { form, canSubmit } = useFormContext();
   const [errorToast, setErrorToast] = useState(false);
@@ -19,7 +17,6 @@ const HaircutConfirm = () => {
   }
 
   const handleClose = () => {
-    //setSuccessToast(false);
     setErrorToast(false)
   };
 
@@ -29,7 +26,6 @@ const HaircutConfirm = () => {
     console.log(JSON.stringify(form))
     navigate('/', {state: true});
   }
-
 
   // proper handleSubmit function here
   // const handleSubmit = (e) => {
@@ -65,8 +61,7 @@ const HaircutConfirm = () => {
             width= "200px" 
             height="200px"  
           />
-          
-          {/* an icon with a thumbs up wil prob go here, add a lil animation here for style points */}
+      
           <Typography variant="h4">Thanks {form.haircutBookingName}!</Typography>
         </Box>
         <Typography textAlign={"center"}>Please make sure the details in the cart are correct before confirming your booking!</Typography>
@@ -80,7 +75,6 @@ const HaircutConfirm = () => {
         >
           Book Haircut
         </SubmitButton>
-
 
         <Snackbar open={errorToast} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="error" variant="filled">

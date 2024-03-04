@@ -1,7 +1,6 @@
 import { TextField } from "@mui/material";
 import useFormContext from "../customhooks/useFormContext";
 
-
 const HaircutName = () => {
   const { form, handleChange } = useFormContext();
 

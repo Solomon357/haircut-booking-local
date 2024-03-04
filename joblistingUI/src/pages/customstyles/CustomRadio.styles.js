@@ -4,7 +4,6 @@ import { FormControlLabel, useRadioGroup } from "@mui/material";
 const styles = {
   //make responsive later
   customformlabel: {
-    //position: "relative",
     color: "black",
     border: "2px solid #444343", 
     borderRadius: '15px',
@@ -21,8 +20,6 @@ const styles = {
   }
 }
 
-
-
 const StyledFormControlLabel = styled((props) => 
   (<FormControlLabel sx={styles.customformlabel} {...props} />
   ))(({ checked }) => ({
@@ -35,7 +32,6 @@ const StyledFormControlLabel = styled((props) =>
 
 export function CustomControlLabel(props) {
   const radioGroup = useRadioGroup();
-
   let checked = false;
 
   if (radioGroup) {
