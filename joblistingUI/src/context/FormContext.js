@@ -17,6 +17,7 @@ export const FormProvider = ({ children }) => {
   //TO DO FOR TOMORROW: 
   //1. change design of stepper? 
   //2. Quality Assurance, add all the fancy animations and ideas i want
+  //(2). properly handle all error types not just error 404
   //(3). finally deal with availability functionality??
 
   const [page, setPage] = useState(0)
@@ -89,7 +90,7 @@ export const FormProvider = ({ children }) => {
     2: 'barberI',
     3: 'book'
   }
-  
+
   //can only move to the next page once evey value on current page has a value
   const canNextPage = Object.keys(form)
     .filter(key => key.startsWith(pageIdentifier[page]))

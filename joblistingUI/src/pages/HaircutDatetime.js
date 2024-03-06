@@ -11,6 +11,15 @@ const HaircutDatetime = () => {
   const { form, handleChange, handleDateChange } = useFormContext();
   const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allTimeInfo`);
 
+  const styles = {
+    formlabel: {
+      color: "antiquewhite",
+      "&.Mui-focused": {
+        color:"#faa749"
+      }
+    }
+  }
+
   //because DatePicker import doesnt allow me to access button events through "handleDateChange", 
   //I'm accessing buttons through DOM instead to stop refreshing on click 
   const dateButtons = document.querySelectorAll("button[class^='DatePicker_button__']")
@@ -19,9 +28,10 @@ const HaircutDatetime = () => {
     dateButtons[i].addEventListener("click", (e) => {e.preventDefault()})
   }
 
+
   const timeInputs = (
-    <FormControl sx={{width: "80%"}}>
-      <FormLabel id="time-radiogroup-label">Pick Time Slot</FormLabel>
+    <FormControl sx={{width: "80%", marginTop:"20px"}}>
+      <FormLabel id="time-radiogroup-label" sx={styles.formlabel}>Pick Time Slot</FormLabel>
       <RadioGroup
         aria-labelledby="time-radiogroup-label"
         value={allOptions.time}
@@ -59,10 +69,10 @@ const HaircutDatetime = () => {
 
       <DatePicker 
         getSelectedDay={handleDateChange}
-        color={"#57BFC6"}
+        color={"#faa749"}
       />
 
-      {isLoading && <CircularProgress />}
+      {isLoading && <Box color={"#faa749"}><CircularProgress color="inherit"/></Box>}
 
       {error &&  <Typography>Sorry something went wrong! please try again</Typography>}
 

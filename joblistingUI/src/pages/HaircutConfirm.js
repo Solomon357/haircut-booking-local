@@ -1,6 +1,6 @@
 import { Alert, Box, Snackbar, Stack, Typography } from "@mui/material";
 import useFormContext from "../customhooks/useFormContext";
-import { SubmitButton } from "./customstyles/Button.styles";
+import { ProgressButton } from "./customstyles/Button.styles";
 import { useState } from "react";
 import ThumbsUpImg from "../images/thumbs_up.png"
 import { useNavigate } from "react-router-dom";
@@ -66,7 +66,7 @@ const HaircutConfirm = () => {
         </Box>
         <Typography textAlign={"center"}>Please make sure the details in the cart are correct before confirming your booking!</Typography>
 
-        <SubmitButton
+        <ProgressButton
           sx={styles.submit}
           variant="contained"
           type="submit"
@@ -74,7 +74,7 @@ const HaircutConfirm = () => {
           onClick={handleSubmit}
         >
           Book Haircut
-        </SubmitButton>
+        </ProgressButton>
 
         <Snackbar open={errorToast} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="error" variant="filled">

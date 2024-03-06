@@ -4,7 +4,7 @@ import { FormControlLabel, useRadioGroup } from "@mui/material";
 const styles = {
   //make responsive later
   customformlabel: {
-    color: "black",
+    color: "antiquewhite",
     border: "2px solid #444343", 
     borderRadius: '15px',
     width:"30%",
@@ -15,7 +15,7 @@ const styles = {
     justifyContent:"space-between",
     typography: "Saira Condensed",
     "&:hover": {
-      backgroundColor: "#e5e5e5",
+      backgroundColor: "#423c3e",
     }
   }
 }
@@ -26,7 +26,7 @@ const StyledFormControlLabel = styled((props) =>
   ))(({ checked }) => ({
     //styles of checked component can be played around with here
     "&.MuiFormControlLabel-root": checked && {
-      border: "3px solid #57BFC6", 
+      border: "3px solid #faa749", 
     }
   })
 );

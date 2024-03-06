@@ -4,7 +4,7 @@ import CalendarTodayIcon from '@mui/icons-material/CalendarToday';
 import ScheduleIcon from '@mui/icons-material/Schedule';
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import { NextButton } from "../customstyles/Button.styles";
+import { ProgressButton } from "../customstyles/Button.styles";
 
 const CartBox = () => {
   const { page, setPage, canSubmit, form, disableNext } = useFormContext();
@@ -31,16 +31,17 @@ const CartBox = () => {
       right:{md:"15%"},
       height: "fit-content",
       width:{xs:"100%", md: "400px"},
-      backgroundColor: "white"
+      zIndex: 3, // so it can appear over everything else once small
+      backgroundColor: "#231f20"
     },
 
     cartcontent: {
       display: "flex", 
       flexDirection: "column", 
       justifyContent: "center",
-      border: {md: "1px solid gray"},
-      borderTop: {xs: "1px solid gray"},
-      borderBottom: {xs: "1px solid gray"},
+      border: {md: "1px solid white"},
+      borderTop: {xs: "1px solid white"},
+      borderBottom: {xs: "1px solid white"},
       borderRadius: {xs: "0", md: "10px"}, 
       height:"fit-content", 
       padding: "10px"
@@ -49,7 +50,12 @@ const CartBox = () => {
       display: canSubmit ? "none" : "block",
       width: {xs: "fit-content", md:"100%"}, 
       margin: "2% auto", 
+    },
+    divide:{
+      borderColor:"antiquewhite"
+     
     }
+
   }
 
   const handleNext = () => {
@@ -63,11 +69,11 @@ const CartBox = () => {
 
         <Stack direction={"column"}>
           <Typography fontWeight={"bold"}> £{form.total}</Typography>
-          <Typography color={"gray"}>{haircutArr[0]} &bull; {haircutArr[1]}</Typography>
+          <Typography color={"#faa749"}>{haircutArr[0]} &bull; {haircutArr[1]}</Typography>
         </Stack>
 
         <Box>
-          <NextButton
+          <ProgressButton
             sx={styles.continue}
             variant="contained"
             type="button"
@@ -76,7 +82,7 @@ const CartBox = () => {
             disableRipple
           >
             Continue 
-          </NextButton>
+          </ProgressButton>
         </Box>
       </Stack>
     </Box>
@@ -88,7 +94,7 @@ const CartBox = () => {
 
       <Typography variant="h5" alignSelf={"center"} >Cart</Typography>
 
-      <Divider variant='middle'/>
+      <Divider variant='middle' sx={styles.divide}/>
 
       <Stack direction={"column"} gap={"2px"} marginY={"20px"}>
         { form.bookingDate && page >= 3
@@ -118,7 +124,7 @@ const CartBox = () => {
 
       <Box height={"70px"}></Box>
 
-      <Divider variant='middle'/>
+      <Divider variant='middle' sx={styles.divide}/>
 
       <Stack direction={"row"} justifyContent={"space-between"}  marginY={"15px"}>
         <Typography sx={{fontWeight: "bold"}}>Total</Typography>
@@ -126,7 +132,7 @@ const CartBox = () => {
       </Stack>
 
       <Box>
-        <NextButton
+        <ProgressButton
           sx={styles.continue}
           variant="contained"
           type="button"
@@ -134,7 +140,7 @@ const CartBox = () => {
           disabled={disableNext}
         >
           Continue
-        </NextButton> 
+        </ProgressButton> 
       </Box>
     </Box>         
   )

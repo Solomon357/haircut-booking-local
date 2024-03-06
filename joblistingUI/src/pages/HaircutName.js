@@ -1,28 +1,20 @@
-import { TextField } from "@mui/material";
 import useFormContext from "../customhooks/useFormContext";
+import { NameField } from "./customstyles/CustomField.styles";
 
 const HaircutName = () => {
   const { form, handleChange } = useFormContext();
 
-  const styles = {
-    namefield : {
-      width: "50%", 
-      margin: "2%",
-    }
-  };
-
   const content = (
-    <TextField
+    <NameField
       type="string"
-      sx={styles.namefield}
-      required
+      sx={{ width: "50%", margin: "2%" }}
+      helperText="Please enter your name"
       id="haircutBookingName"
       name="haircutBookingName"
       label="Booking Name"
       variant="outlined"
       onChange={handleChange}
       value={form.haircutBookingName}
-      inputProps={{style: {textTransform: 'capitalize'}}}
     />
   );
 

@@ -9,17 +9,39 @@ const FormProgress = () => {
   //page or title dependecies are changed
   return useMemo(() => {
     const styles = {
-      stepper: {
+      steppercontainer: {
         minWidth: '100%', 
-        marginTop: "20px"
+        marginY: "20px"
+      },
+      stepicon: {
+        '& .MuiStepLabel-label':{
+          color: "antiquewhite",
+          '&.Mui-active':{
+            color: '#faa749'
+          },
+          '&.Mui-completed':{
+            color: '#faa749'
+          }
+        },
+        '& .MuiSvgIcon-root': {
+          '&.Mui-active':{
+            color: '#faa749'
+          },
+          '&.Mui-completed':{
+            color: '#faa749'
+          },
+          
+        }
       }
     }
 
     const content = (
-      <Box sx={styles.stepper}>
-        <Stepper activeStep={page} alternativeLabel>
+      <Box sx={styles.steppercontainer}>
+        <Stepper activeStep={page} alternativeLabel sx={styles.stepicon}>
           {Object.keys(title).map((label) => (
-            <Step key={label+1}>
+            <Step 
+              key={label+1} 
+              >
               <StepLabel>{title[label]}</StepLabel>
             </Step>
           ))}

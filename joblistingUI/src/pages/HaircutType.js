@@ -1,4 +1,4 @@
-import { CircularProgress, FormControl, FormLabel, Radio, RadioGroup, Stack, Typography } from "@mui/material";
+import { Box, CircularProgress, FormControl, FormLabel, Radio, RadioGroup, Stack, Typography } from "@mui/material";
 import useFormContext from "../customhooks/useFormContext";
 import { ReactComponent as CheckedIcon } from "../images/filled_checked_icon.svg"
 import { CustomControlLabel } from "./customstyles/CustomRadio.styles";
@@ -31,10 +31,19 @@ const HaircutType = () => {
     setFilteredOptions(filteredItems)
   }
 
+  const styles = {
+    formlabel: {
+      color: "antiquewhite",
+      "&.Mui-focused": {
+        color:"#faa749"
+      }
+    }
+  }
+
   const haircutInputs = (
     <FormControl sx={{ width:"80%", zIndex:"0" }}>
           
-      <FormLabel id="haircut-radio-buttons">Haircut Options</FormLabel>
+      <FormLabel id="haircut-radio-buttons" sx={styles.formlabel}>Haircut Options</FormLabel>
       
       <RadioGroup
         aria-labelledby="haircut-radio-buttons"
@@ -51,7 +60,7 @@ const HaircutType = () => {
               key={haircuts.id} 
               checked={form.haircutType === haircuts.value} 
               value={haircuts.value} 
-              control={<Radio checkedIcon={<CheckedIcon fill="#57BFC6" width={"25px"}/>} />} 
+              control={<Radio checkedIcon={<CheckedIcon width={"25px"}/>} />} 
               label= {
                 <Stack direction={"column"}>
                   <Typography>{haircutArr[0]}</Typography>
@@ -73,7 +82,7 @@ const HaircutType = () => {
         searchInput={searchQuery} 
         handleSearch={handleSearchChange}
       />
-      {isLoading && <CircularProgress />}
+      {isLoading && <Box color={"#faa749"}><CircularProgress color="inherit"/></Box>}
 
       {error &&  <Typography>Sorry something went wrong! please try again</Typography>}
 

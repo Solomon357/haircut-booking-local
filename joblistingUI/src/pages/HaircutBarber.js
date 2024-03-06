@@ -1,4 +1,4 @@
-import { Avatar, CircularProgress, FormControl, FormLabel, Radio, RadioGroup, Stack, Typography } from "@mui/material";
+import { Avatar, Box, CircularProgress, FormControl, FormLabel, Radio, RadioGroup, Stack, Typography } from "@mui/material";
 import useFormContext from "../customhooks/useFormContext";
 import { BarberControlLabel } from "./customstyles/BarbarInfoRadio.styles";
 import { useFetch } from "../customhooks/useFetch";
@@ -7,11 +7,20 @@ const HaircutBarber = () => {
   const { form, handleChange } = useFormContext();
   const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allBarberInfo`);
 
+  const styles = {
+    formlabel: {
+      color: "antiquewhite",
+      "&.Mui-focused": {
+        color:"#faa749"
+      }
+    }
+  }
+
   const barberInputs = (
   
     <FormControl sx={{ width:"100%" }}>
         
-      <FormLabel id="barber-radio-buttons">Barber Options</FormLabel>
+      <FormLabel id="barber-radio-buttons" sx={styles.formlabel}>Barber Options</FormLabel>
 
       <RadioGroup
         row
@@ -46,7 +55,7 @@ const HaircutBarber = () => {
 
   const content = (
     <>
-      {isLoading && <CircularProgress />}
+      {isLoading && <Box color={"#faa749"}><CircularProgress color="inherit"/></Box>}
 
       {error &&  <Typography>Sorry something went wrong! please try again</Typography>}
 

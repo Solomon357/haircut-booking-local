@@ -1,29 +1,36 @@
 import { styled } from '@mui/material/styles';
 import { Button }  from '@mui/material';
 
-export const NextButton = styled(Button)({
-  backgroundColor: '#57BFC6',
+export const ProgressButton = styled(Button)({
+  backgroundColor: '#faa749',
   boxShadow: 'none',
+  transition:" all 0.5s",
   '&:hover': {
-    backgroundColor: '#12aab5',
+    backgroundColor: '#f6c288',
     boxShadow: 'none'
   }
 });
 
 export const PrevButton = styled(Button)({
-  backgroundColor: '#E39C9C',
+  backgroundColor: '#580016',
   boxShadow: 'none',
+  transition: "all 0.5s",
   '&:hover': {
-    backgroundColor: '#c56060',
+    backgroundColor: '#73021e',
     boxShadow: 'none'
   }
 });
 
-export const SubmitButton = styled(Button)({
-  backgroundColor: '#4caf50',
+export const MainButton = styled(Button)({
+  backgroundColor: '#231f20',
   boxShadow: 'none',
+  border: "2px solid white",
+  color: "white",
+  transition: "all 0.5s",
+  borderRadius: "20px",
   '&:hover': {
-    backgroundColor: '#29a02e',
-    boxShadow: 'none'
+    backgroundColor: '#faa749',
+    boxShadow: 'none',
+    border: '2px solid #231f20'
   }
 });

@@ -1,5 +1,5 @@
 import { AppBar, Container, IconButton, Stack, Toolbar, Typography } from "@mui/material";
-import { ReactComponent as HaircutIcon } from "../../images/haircut_icon.svg" 
+import { ReactComponent as SciccorIcon } from "../../images/sciccor_icon.svg" 
 import HomeIcon from '@mui/icons-material/Home';
 import useFormContext from "../../customhooks/useFormContext";
 import { useMemo } from "react";
@@ -12,20 +12,24 @@ const HeaderBar = () => {
       appbar: {
         position: "sticky",
         top: "0", 
-        backgroundColor: "#57bfc6"
+        backgroundColor: "#231f20"
       },
 
       headertitle : {
-        mr: 2,
-        fontWeight: 700,
+        fontWeight: "bold",
         letterSpacing: { xs: '0.1rem', sm: '0.2rem' },
-        fontSize: { xs: '1rem', sm: '1.2rem' },
+        fontSize: { xs: '1rem', sm: '1.8rem' },
+      },
+      brandtitle : {
+        // letterSpacing: { xs: '0.1rem', sm: '0.2rem' },
+        marginLeft: "10px",
+        fontSize: { xs: '0.8rem', sm: '1.4rem' },
       }
     }
 
     const content = (
       <AppBar 
-        elevation={0} // later i will adjust to elevate once position is sticky
+        elevation={2} // later i will adjust to elevate once position is sticky
         className='header-content'
         component={"header"} 
         sx={styles.appbar}
@@ -36,19 +40,24 @@ const HeaderBar = () => {
             sx={{justifyContent:"space-between"}}
           >
             <Stack direction="row" alignItems={"center"} >
-              <HaircutIcon />
+              
+              <SciccorIcon height={"40px"} width={"40px"}/>
+
               <Typography
-              variant='h6' 
-              align='center'
-              sx={styles.headertitle}
+                variant='h6' 
+                sx={styles.brandtitle}
               >
-              CompanyTitle
+              BARBER SHOP
               </Typography>
             </Stack> 
 
-            <Typography variant='h3' align='center'>{title[page]}</Typography>
+            <Typography 
+              variant='h3' 
+              sx={styles.headertitle}>
+                {title[page]}
+              </Typography>
 
-            <IconButton href='/' size='large' sx={{color: 'white'}}>
+            <IconButton href='/' size='large' sx={{color: '#faa749'}}>
               <HomeIcon />
             </IconButton>  
 

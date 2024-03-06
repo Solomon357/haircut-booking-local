@@ -7,7 +7,7 @@ const Footer = () => {
       position: "absolute",
       bottom: "0",
       width: "100%",
-      backgroundColor: "#57bfc6"
+      backgroundColor: "#231f20"
     },
     toolbar: {
       justifyContent: "space-between",

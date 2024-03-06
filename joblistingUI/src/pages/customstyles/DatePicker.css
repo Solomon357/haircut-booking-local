@@ -6,7 +6,7 @@
 
 /* day item on hover */
 [class^="DatePicker_dateDayItem"]:hover {
-  background-color: rgb(209, 207, 207);
+  background-color: rgb(66, 60, 62);
   border-radius: 50%;
 }
 

@@ -14,6 +14,10 @@ export const useFetch = (url) => {
         console.log("Info data coming in: ", data);
       })
       .catch(err => {
+        //if data.error exists then do the rest of the code below
+        // error:500 = "internal server error"
+        // error:404 = "not found error"
+
         console.log(err)
         setError(err)
       })

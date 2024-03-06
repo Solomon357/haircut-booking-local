@@ -11,6 +11,8 @@ const HaircutForm = () => {
     pagebody: {
       position: "relative",
       minHeight: "100vh",
+      backgroundColor: "#231f20",
+      color: "antiquewhite"
     },
     main: {
       minWidth: "100%",
