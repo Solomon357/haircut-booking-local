@@ -17,7 +17,7 @@ const HeaderBar = () => {
 
       headertitle : {
         fontWeight: "bold",
-        letterSpacing: { xs: '0.1rem', sm: '0.2rem' },
+        // letterSpacing: { xs: '0.1rem', sm: '0.2rem' },
         fontSize: { xs: '1rem', sm: '1.8rem' },
       },
       brandtitle : {

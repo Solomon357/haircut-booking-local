@@ -31,7 +31,7 @@ const HaircutDatetime = () => {
 
   const timeInputs = (
     <FormControl sx={{width: "80%", marginTop:"20px"}}>
-      <FormLabel id="time-radiogroup-label" sx={styles.formlabel}>Pick Time Slot</FormLabel>
+      <FormLabel id="time-radiogroup-label" sx={styles.formlabel}>Pick a Time Slot</FormLabel>
       <RadioGroup
         aria-labelledby="time-radiogroup-label"
         value={allOptions.time}

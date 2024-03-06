@@ -14,9 +14,14 @@ const title = {
 
 export const FormProvider = ({ children }) => {
 
-  //TO DO FOR TOMORROW: 
-  //1. change design of stepper? 
-  //2. Quality Assurance, add all the fancy animations and ideas i want
+  //TO DO FOR TOMORROW:  
+  // 1. Quality Assurance, add all the fancy animations and ideas i want
+  // in any order:
+  //  (a). font choice
+  //  (b). further add to stepper
+  //  (c). change confirmation image to match theme
+  //  (d). make elavation of header responsive
+  //  (e). fix position of the footer
   //(2). properly handle all error types not just error 404
   //(3). finally deal with availability functionality??
 

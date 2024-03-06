@@ -14,8 +14,10 @@ const FormProgress = () => {
         marginY: "20px"
       },
       stepicon: {
+
         '& .MuiStepLabel-label':{
           color: "antiquewhite",
+          
           '&.Mui-active':{
             color: '#faa749'
           },

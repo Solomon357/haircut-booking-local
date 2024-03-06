@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Snackbar, Alert, Box, Stack } from "@mui/material";
+import { Snackbar, Alert, Box, Stack, Link } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import "../App.css"
 import HaircutBrand from "../images/HaircutBrand.jpg"
@@ -31,12 +31,18 @@ const Home = () => {
       backgroundColor: "#231f20"
     },
     content: {
-      width:"50vh",
+      width:"70vh",
       height: "80vh",
       alignItems:"center",
       direction: "column",
       //border:"1px solid white",
       padding: "3%"
+    },
+    image:{
+      width:"100%",
+      maxWidth: "450px", 
+      height:"300px",
+      //border: "1px solid white"
     }
   }
 
@@ -46,19 +52,16 @@ const Home = () => {
       
       <Stack sx={styles.content} spacing={8}>
 
-        <Box width={"fit-content"} height={"fit-content"}>
-          <img src={HaircutBrand} alt="haircutBrand" height={"300px"} width={"450px"} />
-        </Box>
+        <Box
+          component={"img"} 
+          sx={styles.image}
+          src={HaircutBrand}
+          alt="haircut Logo"
+        />
         
-          <MainButton href="/bookHaircut" sx={{ padding:"6%", borderRadius: "20px", width:"100%" }} >
+          <MainButton href="/bookHaircut" sx={{ padding:"4%", borderRadius: "20px", width:"100%", maxWidth:"450px"}} >
             Book a haircut
-          </MainButton>  
-
-          
-          
-          {/* <Button href="/multiFormTest" sx={{ padding:"3%", borderRadius: "20px" }} variant="outlined" >
-              Multipage Test
-          </Button> */}
+          </MainButton> 
       </Stack>  
     
       <Snackbar open={successToast} autoHideDuration={5000} onClose={handleClose}>
@@ -67,8 +70,7 @@ const Home = () => {
         </Alert>
       </Snackbar>
       
-      {/* attribution required will be a footer using absolute position once i've finished*/}
-      {/* <a href="https://www.vecteezy.com/free-vector/haircut-logo">Haircut Logo Vectors by Vecteezy</a> */}
+      <Link sx={{position: "fixed", bottom: "20px", right: "20px" }} href="https://www.vecteezy.com/free-vector/haircut-logo">Haircut Logo Vectors by Vecteezy</Link>
     </Box>
   )
 

@@ -20,7 +20,7 @@ const HaircutBarber = () => {
   
     <FormControl sx={{ width:"100%" }}>
         
-      <FormLabel id="barber-radio-buttons" sx={styles.formlabel}>Barber Options</FormLabel>
+      <FormLabel id="barber-radio-buttons" sx={styles.formlabel}>Select a Barber</FormLabel>
 
       <RadioGroup
         row
@@ -40,7 +40,7 @@ const HaircutBarber = () => {
               control={<Radio sx={{display: "none"}} />} 
               label={
                 <Stack direction={"column"} justifyContent={"center"} alignItems={"center"}>
-                  <Avatar>{barberArr[3]}</Avatar>
+                  <Avatar sx={{backgroundColor: "#fff0df", color:"#faa749" }}>{barberArr[3]}</Avatar>
                   <Typography>{barberArr[0]}</Typography>
                   <Typography sx={{color: '#898989'}}>{barberArr[1]}</Typography>
                   <Typography>£{(form.haircutPrice + (+barberArr[2]))}</Typography>
