@@ -12,29 +12,29 @@ const HeaderBar = () => {
       appbar: {
         position: "sticky",
         top: "0", 
-        backgroundColor: "#231f20"
+        backgroundColor: "#231f20",
+        width: "100%",
+        height:"64px"
       },
 
       headertitle : {
         fontWeight: "bold",
-        // letterSpacing: { xs: '0.1rem', sm: '0.2rem' },
-        fontSize: { xs: '1rem', sm: '1.8rem' },
+        
+        fontSize: {xs: "1rem", sm: "1.5rem", md:"2rem"}
       },
       brandtitle : {
-        // letterSpacing: { xs: '0.1rem', sm: '0.2rem' },
-        marginLeft: "10px",
-        fontSize: { xs: '0.8rem', sm: '1.4rem' },
+        fontSize: {xs: "0.6rem", sm: "1rem", md:"1.3rem"}
       }
     }
 
     const content = (
       <AppBar 
-        elevation={2} // later i will adjust to elevate once position is sticky
+        elevation={2}
         className='header-content'
         component={"header"} 
         sx={styles.appbar}
       >
-        <Container sx={{ marginLeft: {xs: "0px", md: "75px"} }} >
+        <Container>
           <Toolbar
             disableGutters
             sx={{justifyContent:"space-between"}}
@@ -43,19 +43,15 @@ const HeaderBar = () => {
               
               <SciccorIcon height={"40px"} width={"40px"}/>
 
-              <Typography
-                variant='h6' 
-                sx={styles.brandtitle}
-              >
-              BARBER SHOP
+              <Typography sx={styles.brandtitle} marginLeft={"10px"}>
+                <Typography component={"span"} sx={styles.brandtitle} fontWeight={"medium"}>BARBER</Typography> SHOP 
               </Typography>
+
             </Stack> 
 
-            <Typography 
-              variant='h3' 
-              sx={styles.headertitle}>
+            <Typography sx={styles.headertitle} noWrap>
                 {title[page]}
-              </Typography>
+            </Typography>
 
             <IconButton href='/' size='large' sx={{color: '#faa749'}}>
               <HomeIcon />

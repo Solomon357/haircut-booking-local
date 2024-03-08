@@ -5,11 +5,14 @@ import "./customstyles/DatePicker.css"
 import { CustomControlLabel } from "./customstyles/CustomRadio.styles";
 import { ReactComponent as CheckedIcon } from "../images/filled_checked_icon.svg"
 import { useFetch } from "../customhooks/useFetch";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 
 const HaircutDatetime = () => {
   const { form, handleChange, handleDateChange } = useFormContext();
   const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allTimeInfo`);
+  const navigate = useNavigate();
 
   const styles = {
     formlabel: {
@@ -20,6 +23,13 @@ const HaircutDatetime = () => {
     }
   }
 
+  //find a way to make this error code re-usable later
+  useEffect(()=> {
+    if(error){
+      navigate("/error")
+    }
+  }, [navigate, error])
+
   //because DatePicker import doesnt allow me to access button events through "handleDateChange", 
   //I'm accessing buttons through DOM instead to stop refreshing on click 
   const dateButtons = document.querySelectorAll("button[class^='DatePicker_button__']")
@@ -27,7 +37,6 @@ const HaircutDatetime = () => {
   for(let i = 0; i < dateButtons.length; i++){
     dateButtons[i].addEventListener("click", (e) => {e.preventDefault()})
   }
-
 
   const timeInputs = (
     <FormControl sx={{width: "80%", marginTop:"20px"}}>
@@ -73,8 +82,6 @@ const HaircutDatetime = () => {
       />
 
       {isLoading && <Box color={"#faa749"}><CircularProgress color="inherit"/></Box>}
-
-      {error &&  <Typography>Sorry something went wrong! please try again</Typography>}
 
       {!isLoading && !error && timeInputs}
     </Box>

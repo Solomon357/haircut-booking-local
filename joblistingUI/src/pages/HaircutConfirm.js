@@ -51,17 +51,22 @@ const HaircutConfirm = () => {
 
 
   const content = (
-    <Box sx={{ mt:"40px", maxWidth:"500px"}}>
+    <Box sx={{ mt:"40px", maxWidth:"500px", width:"100%"}}>
 
       <Stack direction={"column"} display={"flex"} alignItems={"center"} spacing={4}>
-        <Box sx={{ display:"flex", flexDirection:"column", alignItems:"center"}}>
-          <img 
+        <Box display={"flex"} flexDirection={"column"} alignItems={"center"}>
+          <Box
+            component={"img"} 
+            sx={{
+              width:"100%",
+              height:"100%",
+              maxWidth:"200px", 
+              maxHeight:"200px"  
+            }}
             src={ThumbsUpImg}
-            alt={"cannot be displayed"}  
-            width= "200px" 
-            height="200px"  
+            alt={"cannot be displayed"} 
           />
-      
+
           <Typography variant="h4">Thanks {form.haircutBookingName}!</Typography>
         </Box>
         <Typography textAlign={"center"}>Please make sure the details in the cart are correct before confirming your booking!</Typography>
@@ -73,16 +78,15 @@ const HaircutConfirm = () => {
           disabled={!canSubmit}
           onClick={handleSubmit}
         >
-          Book Haircut
+          <Typography fontWeight={"medium"}>Book Haircut</Typography>
         </ProgressButton>
 
         <Snackbar open={errorToast} autoHideDuration={6000} onClose={handleClose}>
           <Alert onClose={handleClose} severity="error" variant="filled">
-            Something went wrong! Please try again
+            <Typography>Something went wrong! Please try again</Typography>
           </Alert>
         </Snackbar>
       </Stack>
-
     </Box>
   );
   

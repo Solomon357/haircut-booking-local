@@ -3,19 +3,21 @@ import FormInputs from './FormInputs';
 import FormProgress from './components/FormProgress';
 import HeaderBar from './components/HeaderBar';
 import Footer from './components/Footer';
-import ButtonSection from './components/ButtonSection';
 import CartBox from './components/CartBox';
+import BackButton from './components/BackButton';
 
 const HaircutForm = () => {
   const styles = {
     pagebody: {
       position: "relative",
       minHeight: "100vh",
+      minWidth: "100vw",
       backgroundColor: "#231f20",
       color: "antiquewhite"
     },
     main: {
       minWidth: "100%",
+      minHeight: "100%",
       paddingBottom: "5rem", // has to be more than footer height
     },
     forminputs: {
@@ -44,7 +46,7 @@ const HaircutForm = () => {
  
           <CartBox />
 
-          <ButtonSection />  
+          <BackButton />  
         </form>
       </Box>
 

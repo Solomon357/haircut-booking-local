@@ -1,13 +1,15 @@
-import { Box, Container, Stack, Toolbar, Typography } from "@mui/material";
+import { IconButton, Link, Stack, Typography } from "@mui/material";
 import EmailIcon from '@mui/icons-material/Email';
 
 const Footer = () => {
   const styles = {
     footer: {
-      position: "absolute",
-      bottom: "0",
-      width: "100%",
-      backgroundColor: "#231f20"
+      display:"flex",
+      position: "absolute", 
+      bottom: "20px",
+      justifyContent:"space-around",
+      width:"100%",
+      alignItems:"center",
     },
     toolbar: {
       justifyContent: "space-between",
@@ -16,26 +18,24 @@ const Footer = () => {
   }
 
   const content = (
-    <Box 
-      sx={styles.footer} 
-      component={"footer"}
-    > 
-      <Container>
-        <Toolbar sx={styles.toolbar}>
+    <Stack component="footer" direction={"row"} sx={styles.footer} flexWrap={"wrap"}>
+      
+      <Stack direction={"row"} alignItems={"center"}>
+        <IconButton href="mailto:solomonoddy@hotmail.com">
+          <EmailIcon htmlColor="antiquewhite"/>
+        </IconButton>
 
-          <Stack spacing={1} direction={"row"}>
-            <EmailIcon />
-            <Typography>Solomonoddy@hotmail.com</Typography>
-          </Stack>
+        <Link href="mailto:solomonoddy@hotmail.com">
+          <Typography color={"antiquewhite"}>Solomonoddy@hotmail.com</Typography>
+        </Link>
+      </Stack>
+    
+      <Stack spacing={"20px"} direction={"row"}>
+        <Typography>Terms & Conditions</Typography>
 
-          <Stack spacing={"20px"} direction={"row"}>
-            <Typography>Terms & Conditions</Typography>
-            <Typography>Privacy Policy</Typography>
-          </Stack>
-
-        </Toolbar>
-      </Container>
-    </Box>
+        <Typography>Privacy Policy</Typography>
+      </Stack>
+    </Stack>
   )
 
   return content;

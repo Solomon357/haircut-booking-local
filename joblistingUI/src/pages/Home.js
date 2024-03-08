@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Snackbar, Alert, Box, Stack, Link } from "@mui/material";
+import { Snackbar, Alert, Box, Stack, Link, IconButton, Typography } from "@mui/material";
 import { useLocation } from "react-router-dom";
 import "../App.css"
 import HaircutBrand from "../images/HaircutBrand.jpg"
 import { MainButton } from "./customstyles/Button.styles";
+import EmailIcon from '@mui/icons-material/Email';
 
 const Home = () => {
   const location = useLocation();
@@ -24,7 +25,7 @@ const Home = () => {
 
   const styles = {
     main:{
-      height: "100vh",
+      minHeight: "100vh",
       display: "flex",
       alignItems: "center",
       justifyContent: "center",
@@ -35,14 +36,21 @@ const Home = () => {
       height: "80vh",
       alignItems:"center",
       direction: "column",
-      //border:"1px solid white",
       padding: "3%"
     },
     image:{
       width:"100%",
-      maxWidth: "450px", 
+      maxWidth: "500px", 
       height:"300px",
-      //border: "1px solid white"
+    },
+    links:{
+      display:"flex",
+      position: "fixed", 
+      bottom: "20px",
+      justifyContent:"space-between",
+      width:"95%",
+      alignItems:"center"
+     
     }
   }
 
@@ -60,17 +68,34 @@ const Home = () => {
         />
         
           <MainButton href="/bookHaircut" sx={{ padding:"4%", borderRadius: "20px", width:"100%", maxWidth:"450px"}} >
-            Book a haircut
+            <Typography fontWeight={"medium"}>Book a haircut</Typography>
           </MainButton> 
       </Stack>  
     
+     
+      <Stack direction={"row"} sx={styles.links} flexWrap={"wrap"}>
+        
+        <Stack direction={"row"} alignItems={"center"}>
+          <IconButton href="mailto:solomonoddy@hotmail.com">
+            <EmailIcon htmlColor="antiquewhite"/>
+          </IconButton>
+
+          <Link href="mailto:solomonoddy@hotmail.com">
+            <Typography color={"antiquewhite"}>Solomonoddy@hotmail.com</Typography>
+          </Link>
+        </Stack>
+      
+        <Link href="https://www.vecteezy.com/free-vector/haircut-logo">
+          <Typography color={"antiquewhite"}>Haircut Logo Vectors by Vecteezy</Typography>
+        </Link>
+      </Stack>
+
       <Snackbar open={successToast} autoHideDuration={5000} onClose={handleClose}>
         <Alert onClose={handleClose} severity="success" variant="filled">
-          Booking successful! See you soon
+          <Typography>Booking successful! See you soon </Typography>
         </Alert>
       </Snackbar>
-      
-      <Link sx={{position: "fixed", bottom: "20px", right: "20px" }} href="https://www.vecteezy.com/free-vector/haircut-logo">Haircut Logo Vectors by Vecteezy</Link>
+
     </Box>
   )
 

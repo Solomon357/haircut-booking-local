@@ -5,31 +5,14 @@ import { CustomControlLabel } from "./customstyles/CustomRadio.styles";
 import { useEffect, useState } from "react";
 import SearchBar from "./components/SearchBar";
 import { useFetch } from "../customhooks/useFetch";
+import { useNavigate } from "react-router-dom";
 
 const HaircutType = () => {
   const { form, handleChange } = useFormContext();
   const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allHaircutInfo`)
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredOptions, setFilteredOptions] = useState([]);
-
-  useEffect(() => {
-    //if there are no keys in options then theres no data
-    if (Object.keys(allOptions).length > 0){
-      setFilteredOptions(allOptions)
-    }
-  }, [allOptions])
-
-
-  const handleSearchChange = (e) => {
-    const searchTerm = e.target.value;
-    setSearchQuery(searchTerm)
-
-    const filteredItems = allOptions.filter((options) =>
-      options.value.toLowerCase().includes(searchTerm.toLowerCase())
-    )
-
-    setFilteredOptions(filteredItems)
-  }
+  const navigate = useNavigate();
 
   const styles = {
     formlabel: {
@@ -39,6 +22,38 @@ const HaircutType = () => {
       }
     }
   }
+
+  useEffect(() => {
+    // error handling needs to be in useEffect if im navigating so that another component
+    // doesn't get updated while this component is rendering 
+    if(error){
+      navigate("/error")
+    }
+
+    //if there are no keys in options then theres no data
+    if (Object.keys(allOptions).length > 0){
+      setFilteredOptions(allOptions)
+    }
+  }, [allOptions, navigate, error])
+
+
+  const handleSearchChange = (e) => {
+    const searchTerm = e.target.value;
+    setSearchQuery(searchTerm)
+
+    const filteredItems = allOptions.filter((options) =>
+      options.value.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    setFilteredOptions(filteredItems)
+  }
+
+  // in order to update the component
+
+  // useEffect(()=> {
+  //   if(error){
+  //     navigate("/error")
+  //   }
+  // }, [navigate, error])
 
   const haircutInputs = (
     <FormControl sx={{ width:"80%", zIndex:"0" }}>
@@ -83,8 +98,6 @@ const HaircutType = () => {
         handleSearch={handleSearchChange}
       />
       {isLoading && <Box color={"#faa749"}><CircularProgress color="inherit"/></Box>}
-
-      {error &&  <Typography>Sorry something went wrong! please try again</Typography>}
 
       {!isLoading && !error && filteredOptions.length === 0 
         ? <Typography>No matches from search!! please type something else</Typography> // make this look better later

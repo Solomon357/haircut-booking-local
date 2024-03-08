@@ -1,9 +1,13 @@
-import { Box, Step, StepLabel, Stepper } from "@mui/material";
+import { Box, Step, StepLabel, Stepper, useMediaQuery, useTheme } from "@mui/material";
 import useFormContext from "../../customhooks/useFormContext";
 import { useMemo } from "react";
 
 const FormProgress = () => {
   const { page, title } = useFormContext();
+
+  //im using this to try render based on mui breakpoints
+  const theme = useTheme();
+  const small = useMediaQuery(theme.breakpoints.down('sm')) 
 
   //useMemo so that progress bar will only re-render once 
   //page or title dependecies are changed
@@ -13,7 +17,7 @@ const FormProgress = () => {
         minWidth: '100%', 
         marginY: "20px"
       },
-      stepicon: {
+      stepperstyle: {
 
         '& .MuiStepLabel-label':{
           color: "antiquewhite",
@@ -25,34 +29,61 @@ const FormProgress = () => {
             color: '#faa749'
           }
         },
+
         '& .MuiSvgIcon-root': {
           '&.Mui-active':{
             color: '#faa749'
           },
           '&.Mui-completed':{
             color: '#faa749'
+          },  
+        },
+
+        '& .MuiStepConnector-root':{
+          '&.Mui-active':{
+            border: '1px solid #faa749'
           },
-          
+
+          '&.Mui-completed':{
+            border: '1px solid #faa749'
+          }
         }
       }
     }
 
+    const smallStepper = (
+      <Stepper activeStep={page} alternativeLabel sx={styles.stepperstyle}>
+        {Object.keys(title).map((label) => (
+          <Step 
+            key={label+1} 
+            >
+            <StepLabel></StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+    )
+
+    const bigStepper = (
+      <Stepper activeStep={page} alternativeLabel sx={styles.stepperstyle}>
+        {Object.keys(title).map((label) => (
+          <Step 
+            key={label+1} 
+            >
+            <StepLabel>{title[label]}</StepLabel>
+          </Step>
+        ))}
+      </Stepper>
+    )
+
     const content = (
       <Box sx={styles.steppercontainer}>
-        <Stepper activeStep={page} alternativeLabel sx={styles.stepicon}>
-          {Object.keys(title).map((label) => (
-            <Step 
-              key={label+1} 
-              >
-              <StepLabel>{title[label]}</StepLabel>
-            </Step>
-          ))}
-        </Stepper>
+        {small ? smallStepper : bigStepper}
       </Box>
     )
 
-    return content 
-  },[page, title])
+    return content
+    
+  },[page, title, small])
 }
   
 export default FormProgress;

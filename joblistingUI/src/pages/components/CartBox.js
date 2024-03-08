@@ -28,7 +28,7 @@ const CartBox = () => {
       position:{xs:"sticky", md:"fixed"},
       top:{ md:"150px"},
       bottom:{xs: "0"},
-      right:{md:"15%"},
+      right:{md:"10%"},
       height: "fit-content",
       width:{xs:"100%", md: "400px"},
       zIndex: 3, // so it can appear over everything else once small
@@ -53,7 +53,6 @@ const CartBox = () => {
     },
     divide:{
       borderColor:"antiquewhite"
-     
     }
 
   }
@@ -79,9 +78,9 @@ const CartBox = () => {
             type="button"
             onClick={handleNext}
             disabled={disableNext}
-            disableRipple
+            //disableRipple
           >
-            Continue 
+           <Typography>Continue</Typography>  
           </ProgressButton>
         </Box>
       </Stack>
@@ -92,7 +91,7 @@ const CartBox = () => {
   const bigCart = (
     <Box sx={styles.cartcontent}>
 
-      <Typography variant="h5" alignSelf={"center"} >Cart</Typography>
+      <Typography variant="h5" alignSelf={"center"} marginBottom={"10px"} >Cart</Typography>
 
       <Divider variant='middle' sx={styles.divide}/>
 
@@ -139,7 +138,7 @@ const CartBox = () => {
           onClick={handleNext}
           disabled={disableNext}
         >
-          Continue
+          <Typography fontWeight={"medium"}>Continue</Typography> 
         </ProgressButton> 
       </Box>
     </Box>         

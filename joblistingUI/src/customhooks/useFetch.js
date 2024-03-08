@@ -18,8 +18,8 @@ export const useFetch = (url) => {
         // error:500 = "internal server error"
         // error:404 = "not found error"
 
-        console.log(err)
-        setError(err)
+        console.log(err.message)
+        setError(err.message)
       })
       .finally(() => setIsLoading(false))
 

@@ -2,11 +2,13 @@ import { Avatar, Box, CircularProgress, FormControl, FormLabel, Radio, RadioGrou
 import useFormContext from "../customhooks/useFormContext";
 import { BarberControlLabel } from "./customstyles/BarbarInfoRadio.styles";
 import { useFetch } from "../customhooks/useFetch";
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const HaircutBarber = () => {
   const { form, handleChange } = useFormContext();
   const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allBarberInfo`);
-
+  const navigate = useNavigate();
   const styles = {
     formlabel: {
       color: "antiquewhite",
@@ -15,6 +17,14 @@ const HaircutBarber = () => {
       }
     }
   }
+
+  //find a way to make this chunk of code re-usable later
+  useEffect(()=> {
+    if(error){
+      navigate("/error")
+    }
+  }, [navigate, error])
+
 
   const barberInputs = (
   
@@ -56,8 +66,6 @@ const HaircutBarber = () => {
   const content = (
     <>
       {isLoading && <Box color={"#faa749"}><CircularProgress color="inherit"/></Box>}
-
-      {error &&  <Typography>Sorry something went wrong! please try again</Typography>}
 
       {!isLoading && !error && allOptions.length === 0 
         ? <Typography>No matches from search!! please type something else</Typography> // make this look better later
