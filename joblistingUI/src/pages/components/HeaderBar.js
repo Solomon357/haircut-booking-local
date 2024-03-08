@@ -19,11 +19,12 @@ const HeaderBar = () => {
 
       headertitle : {
         fontWeight: "bold",
-        
-        fontSize: {xs: "1rem", sm: "1.5rem", md:"2rem"}
+        fontSize: { sm: "2rem", md:"2.5rem" },
+        marginLeft: "5px"
       },
       brandtitle : {
-        fontSize: {xs: "0.6rem", sm: "1rem", md:"1.3rem"}
+        display: { xs: "none", sm: "block" },
+        fontSize: { sm: "1rem", md:"1.3rem"}
       }
     }
 

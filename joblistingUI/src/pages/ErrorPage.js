@@ -2,8 +2,6 @@ import { Box, Stack, Typography } from "@mui/material";
 import { MainButton } from "./customstyles/Button.styles";
 import ErrorIcon from "../images/error_icon.png"
 
-
-
 const ErrorPage = () => {
 
   const styles = {
@@ -13,23 +11,19 @@ const ErrorPage = () => {
       alignItems: "center",
       justifyContent: "center",
       backgroundColor: "#231f20",
-      color: "antiquewhite",
-      
+      color: "antiquewhite", 
     },
     content:{
       width:"fit-content",
       height: "fit-content",
       alignItems:"center",
       direction: "column",
-      //border:"1px solid white",
-      //padding: "3%"
     },
     image: {
       width: "100%",
       maxWidth: "350px",
       height: "100%",
       maxHeight:"350px",
-    
     }
   }
   

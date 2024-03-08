@@ -4,8 +4,6 @@ import { useMemo } from "react";
 
 const FormProgress = () => {
   const { page, title } = useFormContext();
-
-  //im using this to try render based on mui breakpoints
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.down('sm')) 
 
@@ -81,7 +79,7 @@ const FormProgress = () => {
       </Box>
     )
 
-    return content
+    return content;
     
   },[page, title, small])
 }

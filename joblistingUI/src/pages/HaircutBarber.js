@@ -9,12 +9,18 @@ const HaircutBarber = () => {
   const { form, handleChange } = useFormContext();
   const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allBarberInfo`);
   const navigate = useNavigate();
+
   const styles = {
     formlabel: {
       color: "antiquewhite",
       "&.Mui-focused": {
         color:"#faa749"
       }
+    },
+    info: {
+      justifyContent: "center",
+      alignItems:"center",
+      textAlign:"center"
     }
   }
 
@@ -49,7 +55,7 @@ const HaircutBarber = () => {
               value={barberDetails.barber} 
               control={<Radio sx={{display: "none"}} />} 
               label={
-                <Stack direction={"column"} justifyContent={"center"} alignItems={"center"}>
+                <Stack direction={"column"} sx={styles.info}>
                   <Avatar sx={{backgroundColor: "#fff0df", color:"#faa749" }}>{barberArr[3]}</Avatar>
                   <Typography>{barberArr[0]}</Typography>
                   <Typography sx={{color: '#898989'}}>{barberArr[1]}</Typography>

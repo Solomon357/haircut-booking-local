@@ -30,7 +30,7 @@ const HaircutType = () => {
       navigate("/error")
     }
 
-    //if there are no keys in options then theres no data
+    //if there are no keys in options then theres no search results
     if (Object.keys(allOptions).length > 0){
       setFilteredOptions(allOptions)
     }
@@ -46,14 +46,6 @@ const HaircutType = () => {
     )
     setFilteredOptions(filteredItems)
   }
-
-  // in order to update the component
-
-  // useEffect(()=> {
-  //   if(error){
-  //     navigate("/error")
-  //   }
-  // }, [navigate, error])
 
   const haircutInputs = (
     <FormControl sx={{ width:"80%", zIndex:"0" }}>

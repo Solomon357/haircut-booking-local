@@ -20,7 +20,6 @@ export const SearchField = styled(TextField)({
   },
 })
 
-
 export const NameField = styled(TextField)({
 
   "& input":{

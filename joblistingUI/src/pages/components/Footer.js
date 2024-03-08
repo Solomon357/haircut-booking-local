@@ -25,15 +25,19 @@ const Footer = () => {
           <EmailIcon htmlColor="antiquewhite"/>
         </IconButton>
 
-        <Link href="mailto:solomonoddy@hotmail.com">
-          <Typography color={"antiquewhite"}>Solomonoddy@hotmail.com</Typography>
+        <Link href="mailto:solomonoddy@hotmail.com" color="inherit" underline="hover">
+          <Typography >Solomonoddy@hotmail.com</Typography>
         </Link>
       </Stack>
     
       <Stack spacing={"20px"} direction={"row"}>
-        <Typography>Terms & Conditions</Typography>
+        <Link color={'#898989'} underline="hover">
+          <Typography >Terms & Conditions</Typography>
+        </Link>
 
-        <Typography>Privacy Policy</Typography>
+        <Link color={'#898989'} underline="hover">
+          <Typography color={'#898989'}>Privacy Policy</Typography>
+        </Link>
       </Stack>
     </Stack>
   )

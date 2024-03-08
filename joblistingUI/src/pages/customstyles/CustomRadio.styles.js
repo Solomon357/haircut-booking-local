@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import { FormControlLabel, useRadioGroup } from "@mui/material";
 
 const styles = {
-  //make responsive later
+  
   customformlabel: {
     color: "antiquewhite",
     border: "2px solid #444343", 

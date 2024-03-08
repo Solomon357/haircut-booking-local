@@ -8,20 +8,9 @@ import { ProgressButton } from "../customstyles/Button.styles";
 
 const CartBox = () => {
   const { page, setPage, canSubmit, form, disableNext } = useFormContext();
-  
-  let haircutArr = form.haircutType ? form.haircutType.split(",") : ["Select a Service", ""];
-  let barberArr = page >= 2 && form.barberInfo ? form.barberInfo.split(",") : ["", ""];
-
-  //capitilised for display purposes
-  let name = form.haircutBookingName;
-  let bookingName = page > 1 && name 
-    ? " for "+ name.charAt(0).toUpperCase() + name.slice(1)  
-    : ""
-  ;
-
-  //im using this to try render based on mui breakpoints
+  //trying rendering based on mui breakpoints
   const theme = useTheme();
-  const small = useMediaQuery(theme.breakpoints.down('md')) 
+  const small = useMediaQuery(theme.breakpoints.down('md'))
 
   const styles = {
     cartcontainer: {
@@ -54,13 +43,22 @@ const CartBox = () => {
     divide:{
       borderColor:"antiquewhite"
     }
-
   }
 
   const handleNext = () => {
     setPage(next => next + 1)
   }
 
+
+  let haircutArr = form.haircutType ? form.haircutType.split(",") : ["Select a Service", ""];
+  let barberArr = page >= 2 && form.barberInfo ? form.barberInfo.split(",") : ["", ""];
+
+  //capitilised for display purposes
+  let name = form.haircutBookingName;
+  let bookingName = page > 1 && name 
+    ? " for "+ name.charAt(0).toUpperCase() + name.slice(1)  
+    : ""
+  ;
 
   const smallCart = (
     <Box sx={styles.cartcontent}>

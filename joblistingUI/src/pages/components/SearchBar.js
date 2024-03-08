@@ -27,7 +27,6 @@ const SearchBar = ({ searchInput, handleSearch }) => {
       type="input"
       onFocus={() => window.scroll({ top: 0, behavior: 'smooth'})}
       id="input-with-icon-textfield"
-      //className="TextField"
       placeholder="Search here..."
       value={searchInput}
       onChange={handleSearch}

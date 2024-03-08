@@ -18,7 +18,7 @@ export const FormProvider = ({ children }) => {
   // 1. Quality Assurance, add all the fancy animations and ideas i want
   // in any order:
   //  (a). add animation to the confirmation page img
-  //  3. deploy the project on a server
+  //  2. deploy the project on a server
 
   const [page, setPage] = useState(0)
 
@@ -44,9 +44,7 @@ export const FormProvider = ({ children }) => {
       let radioValues = value.split(",");
       radioValues[2] = +radioValues[2];
 
-      //this if statement assigns price based on which radio group is being accessed
       if(name === "haircutType"){ 
-        //** insead of changing data directly consider changing the value variable instead for consistency
         form.haircutPrice = radioValues[2];
       } else if(name === "barberInfo"){
         form.barberPrice = radioValues[2];
@@ -98,7 +96,6 @@ export const FormProvider = ({ children }) => {
     .map(key => form[key])
     .every(Boolean)
 
-  
   const disablePrev = page === 0
   
   //disable next based on parameters established above

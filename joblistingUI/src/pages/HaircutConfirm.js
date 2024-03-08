@@ -9,6 +9,7 @@ const HaircutConfirm = () => {
   const { form, canSubmit } = useFormContext();
   const [errorToast, setErrorToast] = useState(false);
   const navigate = useNavigate();
+
   const styles = {
     submit: {
       display: !canSubmit ? "none" : "block",
@@ -16,39 +17,41 @@ const HaircutConfirm = () => {
     }
   }
 
+  //capitilised for display purposes
+  let name = form.haircutBookingName;
+  let bookingName = name.charAt(0).toUpperCase() + name.slice(1)  
+
   const handleClose = () => {
     setErrorToast(false)
   };
 
   //tester submit function
-  const handleSubmit = e => {
-    e.preventDefault();
-    console.log(JSON.stringify(form))
-    navigate('/', {state: true});
-  }
+  // const handleSubmit = e => {
+  //   e.preventDefault();
+  //   console.log(JSON.stringify(form))
+  //   navigate('/', {state: true});
+  // }
 
   // proper handleSubmit function here
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   fetch("http://localhost:8081/submitpost", {
-  //     method: "POST", // or 'PUT'
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify(form),
-  //   })
-  //   .then((response) => {
-  //     console.log(response)
-  //     console.log("Success!")
-  //     navigate('/', {state: true})
-  //   })
-  //   .catch((error) => {
-  //     console.error("Error:", error)
-  //     setErrorToast(true)
-  //   });
-    
-  // };
-
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    fetch("http://localhost:8081/submitpost", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(form),
+    })
+    .then((response) => {
+      console.log(response)
+      console.log("Success!")
+      navigate('/', {state: true})
+    })
+    .catch((error) => {
+      console.error("Error:", error)
+      setErrorToast(true)
+    });
+  };
 
   const content = (
     <Box sx={{ mt:"40px", maxWidth:"500px", width:"100%"}}>
@@ -67,7 +70,7 @@ const HaircutConfirm = () => {
             alt={"cannot be displayed"} 
           />
 
-          <Typography variant="h4">Thanks {form.haircutBookingName}!</Typography>
+          <Typography variant="h4">Thanks {bookingName}!</Typography>
         </Box>
         <Typography textAlign={"center"}>Please make sure the details in the cart are correct before confirming your booking!</Typography>
 

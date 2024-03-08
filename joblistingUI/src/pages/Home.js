@@ -36,7 +36,8 @@ const Home = () => {
       height: "80vh",
       alignItems:"center",
       direction: "column",
-      padding: "3%"
+      padding: "3%",
+      color: "antiquewhite"
     },
     image:{
       width:"100%",
@@ -53,7 +54,6 @@ const Home = () => {
      
     }
   }
-
 
   const content = (
     <Box sx={styles.main} >
@@ -73,20 +73,20 @@ const Home = () => {
       </Stack>  
     
      
-      <Stack direction={"row"} sx={styles.links} flexWrap={"wrap"}>
+      <Stack direction={"row"} sx={styles.links} flexWrap={"wrap"} color={"antiquewhite"}>
         
         <Stack direction={"row"} alignItems={"center"}>
           <IconButton href="mailto:solomonoddy@hotmail.com">
             <EmailIcon htmlColor="antiquewhite"/>
           </IconButton>
 
-          <Link href="mailto:solomonoddy@hotmail.com">
-            <Typography color={"antiquewhite"}>Solomonoddy@hotmail.com</Typography>
+          <Link href="mailto:solomonoddy@hotmail.com" color="inherit" underline="hover">
+            <Typography>Solomonoddy@hotmail.com</Typography>
           </Link>
         </Stack>
       
-        <Link href="https://www.vecteezy.com/free-vector/haircut-logo">
-          <Typography color={"antiquewhite"}>Haircut Logo Vectors by Vecteezy</Typography>
+        <Link href="https://www.vecteezy.com/free-vector/haircut-logo" color="inherit" underline="hover">
+          <Typography>Haircut Logo Vectors by Vecteezy</Typography>
         </Link>
       </Stack>
 
@@ -99,7 +99,7 @@ const Home = () => {
     </Box>
   )
 
-  return content
+  return content;
 };
 
 export default Home;

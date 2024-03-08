@@ -8,7 +8,7 @@ const HaircutName = () => {
     <NameField
       type="string"
       sx={{ width: "50%", margin: "2%" }}
-      helperText="Please enter your name"
+      helperText="Please enter first name"
       id="haircutBookingName"
       name="haircutBookingName"
       label="Booking Name"

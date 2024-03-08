@@ -5,8 +5,6 @@ import HaircutBarber from "./HaircutBarber";
 import HaircutDatetime from "./HaircutDatetime";
 import HaircutConfirm from "./HaircutConfirm";
 
-
-
 const FormInputs = () => {
   const { page } = useFormContext();
 

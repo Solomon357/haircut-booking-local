@@ -71,7 +71,6 @@ const HaircutDatetime = () => {
         width: "100%",
         justifyContent:"center",
         alignItems:"center"
-        //border:"1px solid black"
       }}
     >
       <Typography variant="h5">Pick Date</Typography>
