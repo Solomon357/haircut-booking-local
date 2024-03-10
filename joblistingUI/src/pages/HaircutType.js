@@ -48,7 +48,7 @@ const HaircutType = () => {
   }
 
   const haircutInputs = (
-    <FormControl sx={{ width:"80%", zIndex:"0" }}>
+    <FormControl sx={{ width:"85%", zIndex:"0" }}>
           
       <FormLabel id="haircut-radio-buttons" sx={styles.formlabel}>Select a Haircut</FormLabel>
       

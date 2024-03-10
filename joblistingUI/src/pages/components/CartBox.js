@@ -16,8 +16,8 @@ const CartBox = () => {
     cartcontainer: {
       position:{xs:"sticky", md:"fixed"},
       top:{ md:"150px"},
-      bottom:{xs: "0"},
-      right:{md:"10%"},
+      bottom:{ xs: "0" },
+      right:{ md:"8%" },
       height: "fit-content",
       width:{xs:"100%", md: "400px"},
       zIndex: 3, // so it can appear over everything else once small

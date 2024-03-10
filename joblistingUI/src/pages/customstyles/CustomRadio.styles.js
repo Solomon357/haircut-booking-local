@@ -5,9 +5,12 @@ const styles = {
   
   customformlabel: {
     color: "antiquewhite",
-    border: "2px solid #444343", 
+    borderTop: {xs: "none", md:"2px solid #444343"}, 
+    borderLeft: {xs: "none", md:"2px solid #444343"},
+    borderRight: {xs: "none", md:"2px solid #444343"},
+    border: "2px solid #444343",
     borderRadius: '15px',
-    width:"96%",
+    width:{ xs:"100%",md:"96%"},
     height: "90px",
     padding: '5px 5px',
     margin: "5px",
@@ -29,7 +32,7 @@ const StyledFormControlLabel = styled((props) =>
   ))(({ checked }) => ({
     //styles of the component can be played around with here
     "&.MuiFormControlLabel-root": checked && {
-      border: "2px solid #faa749", 
+      borderColor:"#faa749"
     }
   })
 );

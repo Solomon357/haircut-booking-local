@@ -15,10 +15,8 @@ const title = {
 export const FormProvider = ({ children }) => {
 
   //TO DO FOR TOMORROW:  
-  // 1. Quality Assurance, add all the fancy animations and ideas i want
-  // in any order:
-  //  (a). add animation to the confirmation page img
-  //  2. deploy the project on a server
+  // 1. see if i can useMemo in formContext 
+  // 2. deploy the project on a server
 
   const [page, setPage] = useState(0)
 
