@@ -4,7 +4,6 @@ import { Home } from "./pages"
 import ErrorPage from "./pages/ErrorPage";
 import { FormProvider } from "./context/FormContext";
 import HaircutForm from "./pages/HaircutForm";
-//import { ThemeProvider } from "@mui/material";
 import { createTheme, responsiveFontSizes, ThemeProvider } from '@mui/material/styles';
 
 //to handle the font changes I will give in and create a theme
