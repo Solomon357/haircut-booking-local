@@ -16,9 +16,6 @@ export const FormProvider = ({ children }) => {
 
   //TO DO FOR TOMORROW:  
   // 1. deploy the project on a server
-  // (a). encrypt uri (access) for mongodb
-  // (b). allow mongodb network access from a range if IP addresses ??
-  // (c). deploy the servlet on a cloud platform
   // (d). deploy the ui on ideally the same cloud platform
 
   const [page, setPage] = useState(0)
