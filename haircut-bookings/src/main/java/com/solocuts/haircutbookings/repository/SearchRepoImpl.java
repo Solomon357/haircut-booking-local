@@ -53,7 +53,7 @@ public class SearchRepoImpl implements SearchRepo{
         //new Document("$limit", 5L)
         ));
        
-       //because its java we're doing a lambda to cconvert a document format to a java format so spring can actually use this data
+       //because its java we're doing a lambda to convert a document format to a java format so spring can actually use this data
        result.forEach(doc -> posts.add(converter.read(HaircutInfo.class, doc)));
 
        return posts;
