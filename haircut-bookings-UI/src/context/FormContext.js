@@ -15,7 +15,7 @@ const title = {
 export const FormProvider = ({ children }) => {
 
   //TO DO FOR TOMORROW:  
-  // 1. deploy the project on a server
+  // 1. deploy the project on a serve
   // (d). deploy the ui on ideally the same cloud platform
 
   const [page, setPage] = useState(0)
