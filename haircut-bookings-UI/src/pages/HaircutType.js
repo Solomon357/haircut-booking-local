@@ -7,10 +7,6 @@ import SearchBar from "./components/SearchBar";
 import { useFetch } from "../customhooks/useFetch";
 import { useNavigate } from "react-router-dom";
 
-// import haircutData from '../endpoints/haircutdb.json'
-
-// console.log(haircutData)
-
 const HaircutType = () => {
   const { form, handleChange } = useFormContext();
   const { allOptions, isLoading, error } = useFetch(`https://raw.githubusercontent.com/Solomon357/haircut-booking-local/main/haircut-bookings-UI/haircutdb.json`)

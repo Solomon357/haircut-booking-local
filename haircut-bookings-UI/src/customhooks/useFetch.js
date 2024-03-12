@@ -9,8 +9,8 @@ export const useFetch = (url) => {
     fetch(url) 
       .then(res => res.json())
       .then(data => {
-        setAllOptions(data)
         console.log("Info data coming in: ", data);
+        setAllOptions(data)
       })
       .catch(err => {
         console.log(err.message)
