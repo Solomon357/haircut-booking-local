@@ -7,7 +7,7 @@ import { useEffect } from "react";
 
 const HaircutBarber = () => {
   const { form, handleChange } = useFormContext();
-  const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allBarberInfo`);
+  const { allOptions, isLoading, error } = useFetch(`https://raw.githubusercontent.com/Solomon357/haircut-booking-local/main/haircut-bookings-UI/barberdb.json`);
   const navigate = useNavigate();
 
   const styles = {
