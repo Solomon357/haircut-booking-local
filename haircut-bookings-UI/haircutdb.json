@@ -1,0 +1,64 @@
+{
+  "haircutType": [
+    {
+      "_id": 1,
+      "value":"Skin Fade,30-45 mins,12"
+    },
+    {
+      "_id": 2,
+      "value":"Buzz Cut,30 mins,7"
+    },
+    {
+      "_id": 3,
+      "value":"Beard Trim & Shape,30 mins,7"
+    },
+    {
+      "_id": 4,
+      "value":"Student Discount*,30-45 mins,10"
+    },
+    {
+      "_id": 5,
+      "value":"Hair Wash,15 mins,10"
+    },
+    {
+      "_id":6,
+      "value":"Children Under 15,30-45 mins,10"
+    },
+    {
+      "_id": 7,
+      "value":"Scissor Cut,30 mins,20"
+    },
+    {
+      "_id": 8,
+      "value":"Beard Trim,15-30 mins,5"
+    },
+    {
+      "_id": 9,
+      "value":"Wet Shave,30 mins,25"
+    },
+    {
+      "_id": 10,
+      "value":"Nostril & Ear Wax,15 mins,5"
+    },
+    {
+      "_id": 11,
+      "value":"Ear Piercing,15 mins,20"
+    },
+    {
+      "_id": 12,
+      "value":"Pensioner Haircut,30-45 mins,10"
+    },
+    {
+      "_id": 13,
+      "value":"Taper Fade,45 mins,14"
+    },
+    {
+      "_id": 14,
+      "value":"Burst Fade,45 mins,14"
+    },
+    {
+      "_id": 15,
+      "value":"Hair Twists (Afro),1 hour,40"
+    }
+  ]
+}

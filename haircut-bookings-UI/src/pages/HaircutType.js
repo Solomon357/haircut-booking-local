@@ -7,9 +7,13 @@ import SearchBar from "./components/SearchBar";
 import { useFetch } from "../customhooks/useFetch";
 import { useNavigate } from "react-router-dom";
 
+// import haircutData from '../endpoints/haircutdb.json'
+
+// console.log(haircutData)
+
 const HaircutType = () => {
   const { form, handleChange } = useFormContext();
-  const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allHaircutInfo`)
+  const { allOptions, isLoading, error } = useFetch(``)
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredOptions, setFilteredOptions] = useState([]);
   const navigate = useNavigate();
@@ -64,7 +68,7 @@ const HaircutType = () => {
           return(
             <CustomControlLabel
               labelPlacement="start"
-              key={haircuts.id} 
+              key={haircuts._id} 
               checked={form.haircutType === haircuts.value} 
               value={haircuts.value} 
               control={<Radio checkedIcon={<CheckedIcon width={"25px"}/>} />} 

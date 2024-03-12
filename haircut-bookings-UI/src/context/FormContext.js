@@ -18,6 +18,9 @@ export const FormProvider = ({ children }) => {
   // 1. deploy the project on a server
   // (d). deploy the ui on ideally the same cloud platform
 
+  //OPTIONAL:
+  // add loading button for submit
+
   const [page, setPage] = useState(0)
 
   const [form, setForm] = useState({
