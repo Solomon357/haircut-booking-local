@@ -33,6 +33,7 @@ const HaircutConfirm = () => {
   }
 
   // proper handleSubmit function here
+  
   // const handleSubmit = (e) => {
   //   e.preventDefault();
   //   fetch("http://localhost:8080/submitpost", {

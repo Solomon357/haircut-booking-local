@@ -74,7 +74,6 @@ const HaircutDatetime = () => {
 
       {!isLoading && !error && timeInputs}
     </Box>
-
   );
 }
  

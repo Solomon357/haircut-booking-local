@@ -15,8 +15,7 @@ const HaircutType = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // error handling needs to be in useEffect if im navigating so that another component
-    // doesn't get updated while this component is rendering 
+    // error handling needs to be in useEffect to prevent race condition
     if(error){
       navigate("/error")
     }

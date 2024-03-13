@@ -22,7 +22,7 @@ const HaircutForm = () => {
     },
     forminputs: {
       width: {xs:"100%", md: "50%"},
-      minHeight: "35vh", // maybe tweek i dunno yet??
+      minHeight: "35vh", //
       display:"flex", 
       flexDirection:"column", 
       justifyContent:"center", 
