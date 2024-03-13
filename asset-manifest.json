@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/haircut-booking-local/static/css/main.51ba369a.css",
-    "main.js": "/haircut-booking-local/static/js/main.be213e6a.js",
+    "main.js": "/haircut-booking-local/static/js/main.b575cee0.js",
     "static/media/HaircutBrand.jpg": "/haircut-booking-local/static/media/HaircutBrand.72b4b5a889755b81b03a.jpg",
     "static/media/error_icon.png": "/haircut-booking-local/static/media/error_icon.a6571e7ddc133b103d44.png",
     "static/media/thumbs_up.png": "/haircut-booking-local/static/media/thumbs_up.2daf3933021519617d9f.png",
@@ -9,10 +9,10 @@
     "index.html": "/haircut-booking-local/index.html",
     "static/media/filled_checked_icon.svg": "/haircut-booking-local/static/media/filled_checked_icon.c57ddff23726ad98ed21e754b400a8ec.svg",
     "main.51ba369a.css.map": "/haircut-booking-local/static/css/main.51ba369a.css.map",
-    "main.be213e6a.js.map": "/haircut-booking-local/static/js/main.be213e6a.js.map"
+    "main.b575cee0.js.map": "/haircut-booking-local/static/js/main.b575cee0.js.map"
   },
   "entrypoints": [
     "static/css/main.51ba369a.css",
-    "static/js/main.be213e6a.js"
+    "static/js/main.b575cee0.js"
   ]
 }
