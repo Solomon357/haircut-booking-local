@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Snackbar, Alert, Box, Stack, Link, IconButton, Typography } from "@mui/material";
-import { useLocation } from "react-router-dom";
+import { Snackbar, Alert, Box, Stack, IconButton, Typography, Link } from "@mui/material";
+import { useLocation, Link as RouterLink } from "react-router-dom";
 import "../App.css"
 import HaircutBrand from "../images/HaircutBrand.jpg"
 import { MainButton } from "./customstyles/Button.styles";
 import EmailIcon from '@mui/icons-material/Email';
-
 const Home = () => {
   const location = useLocation();
   const [successToast, setSuccessToast] = useState();
@@ -74,7 +73,7 @@ const Home = () => {
         alt="haircut Logo"
       />
       
-        <MainButton href="/bookHaircut" sx={{ padding:"4%", borderRadius: "20px", width:"100%", maxWidth:"450px"}} >
+        <MainButton LinkComponent={RouterLink} href="/bookHaircut" sx={{ padding:"4%", borderRadius: "20px", width:"100%", maxWidth:"450px"}} >
           <Typography fontWeight={"medium"} sx={styles.texts}>Book a haircut</Typography>
         </MainButton> 
     </Stack>  
