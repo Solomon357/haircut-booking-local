@@ -73,7 +73,7 @@ const Home = () => {
         alt="haircut Logo"
       />
       
-        <MainButton LinkComponent={RouterLink} href="/bookHaircut" sx={{ padding:"4%", borderRadius: "20px", width:"100%", maxWidth:"450px"}} >
+        <MainButton LinkComponent={RouterLink} to="/bookHaircut" sx={{ padding:"4%", borderRadius: "20px", width:"100%", maxWidth:"450px"}} >
           <Typography fontWeight={"medium"} sx={styles.texts}>Book a haircut</Typography>
         </MainButton> 
     </Stack>  

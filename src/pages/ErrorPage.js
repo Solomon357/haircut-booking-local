@@ -1,7 +1,7 @@
 import { Box, Stack, Typography } from "@mui/material";
 import { MainButton } from "./customstyles/Button.styles";
 import ErrorIcon from "../images/error_icon.png"
-import { Link } from "react-router-dom";
+import { Link as RouterLink } from "react-router-dom";
 const ErrorPage = () => {
 
   const styles = {
@@ -51,7 +51,7 @@ const ErrorPage = () => {
           
         <Typography sx={styles.texts}>Click the button below to return to safety</Typography>               
 
-        <MainButton LinkComponent={Link} href="#/">
+        <MainButton LinkComponent={RouterLink} to="/">
           <Typography sx={styles.texts}>Go Home</Typography>
         </MainButton>
 

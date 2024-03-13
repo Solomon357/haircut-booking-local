@@ -3,7 +3,7 @@ import { ReactComponent as SciccorIcon } from "../../images/sciccor_icon.svg"
 import HomeIcon from '@mui/icons-material/Home';
 import useFormContext from "../../customhooks/useFormContext";
 import { useMemo } from "react";
-
+import { Link as RouterLink } from "react-router-dom";
 const HeaderBar = () => {
   const { page, title } = useFormContext();
   
@@ -54,7 +54,7 @@ const HeaderBar = () => {
                 {title[page]}
             </Typography>
 
-            <IconButton href='/' size='large' sx={{color: '#faa749'}}>
+            <IconButton LinkComponent={RouterLink} to='/' size='large' sx={{color: '#faa749'}}>
               <HomeIcon />
             </IconButton>  
 
