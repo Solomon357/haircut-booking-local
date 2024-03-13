@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 
 const HaircutType = () => {
   const { form, handleChange } = useFormContext();
-  const { allOptions, isLoading, error } = useFetch(`https://raw.githubusercontent.com/Solomon357/haircut-booking-local/main/haircut-bookings-UI/endpoints/haircutdb.json`)
+  const { allOptions, isLoading, error } = useFetch(`https://raw.githubusercontent.com/Solomon357/haircut-booking-local/main/endpoints/haircutdb.json`)
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredOptions, setFilteredOptions] = useState([]);
   const navigate = useNavigate();
@@ -49,7 +49,8 @@ const HaircutType = () => {
         value={allOptions.value} 
         onChange = {handleChange}
       >
-        {filteredOptions?.map((haircuts) => {
+        {filteredOptions && 
+          filteredOptions.map((haircuts) => {
           let haircutArr = haircuts.value.split(","); 
           return(
             <CustomControlLabel
