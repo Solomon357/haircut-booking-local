@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 const HaircutDatetime = () => {
   const { form, handleChange, handleDateChange } = useFormContext();
-  const { allOptions, isLoading, error } = useFetch(`https://raw.githubusercontent.com/Solomon357/haircut-booking-local/main/haircut-bookings-UI/endpoints/timedb.json`);
+  const { allOptions, isLoading, error } = useFetch(`https://raw.githubusercontent.com/Solomon357/haircut-booking-local/main/endpoints/timedb.json`);
   const navigate = useNavigate();
 
   //find a way to make this error code re-usable later
