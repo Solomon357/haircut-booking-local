@@ -37,8 +37,7 @@ const CartBox = () => {
     },
     continue : {
       display: canSubmit ? "none" : "block",
-      width: {xs: "fit-content", md:"100%"}, 
-      margin: "2% auto", 
+      width: {xs: "fit-content", md:"100%"} 
     },
     divide:{
       borderColor:"antiquewhite"

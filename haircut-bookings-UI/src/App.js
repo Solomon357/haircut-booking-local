@@ -16,6 +16,18 @@ let theme = createTheme({
       ].join(",")
     },
   },
+  components: {
+    MuiFormLabel: {
+      styleOverrides:{
+        root: {
+          color: "antiquewhite",
+          "&.Mui-focused": {
+            color:"#faa749"
+          }
+        }
+      }
+    }
+  }
 })
 
 //to make fonts auto responsive

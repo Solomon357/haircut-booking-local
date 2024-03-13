@@ -10,17 +10,8 @@ import { useEffect } from "react";
 
 const HaircutDatetime = () => {
   const { form, handleChange, handleDateChange } = useFormContext();
-  const { allOptions, isLoading, error } = useFetch(`http://localhost:8080/allTimeInfo`);
+  const { allOptions, isLoading, error } = useFetch(`https://raw.githubusercontent.com/Solomon357/haircut-booking-local/main/haircut-bookings-UI/endpoints/timedb.json`);
   const navigate = useNavigate();
-
-  const styles = {
-    formlabel: {
-      color: "antiquewhite",
-      "&.Mui-focused": {
-        color:"#faa749"
-      }
-    }
-  }
 
   //find a way to make this error code re-usable later
   useEffect(()=> {
@@ -39,7 +30,7 @@ const HaircutDatetime = () => {
 
   const timeInputs = (
     <FormControl sx={{width: "80%", marginTop:"20px"}}>
-      <FormLabel id="time-radiogroup-label" sx={styles.formlabel}>Pick a Time Slot</FormLabel>
+      <FormLabel id="time-radiogroup-label">Pick a Time Slot</FormLabel>
       <RadioGroup
         aria-labelledby="time-radiogroup-label"
         value={allOptions.time}
@@ -50,7 +41,7 @@ const HaircutDatetime = () => {
           return(
             <CustomControlLabel
               labelPlacement="start"
-              key={option.id} 
+              key={option._id} 
               checked={form.bookingTime === option.time} 
               value={option.time} 
               control={<Radio checkedIcon={<CheckedIcon fill="#57BFC6" width={"25px"}/>} />}  

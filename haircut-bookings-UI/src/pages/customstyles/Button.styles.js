@@ -2,6 +2,7 @@ import { styled } from '@mui/material/styles';
 import { Button }  from '@mui/material';
 
 export const ProgressButton = styled(Button)({
+  margin: "2% auto",
   backgroundColor: '#faa749',
   boxShadow: 'none',
   transition:" all 0.6s",
@@ -12,6 +13,8 @@ export const ProgressButton = styled(Button)({
 });
 
 export const PrevButton = styled(Button)({
+  marginLeft:"3%",
+  width: "150px", 
   backgroundColor: '#580016',
   boxShadow: 'none',
   transition: "all 0.6s",

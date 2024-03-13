@@ -7,16 +7,10 @@ import { useEffect } from "react";
 
 const HaircutBarber = () => {
   const { form, handleChange } = useFormContext();
-  const { allOptions, isLoading, error } = useFetch(`https://raw.githubusercontent.com/Solomon357/haircut-booking-local/main/haircut-bookings-UI/barberdb.json`);
+  const { allOptions, isLoading, error } = useFetch(`https://raw.githubusercontent.com/Solomon357/haircut-booking-local/main/haircut-bookings-UI/endpoints/barberdb.json`);
   const navigate = useNavigate();
 
   const styles = {
-    formlabel: {
-      color: "antiquewhite",
-      "&.Mui-focused": {
-        color:"#faa749"
-      }
-    },
     info: {
       justifyContent: "center",
       alignItems:"center",
@@ -36,7 +30,7 @@ const HaircutBarber = () => {
   
     <FormControl sx={{ width:"100%" }}>
         
-      <FormLabel id="barber-radio-buttons" sx={styles.formlabel}>Select a Barber</FormLabel>
+      <FormLabel id="barber-radio-buttons">Select a Barber</FormLabel>
 
       <RadioGroup
         row
@@ -50,7 +44,7 @@ const HaircutBarber = () => {
           return(
             <BarberControlLabel 
               labelPlacement="bottom"
-              key={barberDetails.id} 
+              key={barberDetails._id} 
               checked={form.barberInfo === barberDetails.barber} 
               value={barberDetails.barber} 
               control={<Radio sx={{display: "none"}} />} 

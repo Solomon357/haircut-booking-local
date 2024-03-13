@@ -7,23 +7,13 @@ const BackButton = () => {
   const { setPage, disablePrev } = useFormContext();
 
   return useMemo(() => {
-    
-    const styles = {
-      goback: {
-        marginY:"40px", 
-        marginLeft:"3%",
-        width: "150px", 
-        alignSelf: "flex-start",
-      },
-    }
-
     const handlePrev = () => {
       setPage(prev => prev - 1)
     }
     
     return (
       <PrevButton
-        sx={styles.goback}
+        sx={{ marginY:"40px" }}
         variant="contained"
         type="button"
         onClick={handlePrev}

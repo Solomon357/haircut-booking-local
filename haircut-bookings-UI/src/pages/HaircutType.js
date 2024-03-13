@@ -9,19 +9,10 @@ import { useNavigate } from "react-router-dom";
 
 const HaircutType = () => {
   const { form, handleChange } = useFormContext();
-  const { allOptions, isLoading, error } = useFetch(`https://raw.githubusercontent.com/Solomon357/haircut-booking-local/main/haircut-bookings-UI/haircutdb.json`)
+  const { allOptions, isLoading, error } = useFetch(`https://raw.githubusercontent.com/Solomon357/haircut-booking-local/main/haircut-bookings-UI/endpoints/haircutdb.json`)
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredOptions, setFilteredOptions] = useState([]);
   const navigate = useNavigate();
-
-  const styles = {
-    formlabel: {
-      color: "antiquewhite",
-      "&.Mui-focused": {
-        color:"#faa749"
-      }
-    }
-  }
 
   useEffect(() => {
     // error handling needs to be in useEffect if im navigating so that another component
@@ -50,7 +41,7 @@ const HaircutType = () => {
   const haircutInputs = (
     <FormControl sx={{ width:"85%", zIndex:"0" }}>
           
-      <FormLabel id="haircut-radio-buttons" sx={styles.formlabel}>Select a Haircut</FormLabel>
+      <FormLabel id="haircut-radio-buttons" >Select a Haircut</FormLabel>
       
       <RadioGroup
         aria-labelledby="haircut-radio-buttons"

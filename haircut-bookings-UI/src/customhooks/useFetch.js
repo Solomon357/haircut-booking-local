@@ -6,9 +6,12 @@ export const useFetch = (url) => {
   const [error, setError] = useState(null)
 
   useEffect(() => {
-    fetch(url) 
+    //to simulate loading
+    setTimeout(() => {
+      fetch(url) 
       .then(res => res.json())
       .then(data => {
+        
         console.log("Info data coming in: ", data);
         setAllOptions(data)
       })
@@ -17,7 +20,7 @@ export const useFetch = (url) => {
         setError(err.message)
       })
       .finally(() => setIsLoading(false))
-
+    }, 1000);
   }, [url])
 
   return { allOptions, isLoading, error }

@@ -22,6 +22,9 @@ export const SearchField = styled(TextField)({
 
 export const NameField = styled(TextField)({
 
+  width: "50%",
+  margin: "2%",
+  
   "& input":{
     textTransform: "capitalize",
   },
