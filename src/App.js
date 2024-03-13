@@ -1,5 +1,5 @@
 import "./App.css";
-import { HashRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import { Home } from "./pages"
 import ErrorPage from "./pages/ErrorPage";
 import { FormProvider } from "./context/FormContext";
@@ -35,19 +35,17 @@ theme = responsiveFontSizes(theme);
 
 function App() {
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/bookHaircut" element={
-          <FormProvider>
-            <ThemeProvider theme={theme}>  
-              <HaircutForm />
-            </ThemeProvider>
-          </FormProvider> 
-        } />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-    </HashRouter>
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/bookHaircut" element={
+        <FormProvider>
+          <ThemeProvider theme={theme}>  
+            <HaircutForm />
+          </ThemeProvider>
+        </FormProvider> 
+      } />
+      <Route path="*" element={<ErrorPage />} />
+    </Routes>
   );
 }
 
