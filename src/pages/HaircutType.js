@@ -49,8 +49,7 @@ const HaircutType = () => {
         value={allOptions.value} 
         onChange = {handleChange}
       >
-        {filteredOptions && 
-          filteredOptions.map((haircuts) => {
+        {filteredOptions?.map((haircuts) => {
           let haircutArr = haircuts.value.split(","); 
           return(
             <CustomControlLabel
