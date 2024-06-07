@@ -16,7 +16,6 @@ const styles = {
     margin: "5px",
     display: "flex",
     justifyContent:"space-between",
-    typography: "Saira Condensed",
 
     "&:hover": {
       backgroundColor: "#423c3e",

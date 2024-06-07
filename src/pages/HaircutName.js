@@ -2,7 +2,13 @@ import useFormContext from "../customhooks/useFormContext";
 import { NameField } from "./customstyles/CustomField.styles";
 
 const HaircutName = () => {
-  const { form, handleChange } = useFormContext();
+  const { form, handleChange, handleNext } = useFormContext();
+
+  const handleKeyUp = (e) => {
+    if (e.key === "Enter"){
+      handleNext();
+    }
+  }
 
   return (
     <NameField
@@ -13,6 +19,7 @@ const HaircutName = () => {
       label="Booking Name"
       variant="outlined"
       onChange={handleChange}
+      onKeyUp={handleKeyUp}
       value={form.haircutBookingName}
     />    
   );

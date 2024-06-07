@@ -7,7 +7,7 @@ import { useTheme } from "@mui/material/styles";
 import { ProgressButton } from "../customstyles/Button.styles";
 
 const CartBox = () => {
-  const { page, setPage, canSubmit, form, disableNext } = useFormContext();
+  const { page, canSubmit, form, disableNext, handleNext } = useFormContext();
   //trying rendering based on mui breakpoints
   const theme = useTheme();
   const small = useMediaQuery(theme.breakpoints.down('md'))
@@ -44,9 +44,9 @@ const CartBox = () => {
     }
   }
 
-  const handleNext = () => {
-    setPage(next => next + 1)
-  }
+  // const handleNext = () => {
+  //   setPage(next => next + 1)
+  // }
 
 
   let haircutArr = form.haircutType ? form.haircutType.split(",") : ["Select a Service", ""];

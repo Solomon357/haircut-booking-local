@@ -14,14 +14,22 @@ const title = {
 
 export const FormProvider = ({ children }) => {
 
-  //TO DO FOR TOMORROW:  
-  // 1. deploy the project on a server
-  // (d). deploy the ui on ideally the same cloud platform
-
+  //TO DO:
+  //allow for enter key to progress form in booking name page
+  //allow time to be dynamically disabled for current day depending on real time
+  
   //OPTIONAL:
   // add loading button for submit
 
   const [page, setPage] = useState(0)
+
+  const handleNext = () => {
+    setPage(next => next + 1)
+  }
+
+  const handlePrev = () => {
+    setPage(prev => prev - 1)
+  }
 
   const [form, setForm] = useState({
     haircutType: "",
@@ -103,7 +111,7 @@ export const FormProvider = ({ children }) => {
   const disableNext = (page === Object.keys(title).length - 1) || !canNextPage
   
   return (
-    <FormContext.Provider value={{ setForm, setPage, handleChange, handleDateChange, title, page, form, canSubmit, disablePrev, disableNext }}>
+    <FormContext.Provider value={{ setForm, handleChange, handleDateChange, handleNext, handlePrev, title, page, form, canSubmit, disablePrev, disableNext }}>
       {children}
     </FormContext.Provider>
   )
